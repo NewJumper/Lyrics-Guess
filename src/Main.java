@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,6 +12,9 @@ public class Main {
     public static final String RED = "\u001B[31m";
     public static final String GREEN = "\033[1;32m";
     public static final String CYAN = "\u001B[36m";
+    public static final String YELLOW = "\033[1;33m";
+    public static final String BOLD = "\033[1;37m";
+    public static final String ITALICS = "\033[3m";
     public static final String RESET = "\u001B[0m";
     private static final List<Integer> rows = new ArrayList<>();
     private static int correct;
@@ -29,8 +33,21 @@ public class Main {
         albums.add(Files.readAllLines(Paths.get("src/albums/evermore.txt")));
         albums.add(Files.readAllLines(Paths.get("src/albums/midnights.txt")));
 
-        do randomGuessing();
-        while(!INPUT.nextLine().equalsIgnoreCase("quit"));
+        System.out.println(YELLOW + """
+                
+                Which game do you want to play?
+                ALL - You have to guess all 188 songs to complete the game.
+                RANDOM - Set a high score by guessing songs that are randomly chosen.""");
+
+        String choice = INPUT.nextLine();
+        if(choice.equalsIgnoreCase("ALL")) {
+            System.out.println(BOLD + "ALL songs chosen\n" + RESET);
+            allGuessing();
+        } else if(choice.equalsIgnoreCase("RANDOM")) {
+            System.out.println(BOLD + "RANDOM songs chosen\n" + RESET);
+            do randomGuessing(0, 0, true);
+            while (!INPUT.nextLine().equalsIgnoreCase("quit"));
+        }
 
         System.out.println("Correct: " + correct);
         System.out.println("Incorrect: " + incorrect);
@@ -38,9 +55,32 @@ public class Main {
         System.out.println(GREEN + "\nScore: " + (10 * correct - 2 * incorrect - skips));
     }
 
-    public static void randomGuessing() {
-        List<String> album = albums.get((int) (Math.random() * albums.size()));
-        List<String> song = getSong(album, (int) (Math.random() * Integer.parseInt(album.get(0)) + 1));
+    public static void allGuessing() {
+        List<int[]> order = new ArrayList<>();
+        for(int i = 0; i < albums.size(); i++) {
+            for(int j = 1; j <= Integer.parseInt(albums.get(i).get(0)); j++) {
+                order.add(new int[]{i, j});
+            }
+        }
+
+        Collections.shuffle(order);
+        for (int[] id : order) {
+            System.out.println("Track " + (order.indexOf(id) + 1) + "/" + order.size());
+            randomGuessing(id[0], id[1], false);
+            if(INPUT.nextLine().equalsIgnoreCase("quit")) break;
+        }
+    }
+
+    public static void randomGuessing(int albumSel, int trackSel, boolean random) {
+        List<String> album;
+        List<String> song;
+        if(random) {
+            album = albums.get((int) (Math.random() * albums.size()));
+            song = getSong(album, (int) (Math.random() * Integer.parseInt(album.get(0)) + 1));
+        } else {
+            album = albums.get(albumSel);
+            song = getSong(album, trackSel);
+        }
         String songName = filterSongName(song.get(0));
 
         boolean giveUp = false;
