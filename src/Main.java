@@ -95,12 +95,13 @@ public class Main {
     }
 
     public static String filterSongName(String songName) {
-        songName = songName.replace("&", "and").replace("...", "");
         if(!songName.contains(" (")) return songName.replace("=", "");
         return songName.substring(0, songName.indexOf(" ("));
     }
 
     public static String randomLine(String songName, List<String> song, int length) {
+        songName = songName.replace("&", "and").replace("...", "");
+
         int row = (int) (Math.random() * (length - 2) + 1);
         if(!rows.isEmpty()) {
             while(rows.contains(row) || song.get(row).equalsIgnoreCase(songName)) row = (int) (Math.random() * (length - 2) + 1);
@@ -128,6 +129,7 @@ public class Main {
 
     public static boolean checkGuess(String guess, String name) {
         if(guess.equalsIgnoreCase(name)) return true;
+        name = name.replace("...", "").replace("&", "and").replace("?", "");
 
         int buffer = 0;
         for(int i = 0; i < name.length(); i++) {
