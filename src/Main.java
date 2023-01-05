@@ -133,6 +133,7 @@ public class Main {
 
         int buffer = 0;
         for(int i = 0; i < name.length(); i++) {
+            if(i >= guess.length()) return false;
             if(!guess.substring(i - buffer, i - buffer + 1).equalsIgnoreCase(name.substring(i, i + 1))) {
                 if(name.charAt(i) == ',' || name.charAt(i) == '\'') buffer++;
                 else return false;
