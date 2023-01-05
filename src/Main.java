@@ -13,9 +13,8 @@ public class Main {
     public static final String GREEN = "\033[1;32m";
     public static final String CYAN = "\033[36m";
     public static final String YELLOW = "\033[1;33m";
-    public static final String WHITE = "\033[37m";
     public static final String BOLD = "\033[1;37m";
-    public static final String ITALICS = "\033[3m";
+    public static final String ITALICS = "\033[3;37m";
     public static final String RESET = "\033[0m";
     private static final List<Integer> rows = new ArrayList<>();
     private static int tracks;
@@ -117,7 +116,7 @@ public class Main {
         }
 
         int row = rows.get(0);
-        System.out.println(song.get(0).replaceAll("=", "") + RESET + ", " + WHITE + ITALICS + album.get(0) + RESET + ":");
+        System.out.println(song.get(0).replaceAll("=", "") + RESET + ", " + ITALICS + album.get(0) + RESET + ":");
         if(row > 1) System.out.println(song.get(row - 1));
         System.out.println(song.get(row));
         if(row < song.size() - 1) System.out.println(song.get(row + 1));
