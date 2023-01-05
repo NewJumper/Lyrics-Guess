@@ -9,14 +9,16 @@ import java.util.Scanner;
 public class Main {
     private static final Scanner INPUT = new Scanner(System.in);
     public static List<List<String>> albums = new ArrayList<>();
-    public static final String RED = "\u001B[31m";
+    public static final String RED = "\033[31m";
     public static final String GREEN = "\033[1;32m";
-    public static final String CYAN = "\u001B[36m";
+    public static final String CYAN = "\033[36m";
     public static final String YELLOW = "\033[1;33m";
+    public static final String WHITE = "\033[37m";
     public static final String BOLD = "\033[1;37m";
     public static final String ITALICS = "\033[3m";
-    public static final String RESET = "\u001B[0m";
+    public static final String RESET = "\033[0m";
     private static final List<Integer> rows = new ArrayList<>();
+    private static int tracks;
     private static int correct;
     private static int incorrect;
     private static int skips;
@@ -34,8 +36,7 @@ public class Main {
         albums.add(Files.readAllLines(Paths.get("src/albums/midnights.txt")));
 
         System.out.println(YELLOW + """
-                
-                Which game do you want to play?
+                \nWhich game do you want to play?
                 ALL - You have to guess all 188 songs to complete the game.
                 RANDOM - Set a high score by guessing songs that are randomly chosen.""");
 
@@ -49,16 +50,18 @@ public class Main {
             while (!INPUT.nextLine().equalsIgnoreCase("quit"));
         }
 
-        System.out.println("Correct: " + correct);
-        System.out.println("Incorrect: " + incorrect);
-        System.out.println("Skipped: " + skips);
-        System.out.println(GREEN + "\nScore: " + (10 * correct - 2 * incorrect - skips));
+        System.out.format("""
+                Tracks: %s
+                Correct: %s
+                Incorrect: %s
+                Skipped: %s""", tracks, correct, incorrect, skips);
+        System.out.println(GREEN + "\nScore: " + (tracks + 10 * correct - 2 * incorrect - skips));
     }
 
     public static void allGuessing() {
         List<int[]> order = new ArrayList<>();
         for(int i = 0; i < albums.size(); i++) {
-            for(int j = 1; j <= Integer.parseInt(albums.get(i).get(0)); j++) {
+            for(int j = 1; j <= Integer.parseInt(albums.get(i).get(1)); j++) {
                 order.add(new int[]{i, j});
             }
         }
@@ -76,7 +79,7 @@ public class Main {
         List<String> song;
         if(random) {
             album = albums.get((int) (Math.random() * albums.size()));
-            song = getSong(album, (int) (Math.random() * Integer.parseInt(album.get(0)) + 1));
+            song = getSong(album, (int) (Math.random() * Integer.parseInt(album.get(1)) + 1));
         } else {
             album = albums.get(albumSel);
             song = getSong(album, trackSel);
@@ -114,12 +117,13 @@ public class Main {
         }
 
         int row = rows.get(0);
-        System.out.println(song.get(0).replaceAll("=", "") + RESET + ":");
+        System.out.println(song.get(0).replaceAll("=", "") + RESET + ", " + WHITE + ITALICS + album.get(0) + RESET + ":");
         if(row > 1) System.out.println(song.get(row - 1));
         System.out.println(song.get(row));
         if(row < song.size() - 1) System.out.println(song.get(row + 1));
 
         System.out.println("-----");
+        tracks++;
     }
 
     public static List<String> getSong(List<String> album, int track) {
