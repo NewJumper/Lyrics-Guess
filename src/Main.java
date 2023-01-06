@@ -180,7 +180,7 @@ public class Main {
         String result = line;
         for(int i = 0; i < line.length() - name.length() + 1; i++) {
             if(line.substring(i, i + name.length()).equalsIgnoreCase(name)) {
-                result = line.substring(0, i) + "_".repeat(name.length());
+                result = result.substring(0, i) + "_".repeat(name.length());
                 if(i + name.length() < line.length()) {
                     result += line.substring(i + name.length());
                     i += name.length();
