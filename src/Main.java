@@ -180,7 +180,13 @@ public class Main {
         String result = line;
         for(int i = 0; i < line.length() - name.length() + 1; i++) {
             if(line.substring(i, i + name.length()).equalsIgnoreCase(name)) {
-                result = result.substring(0, i) + "_".repeat(name.length());
+                StringBuilder blanks = new StringBuilder();
+                for(int j = 0; j < name.length(); j++) {
+                    if(name.toLowerCase().charAt(j) >= 'a' && name.toLowerCase().charAt(j) <= 'z') blanks.append('_');
+                    else if(name.charAt(j) == ' ') blanks.append(' ');
+                    else blanks.append(name.charAt(j));
+                }
+                result = result.substring(0, i) + blanks;
                 if(i + name.length() < line.length()) {
                     result += line.substring(i + name.length());
                     i += name.length();
@@ -188,10 +194,10 @@ public class Main {
             }
         }
 
-        if(name.equals("Bye Bye Baby")) return result.replace("Bye, bye, baby", "____________");
-        if(name.equals("Snow On The Beach")) return result.replace("snow at the beach", "_________________");
-        if(name.equals("the 1")) return result.replace("the one", "_____");
-        if(name.equals("We Are Never Ever Getting Back Together")) return result.replace("ever getting back together", "__________________________");
+        if(name.equals("Bye Bye Baby")) return result.replace("Bye, bye, baby", "___, ___, ____");
+        if(name.equals("Snow On The Beach")) return result.replace("snow at the beach", "____ __ ___ _____");
+        if(name.equals("the 1")) return result.replace("the one", "___ _");
+        if(name.equals("We Are Never Ever Getting Back Together")) return result.replace("never, ever, ever getting back together", "_____, ____, ____ _______ ____ ________");
         return result;
     }
 
