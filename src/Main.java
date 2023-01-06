@@ -20,7 +20,7 @@ public class Main {
     private static int tracks;
     private static int correct;
     private static int incorrect;
-    private static int skips;
+    private static int lines;
 
     public static void main(String[] args) throws IOException {
         albums.add(Files.readAllLines(Paths.get("src/albums/taylor swift.txt")));
@@ -41,20 +41,31 @@ public class Main {
 
         String choice = INPUT.nextLine();
         if(choice.equalsIgnoreCase("ALL")) {
-            System.out.println(BOLD + "ALL songs chosen\n" + RESET);
+            System.out.println(BOLD + """
+                    ALL songs chosen
+                    Try to get all 188 song names correct! You have infinite guesses!
+                    If you want to end the game, type "quit" after the song's name is revealed.
+                    """ + RESET);
             allGuessing();
         } else if(choice.equalsIgnoreCase("RANDOM")) {
-            System.out.println(BOLD + "RANDOM songs chosen\n" + RESET);
-            do randomGuessing(0, 0, true);
-            while (!INPUT.nextLine().equalsIgnoreCase("quit"));
+            System.out.println(BOLD + """
+                    RANDOM songs chosen
+                    Try to get the song's name, but you only have three guesses!
+                    If you want to end the game, type "quit" after the song's name is revealed.
+                    Typing "idk" as a guess will immediately end the game.
+                    """ + RESET);
+            while(randomGuessing(0, 0, true) && !INPUT.nextLine().equalsIgnoreCase("quit")) tracks++;
+        } else {
+            System.out.println(ITALICS + choice + RESET + " is not a game!");
+            return;
         }
 
         System.out.format("""
-                Tracks: %s
+                \nTracks: %s
                 Correct: %s
                 Incorrect: %s
-                Skipped: %s""", tracks, correct, incorrect, skips);
-        System.out.println(GREEN + "\nScore: " + (tracks + 10 * correct - 2 * incorrect - skips));
+                Lines Given: %s""", tracks, correct, incorrect, lines);
+        System.out.println(GREEN + "\nScore: " + (10 * correct - 2 * incorrect - lines));
     }
 
     public static void allGuessing() {
@@ -69,11 +80,12 @@ public class Main {
         for (int[] id : order) {
             System.out.println("Track " + (order.indexOf(id) + 1) + "/" + order.size());
             randomGuessing(id[0], id[1], false);
+            tracks++;
             if(INPUT.nextLine().equalsIgnoreCase("quit")) break;
         }
     }
 
-    public static void randomGuessing(int albumSel, int trackSel, boolean random) {
+    public static boolean randomGuessing(int albumSel, int trackSel, boolean random) {
         List<String> album;
         List<String> song;
         if(random) {
@@ -85,32 +97,40 @@ public class Main {
         }
         String songName = filterSongName(song.get(0));
 
-        boolean giveUp = false;
         String guess;
+        int maxLines = 3;
+        boolean skipped = false;
         do {
             System.out.println(CYAN + randomLine(songName, song, song.size()) + RESET);
+            lines++;
+            maxLines--;
 
             guess = INPUT.nextLine();
-            if(guess.equals("")) {
-                guess = " ";
-                skips++;
-                continue;
+            if(random && maxLines == 0) {
+                while(guess.equals("")) {
+                    guess = INPUT.nextLine();
+                }
+                if(checkGuess(guess, songName)) break;
+                skipped = true;
+                break;
             }
+            if(guess.equals("")) continue;
             if(guess.equalsIgnoreCase("idk")) {
-                giveUp = true;
+                skipped = true;
                 break;
             }
             if(checkGuess(guess, songName)) break;
-
+            if(random) {
+                incorrect++;
+                if(guess.equals("quit")) break;
+            }
             System.out.println(RED + "-X-" + RESET + "\n");
-            incorrect++;
         } while(!checkGuess(guess, songName));
 
-        if(giveUp) {
+        if(skipped) {
             System.out.print("\n" + RED);
             incorrect++;
-        }
-        else {
+        } else {
             System.out.print("\n" + GREEN);
             correct++;
         }
@@ -122,7 +142,9 @@ public class Main {
         if(row < song.size() - 1) System.out.println(song.get(row + 1));
 
         System.out.println("-----");
-        tracks++;
+        rows.clear();
+
+        return !skipped;
     }
 
     public static List<String> getSong(List<String> album, int track) {
@@ -171,14 +193,15 @@ public class Main {
     }
 
     public static boolean checkGuess(String guess, String name) {
+        if(guess.length() == 0 || guess.length() > name.length()) return false;
         if(guess.equalsIgnoreCase(name)) return true;
         name = name.replace("...", "").replace("&", "and").replace("?", "");
 
         int buffer = 0;
         for(int i = 0; i < name.length(); i++) {
-            if(i >= guess.length()) return false;
+            if(i >= guess.length() + buffer) return false;
             if(!guess.substring(i - buffer, i - buffer + 1).equalsIgnoreCase(name.substring(i, i + 1))) {
-                if(name.charAt(i) == ',' || name.charAt(i) == '\'') buffer++;
+                if(name.charAt(i) == ',' || name.charAt(i) == '\'' || name.charAt(i) == '.') buffer++;
                 else return false;
             }
         }
