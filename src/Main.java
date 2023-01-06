@@ -188,6 +188,9 @@ public class Main {
             }
         }
 
+        if(name.equals("Bye Bye Baby")) return result.replace("Bye, bye, baby", "____________");
+        if(name.equals("Snow On The Beach")) return result.replace("snow at the beach", "_________________");
+        if(name.equals("the 1")) return result.replace("the one", "_____");
         if(name.equals("We Are Never Ever Getting Back Together")) return result.replace("ever getting back together", "__________________________");
         return result;
     }
