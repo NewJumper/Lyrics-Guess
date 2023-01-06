@@ -17,6 +17,7 @@ public class Main {
     public static final String ITALICS = "\033[3;37m";
     public static final String RESET = "\033[0m";
     private static final List<Integer> rows = new ArrayList<>();
+    private static boolean hardcore;
     private static int tracks;
     private static int correct;
     private static int incorrect;
@@ -35,10 +36,12 @@ public class Main {
         albums.add(Files.readAllLines(Paths.get("src/albums/midnights.txt")));
 
         System.out.println(YELLOW + """
-                \nWhich game do you want to play?
+                \nWhich gamemode do you want to play?
                 ALL - You have to guess all 188 songs to complete the game.
-                RANDOM - Set a high score by guessing songs that are randomly chosen.""");
+                RANDOM - Set a high score by guessing songs that are randomly chosen.
+                HARDCORE - Guess the song from only one line and one guess.""");
 
+        long start = 0;
         String choice = INPUT.nextLine();
         if(choice.equalsIgnoreCase("ALL")) {
             System.out.println(BOLD + """
@@ -47,6 +50,7 @@ public class Main {
                     If you want to end the game, type "quit" after the song's name is revealed.
                     """ + RESET);
             allGuessing();
+            System.out.println(YELLOW + "\nALL" + RESET + " songs");
         } else if(choice.equalsIgnoreCase("RANDOM")) {
             System.out.println(BOLD + """
                     RANDOM songs chosen
@@ -55,17 +59,39 @@ public class Main {
                     Typing "idk" as a guess will immediately end the game.
                     """ + RESET);
             while(randomGuessing(0, 0, true) && !INPUT.nextLine().equalsIgnoreCase("quit")) tracks++;
+            tracks++;
+            System.out.println(YELLOW + "\nRANDOM" + RESET + " songs");
+        } else if(choice.equalsIgnoreCase("HARDCORE")) {
+            hardcore = true;
+            start = System.nanoTime();
+            System.out.println(RED + "HARDCORE challenge" + BOLD + """
+                     chosen
+                    Try to guess all 188 song names correct with only\s""" + RED + "ONE" + BOLD + " line and " + RED + "ONE" + BOLD + " guess!" + """
+                    \nThe game will end if you guess incorrectly!
+                    If you want to end the game, type "quit" after the song's name is revealed.
+                    """ + RESET);
+            allGuessing();
+            System.out.println(RED + "\nHARDCORE CHALLENGE" + RESET);
         } else {
             System.out.println(ITALICS + choice + RESET + " is not a game!");
             return;
         }
 
-        System.out.format("""
-                \nTracks: %s
-                Correct: %s
-                Incorrect: %s
-                Lines Given: %s""", tracks, correct, incorrect, lines);
-        System.out.println(GREEN + "\nScore: " + (10 * correct - 2 * incorrect - lines));
+        if(hardcore) {
+            long end = System.nanoTime();
+            long timeFormat = (end - start) / 60000000000L == 0 ? 1000000000L : 60000000000L;
+            System.out.format("""
+                    Completed: %s
+                    Time: %s %s""", tracks, (end - start) / timeFormat, timeFormat == 1000000000L ? "seconds" : "minutes");
+            System.out.println(GREEN + "\nScore: " + (11L * tracks - (end - start) / 60000000000L + 1));
+        } else {
+            System.out.format("""
+                    Tracks: %s
+                    Correct: %s
+                    Incorrect: %s
+                    Lines Given: %s""", tracks, correct, incorrect, lines);
+            System.out.println(GREEN + "\nScore: " + (10 * correct - 2 * incorrect - lines));
+        }
     }
 
     public static void allGuessing() {
@@ -78,8 +104,8 @@ public class Main {
 
         Collections.shuffle(order);
         for (int[] id : order) {
-            System.out.println("Track " + (order.indexOf(id) + 1) + "/" + order.size());
-            randomGuessing(id[0], id[1], false);
+            System.out.println("\033[1mTrack " + (order.indexOf(id) + 1) + "/" + order.size() + RESET);
+            if(!randomGuessing(id[0], id[1], false) && hardcore) break;
             tracks++;
             if(INPUT.nextLine().equalsIgnoreCase("quit")) break;
         }
@@ -98,25 +124,22 @@ public class Main {
         String songName = filterSongName(song.get(0));
 
         String guess;
-        int maxLines = 3;
-        boolean skipped = false;
+        int maxLines = 4;
+        boolean failed = false;
         do {
             System.out.println(CYAN + randomLine(songName, song, song.size()) + RESET);
             lines++;
             maxLines--;
 
             guess = INPUT.nextLine();
-            if(random && maxLines == 0) {
-                while(guess.equals("")) {
-                    guess = INPUT.nextLine();
-                }
-                if(checkGuess(guess, songName)) break;
-                skipped = true;
+            if(hardcore || (random && maxLines == 0)) {
+                while(guess.equals("")) guess = INPUT.nextLine();
+                if(!checkGuess(guess, songName)) failed = true;
                 break;
             }
             if(guess.equals("")) continue;
             if(guess.equalsIgnoreCase("idk")) {
-                skipped = true;
+                failed = true;
                 break;
             }
             if(checkGuess(guess, songName)) break;
@@ -127,7 +150,7 @@ public class Main {
             System.out.println(RED + "-X-" + RESET + "\n");
         } while(!checkGuess(guess, songName));
 
-        if(skipped) {
+        if(failed) {
             System.out.print("\n" + RED);
             incorrect++;
         } else {
@@ -144,7 +167,8 @@ public class Main {
         System.out.println("-----");
         rows.clear();
 
-        return !skipped;
+        if(hardcore && failed) return false;
+        return !failed;
     }
 
     public static List<String> getSong(List<String> album, int track) {
@@ -169,11 +193,17 @@ public class Main {
 
         int row = (int) (Math.random() * (length - 2) + 1);
         if(!rows.isEmpty()) {
-            while(rows.contains(row) || song.get(row).equalsIgnoreCase(songName)) row = (int) (Math.random() * (length - 2) + 1);
+            while(rows.contains(row) || song.get(row).equalsIgnoreCase(songName) || checkGiveaways(song.get(row))) row = (int) (Math.random() * (length - 2) + 1);
         }
         rows.add(0, row);
 
         return replaceName(song.get(row), songName);
+    }
+
+    public static boolean checkGiveaways(String line) {
+        return line.contains("Bye, bye, baby") ||
+                line.contains("Ooh-ah, you'll get better") ||
+                line.contains("we are never, ever, ever getting back together");
     }
 
     public static String replaceName(String line, String name) {
@@ -194,15 +224,13 @@ public class Main {
             }
         }
 
-        if(name.equals("Bye Bye Baby")) return result.replace("Bye, bye, baby", "___, ___, ____");
         if(name.equals("Snow On The Beach")) return result.replace("snow at the beach", "____ __ ___ _____");
         if(name.equals("the 1")) return result.replace("the one", "___ _");
-        if(name.equals("We Are Never Ever Getting Back Together")) return result.replace("never, ever, ever getting back together", "_____, ____, ____ _______ ____ ________");
         return result;
     }
 
     public static boolean checkGuess(String guess, String name) {
-        if(guess.length() == 0 || guess.length() > name.length()) return false;
+        if(guess.length() == 0 || (!guess.contains("and") && guess.length() > name.length())) return false;
         if(guess.equalsIgnoreCase(name)) return true;
         name = name.replace("...", "").replace("&", "and").replace("?", "");
 
