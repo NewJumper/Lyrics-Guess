@@ -99,7 +99,7 @@ public class Main {
         int score;
         if(hardcore) {
             System.out.format("Completed: " + tracks);
-            score = (int) (11L * tracks - (end - start) / 60000000000d + 1);
+            score = (int) (11.1d * tracks - (end - start) / 60000000000d + 1);
         } else {
             System.out.format("""
                     Tracks: %s

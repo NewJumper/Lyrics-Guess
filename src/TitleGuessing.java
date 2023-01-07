@@ -106,8 +106,8 @@ public class TitleGuessing {
         songName = songName.replace("&", "and").replace("...", "");
 
         int row = (int) (Math.random() * (length - 2) + 1);
-        if(!rows.isEmpty() || song.get(row).equalsIgnoreCase(songName) || checkGiveaways(song.get(row))) {
-            while(rows.contains(row) || song.get(row).equalsIgnoreCase(songName) || checkGiveaways(song.get(row)))
+        if(!rows.isEmpty() || song.get(row).equalsIgnoreCase(songName) || checkValidCase(song.get(row))) {
+            while(rows.contains(row) || song.get(row).equalsIgnoreCase(songName) || checkValidCase(song.get(row)))
                 row = (int) (Math.random() * (length - 2) + 1);
         }
         rows.add(0, row);
@@ -115,7 +115,9 @@ public class TitleGuessing {
         return replaceName(song.get(row), songName);
     }
 
-    public static boolean checkGiveaways(String line) {
+    public static boolean checkValidCase(String line) {
+        int rep = line.indexOf(' ');
+        if(hardcore && (rep == line.indexOf(' ', rep + 1) || rep == line.lastIndexOf(' ') || line.indexOf(' ', rep + 1) == line.lastIndexOf(' '))) return false;
         return line.contains("And we were happy") ||
                 line.contains("Beautiful tragic") ||
                 line.contains("But we are never, ever, ever, ever getting back together") ||
@@ -145,6 +147,7 @@ public class TitleGuessing {
         }
 
         if(name.equals("Dancing With Our Hands Tied")) return result.replace("_, hands tied", "_, _____ ____");
+        if(name.equals("Mary's Song")) return result.replace("Oh my, my, my", "__ __, __, __");
         if(name.equals("Mr. Perfectly Fine")) return result.replace("Mr.", "__").replace("Mr. \"Perfectly fine\"", "__ \"_________ ____\"");
         if(name.equals("Snow On The Beach")) return result.replace("snow at the beach", "____ __ ___ _____");
         if(name.equals("the 1")) return result.replace("the one", "___ _");
