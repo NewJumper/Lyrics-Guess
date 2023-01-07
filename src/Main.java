@@ -223,10 +223,13 @@ public class Main {
     }
 
     public static boolean checkGiveaways(String line) {
-        return line.contains("But we are never, ever, ever, ever getting back together") ||
+        return line.contains("And we were happy") ||
+                line.contains("But we are never, ever, ever, ever getting back together") ||
                 line.contains("Bye, bye, baby") ||
+                line.contains("Don't you ever grow up") ||
                 line.contains("Ooh-ah, you'll get better") ||
-                line.contains("we are never, ever, ever getting back together");
+                line.contains("we are never, ever, ever getting back together")||
+                line.contains("You should've said, \"No\"");
     }
 
     public static String replaceName(String line, String name) {
