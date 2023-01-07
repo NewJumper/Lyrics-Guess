@@ -201,7 +201,8 @@ public class Main {
     }
 
     public static boolean checkGiveaways(String line) {
-        return line.contains("Bye, bye, baby") ||
+        return line.contains("But we are never, ever, ever, ever getting back together") ||
+                line.contains("Bye, bye, baby") ||
                 line.contains("Ooh-ah, you'll get better") ||
                 line.contains("we are never, ever, ever getting back together");
     }
