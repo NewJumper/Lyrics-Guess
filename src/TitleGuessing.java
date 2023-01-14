@@ -45,10 +45,10 @@ public class TitleGuessing {
             Main.lines++;
             maxLines--;
 
-            guess = Main.INPUT.nextLine();
+            guess = Main.INPUT.nextLine().trim();
             if(hardcore || (random && maxLines == 0)) {
                 while(guess.equals("")) guess = Main.INPUT.nextLine();
-                if(!checkGuess(guess, songName)) failed = true;
+                if(!checkGuess(songName, guess)) failed = true;
                 break;
             }
             if(guess.equals("")) continue;
@@ -56,13 +56,13 @@ public class TitleGuessing {
                 failed = true;
                 break;
             }
-            if(checkGuess(guess, songName)) break;
+            if(checkGuess(songName, guess)) break;
             if(random) {
                 Main.incorrect++;
                 if(guess.equals("quit")) break;
             }
             System.out.println(Main.RED + "-X-" + RESET + "\n");
-        } while(!checkGuess(guess, songName));
+        } while(!checkGuess(songName, guess));
 
         if(failed) {
             System.out.print("\n" + Main.RED);
@@ -124,7 +124,7 @@ public class TitleGuessing {
                 line.contains("Bye, bye, baby") ||
                 line.contains("Don't you ever grow up") ||
                 line.contains("Ooh-ah, you'll get better") ||
-                line.contains("we are never, ever, ever getting back together")||
+                line.contains("We are never, ever, ever getting back together")||
                 line.contains("You should've said, \"No\"");
     }
 
@@ -154,18 +154,22 @@ public class TitleGuessing {
         return result;
     }
 
-    public static boolean checkGuess(String guess, String name) {
-        if(guess.length() == 0 || (!guess.contains("and") && guess.length() > name.length())) return false;
-        if(guess.equalsIgnoreCase(name)) return true;
-        name = name.replace("...", "").replace("&", "and");
+    public static boolean checkGuess(String name, String guess) {
+        if(guess.length() == 0) return false;
+        if(name.equalsIgnoreCase(guess)) return true;
+
+        name = name.replace("&", "and");
+        if(name.equals("Come Back...Be Here")) name = "Come Back... Be Here";
+        if(guess.length() > name.length()) return false;
 
         int buffer = 0;
         for(int i = 0; i < name.length(); i++) {
-            if(i >= guess.length() + buffer) return false;
-            if(!guess.substring(i - buffer, i - buffer + 1).equalsIgnoreCase(name.substring(i, i + 1))) {
-                if(name.charAt(i) == '!' || name.charAt(i) == '\'' || name.charAt(i) == ',' || name.charAt(i) == '.' || name.charAt(i) == '?') buffer++;
+            if(i >= guess.length() + buffer || !guess.substring(i - buffer, i - buffer + 1).equalsIgnoreCase(name.substring(i, i + 1))) {
+                if(name.charAt(i) == '\'' || name.charAt(i) == '.' || name.charAt(i) == ',' || name.charAt(i) == '!' || name.charAt(i) == '?') buffer++;
                 else return false;
             }
+
+            if(i == name.length() - 1 && i != guess.length() + buffer - 1) return false;
         }
 
         return true;
