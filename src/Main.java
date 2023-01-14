@@ -24,11 +24,17 @@ public class Main {
     public static final String RESET = "\033[0m";
     public static final List<Integer> rows = new ArrayList<>();
     public static boolean hardcore;
+    public static boolean opening;
+    public static boolean closing;
+    public static boolean zen;
+    public static boolean random;
     public static int maxRankings;
     public static int tracks;
     public static int correct;
     public static int incorrect;
     public static int lines;
+
+    public static boolean debug;
 
     public static void main(String[] args) throws IOException {
         albums.add(Files.readAllLines(Paths.get("src/albums/taylor swift.txt")));
@@ -55,6 +61,12 @@ public class Main {
 
         String choice = INPUT.nextLine();
         long start = System.nanoTime();
+
+        if(choice.equalsIgnoreCase("-d")) {
+            debug = true;
+            choice = INPUT.nextLine();
+        }
+
         switch(choice.toUpperCase()) {
             case "ALL" -> {
                 System.out.format(PURPLE_L + """
@@ -71,7 +83,8 @@ public class Main {
                     case "NORMAL" -> {
                         System.out.println(RESET + WHITE + "\nNORMAL mode " + BOLD + """
                                 chosen
-                                Try to get all 188 song names correct! You have infinite guesses!
+                                Try to guess all the songs' name from its lines!
+                                You have infinite guesses!
                                 If you want to end the game, type "quit" after the song's name is revealed.
                                 """ + RESET);
 
@@ -83,7 +96,7 @@ public class Main {
                         hardcore = true;
                         System.out.println(RED + "\nHARDCORE challenge " + BOLD + """
                                 chosen
-                                Try to guess all 188 song names correct with only\s""" + RED + "ONE" + BOLD + " line and " + RED + "ONE" + BOLD + " guess!" + """
+                                Try to guess the song's name with only\s""" + RED + "ONE" + BOLD + " line and " + RED + "ONE" + BOLD + " guess!" + """
                                 \nThe game will end if you guess incorrectly!
                                 If you want to end the game, type "quit" after the song's name is revealed.
                                 """ + RESET);
@@ -92,9 +105,34 @@ public class Main {
                         System.out.println(RED + "\nHARDCORE CHALLENGE" + RESET);
                         writer.write("HARDCORE - ");
                     }
-                    case "OPENING", "CLOSING", "ZEN" -> {
-                        System.out.println(ITALICS + choice + RESET + " is not a game, yet!");
-                        writer.flush();
+                    case "OPENING" -> {
+                        opening = true;
+                        System.out.println(RESET + WHITE + "\nOPENING lines " + BOLD + """
+                                chosen
+                                Try to guess the song's name from its first two lines!
+                                You only have three guesses!
+                                If you want to end the game, type "quit" after the song's name is revealed.
+                                """ + RESET);
+
+                        TitleGuessing.allSongsGuessing();
+                        System.out.println(PURPLE_L + "\nOPENING" + RESET + " lines");
+                        writer.write("OPENING - ");
+                    }
+                    case "CLOSING" -> {
+                        closing = true;
+                        System.out.println(RESET + WHITE + "\nCLOSING lines " + BOLD + """
+                                chosen
+                                Try to guess the song's name from its last two lines!
+                                You only have three guesses!
+                                If you want to end the game, type "quit" after the song's name is revealed.
+                                """ + RESET);
+
+                        TitleGuessing.allSongsGuessing();
+                        System.out.println(PURPLE_L + "\nCLOSING" + RESET + " lines");
+                        writer.write("CLOSING - ");
+                    }
+                    case "ZEN" -> {
+                        zen = true;
                         return;
                     }
                     default -> {
@@ -105,6 +143,7 @@ public class Main {
                 }
             }
             case "RANDOM" -> {
+                random = true;
                 System.out.println(RESET + WHITE + "\nRANDOM songs " + BOLD + """
                         chosen
                         Try to get the song's name, but you only have three guesses!
@@ -112,7 +151,7 @@ public class Main {
                         Typing "idk" as a guess will immediately end the game.
                         """ + RESET);
 
-                while(TitleGuessing.titleGuessing(0, 0, true) && !INPUT.nextLine().equalsIgnoreCase("quit")) tracks++;
+                while(TitleGuessing.titleGuessing(0, 0) && !INPUT.nextLine().equalsIgnoreCase("quit")) tracks++;
                 tracks++;
                 System.out.println(PURPLE_L + "\nRANDOM" + RESET + " songs");
                 writer.write("RANDOM - ");
@@ -147,9 +186,11 @@ public class Main {
             System.out.format("""
                     Tracks: %s
                     Correct: %s
-                    Incorrect: %s
-                    Lines Given: %s""", tracks, correct, incorrect, lines);
-            score = (int) (10 * correct - 2 * incorrect - lines - minutes);
+                    Incorrect: %s""", tracks, correct, incorrect);
+            if(!(opening || closing)) {
+                System.out.print("\nLines Given: " + lines);
+                score = (int) (10 * correct - 2 * incorrect - lines - minutes);
+            } else score = (int) (5 * correct - 2 * incorrect - minutes);
         }
         System.out.println("\nTime: " + (end - start) / timeFormat + " " + (timeFormat == 1000000000L ? "second" : "minute") + ((end - start) / timeFormat != 1 ? "s" : ""));
         System.out.println(GREEN + "Score: " + score);
