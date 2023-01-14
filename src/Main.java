@@ -115,18 +115,19 @@ public class Main {
         }
 
         long end = System.nanoTime();
-        long timeFormat = (end - start) / 60000000000L == 0 ? 1000000000L : 60000000000L;
+        double minutes = (end - start) / 60000000000d;
+        long timeFormat = minutes == 0 ? 1000000000L : 60000000000L;
         int score;
         if(hardcore) {
-            System.out.format("Completed: " + tracks);
-            score = (int) (11.1d * tracks - (end - start) / 60000000000d + 1);
+            System.out.println("Completed: " + tracks + " tracks");
+            score = (int) (11.1d * tracks - minutes + 1);
         } else {
             System.out.format("""
                     Tracks: %s
                     Correct: %s
                     Incorrect: %s
                     Lines Given: %s""", tracks, correct, incorrect, lines);
-            score = 10 * correct - 2 * incorrect - lines;
+            score = (int) (10 * correct - 2 * incorrect - lines - minutes);
         }
         System.out.println("\nTime: " + (end - start) / timeFormat + " " + (timeFormat == 1000000000L ? "second" : "minute") + ((end - start) / timeFormat != 1 ? "s" : ""));
         System.out.println(GREEN + "Score: " + score);
