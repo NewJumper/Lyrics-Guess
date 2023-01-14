@@ -18,7 +18,7 @@ public class TitleGuessing {
 
         Collections.shuffle(order);
         for (int[] id : order) {
-            System.out.println("\033[1mTrack " + (order.indexOf(id) + 1) + "/" + order.size() + RESET);
+            System.out.println(Main.WHITE + "Track " + (order.indexOf(id) + 1) + "/" + order.size() + RESET);
             if(!titleGuessing(id[0], id[1], false) && hardcore) break;
             Main.tracks++;
             if(Main.INPUT.nextLine().equalsIgnoreCase("quit")) break;

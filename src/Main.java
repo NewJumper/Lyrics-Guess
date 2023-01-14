@@ -16,8 +16,9 @@ public class Main {
     public static final String RED = "\033[31m";
     public static final String GREEN = "\033[1;32m";
     public static final String CYAN = "\033[36m";
-    public static final String YELLOW = "\033[1;33m";
-    public static final String YELLOW_L = "\u001B[1;93m";
+    public static final String PURPLE = "\033[1;35m";
+    public static final String PURPLE_L = "\u001B[1;95m";
+    public static final String WHITE = "\033[1m";
     public static final String BOLD = "\033[1;37m";
     public static final String ITALICS = "\033[3;37m";
     public static final String RESET = "\033[0m";
@@ -44,58 +45,79 @@ public class Main {
         scores = Files.readAllLines(Paths.get("src/scores.txt"));
         BufferedWriter writer = new BufferedWriter(new FileWriter("src/scores.txt", true));
 
-        System.out.format(YELLOW_L + """
+        System.out.format(PURPLE_L + """
                 \nWhich gamemode do you want to play?
                 ALL %s-%s Guess all 188 songs to complete the game.
-                %sHARDCORE %s-%s Guess all 188 songs from only one line and one guess.
                 %sRANDOM %s-%s Set a high score by guessing songs that are randomly chosen.
                 %sTIME ATTACK %s-%s Identify as many lines in two minutes.
-                %sZEN %s-%s Guess all 188 songs from two neighboring lines with no penalties.
                 %sSCORES - View the top scores
-                """, RESET, YELLOW, YELLOW_L, RESET, YELLOW, YELLOW_L, RESET, YELLOW, YELLOW_L, RESET, YELLOW, YELLOW_L, RESET, YELLOW, BOLD);
+                """, RESET, PURPLE, PURPLE_L, RESET, PURPLE, PURPLE_L, RESET, PURPLE, BOLD);
 
         String choice = INPUT.nextLine();
         long start = System.nanoTime();
-
         switch(choice.toUpperCase()) {
             case "ALL" -> {
-                System.out.println(BOLD + """
-                    \nALL songs chosen
-                    Try to get all 188 song names correct! You have infinite guesses!
-                    If you want to end the game, type "quit" after the song's name is revealed.
-                    """ + RESET);
+                System.out.format(PURPLE_L + """
+                        \nSelect a difficulty:
+                        NORMAL %s-%s Infinite guesses.
+                        %sHARDCORE %s-%s Guess with only one line and one guess.
+                        %sOPENING %s-%s Guess with only the first two lines.
+                        %sCLOSING %s-%s Guess with only the last two lines.
+                        %sZEN %s-%s Guess with two neighboring lines.
+                        """, RESET, PURPLE, PURPLE_L, RESET, PURPLE, PURPLE_L, RESET, PURPLE, PURPLE_L, RESET, PURPLE, PURPLE_L, RESET, PURPLE);
 
-                TitleGuessing.allSongsGuessing();
-                System.out.println(YELLOW_L + "\nALL" + RESET + " songs");
-                writer.write("ALL - ");
-            }
-            case "HARDCORE" -> {
-                hardcore = true;
-                System.out.println(RED + "\nHARDCORE challenge" + BOLD + """
-                     chosen
-                    Try to guess all 188 song names correct with only\s""" + RED + "ONE" + BOLD + " line and " + RED + "ONE" + BOLD + " guess!" + """
-                    \nThe game will end if you guess incorrectly!
-                    If you want to end the game, type "quit" after the song's name is revealed.
-                    """ + RESET);
+                choice = INPUT.nextLine();
+                switch(choice.toUpperCase()) {
+                    case "NORMAL" -> {
+                        System.out.println(RESET + WHITE + "\nNORMAL mode " + BOLD + """
+                                chosen
+                                Try to get all 188 song names correct! You have infinite guesses!
+                                If you want to end the game, type "quit" after the song's name is revealed.
+                                """ + RESET);
 
-                TitleGuessing.allSongsGuessing();
-                System.out.println(RED + "\nHARDCORE CHALLENGE" + RESET);
-                writer.write("HARDCORE - ");
+                        TitleGuessing.allSongsGuessing();
+                        System.out.println(PURPLE_L + "\nNORMAL" + RESET + " mode");
+                        writer.write("NORMAL - ");
+                    }
+                    case "HARDCORE" -> {
+                        hardcore = true;
+                        System.out.println(RED + "\nHARDCORE challenge " + BOLD + """
+                                chosen
+                                Try to guess all 188 song names correct with only\s""" + RED + "ONE" + BOLD + " line and " + RED + "ONE" + BOLD + " guess!" + """
+                                \nThe game will end if you guess incorrectly!
+                                If you want to end the game, type "quit" after the song's name is revealed.
+                                """ + RESET);
+
+                        TitleGuessing.allSongsGuessing();
+                        System.out.println(RED + "\nHARDCORE CHALLENGE" + RESET);
+                        writer.write("HARDCORE - ");
+                    }
+                    case "OPENING", "CLOSING", "ZEN" -> {
+                        System.out.println(ITALICS + choice + RESET + " is not a game, yet!");
+                        writer.flush();
+                        return;
+                    }
+                    default -> {
+                        System.out.println(ITALICS + choice + RESET + " is not a game!");
+                        writer.flush();
+                        return;
+                    }
+                }
             }
             case "RANDOM" -> {
-                System.out.println(BOLD + """
-                    \nRANDOM songs chosen
-                    Try to get the song's name, but you only have three guesses!
-                    If you want to end the game, type "quit" after the song's name is revealed.
-                    Typing "idk" as a guess will immediately end the game.
-                    """ + RESET);
+                System.out.println(RESET + WHITE + "\nRANDOM songs " + BOLD + """
+                        chosen
+                        Try to get the song's name, but you only have three guesses!
+                        If you want to end the game, type "quit" after the song's name is revealed.
+                        Typing "idk" as a guess will immediately end the game.
+                        """ + RESET);
 
                 while(TitleGuessing.titleGuessing(0, 0, true) && !INPUT.nextLine().equalsIgnoreCase("quit")) tracks++;
                 tracks++;
-                System.out.println(YELLOW_L + "\nRANDOM" + RESET + " songs");
+                System.out.println(PURPLE_L + "\nRANDOM" + RESET + " songs");
                 writer.write("RANDOM - ");
             }
-            case "TIME ATTACK", "ZEN" -> {
+            case "TIME ATTACK" -> {
                 System.out.println(ITALICS + choice + RESET + " is not a game, yet!");
                 writer.flush();
                 return;
