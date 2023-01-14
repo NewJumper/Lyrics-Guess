@@ -123,6 +123,7 @@ public class TitleGuessing {
                 line.contains("But we are never, ever, ever, ever getting back together") ||
                 line.contains("Bye, bye, baby") ||
                 line.contains("Don't you ever grow up") ||
+                line.contains("Oh, all you had to do was-") ||
                 line.contains("Ooh-ah, you'll get better") ||
                 line.contains("We are never, ever, ever getting back together")||
                 line.contains("You should've said, \"No\"");
