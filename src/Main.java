@@ -133,6 +133,7 @@ public class Main {
                     }
                     case "ZEN" -> {
                         zen = true;
+                        writer.flush();
                         return;
                     }
                     default -> {
@@ -178,11 +179,8 @@ public class Main {
         long end = System.nanoTime();
         double minutes = (end - start) / 60000000000d;
         long timeFormat = minutes == 0 ? 1000000000L : 60000000000L;
-        int score;
-        if(hardcore) {
-            System.out.println("Completed: " + tracks + " tracks");
-            score = (int) (11.1d * tracks - minutes + 1);
-        } else {
+        int score = 0;
+        if(!hardcore && !zen) {
             System.out.format("""
                     Tracks: %s
                     Correct: %s
@@ -191,9 +189,17 @@ public class Main {
                 System.out.print("\nLines Given: " + lines);
                 score = (int) (10 * correct - 2 * incorrect - lines - minutes);
             } else score = (int) (5 * correct - 2 * incorrect - minutes);
+        } else {
+            System.out.println("Completed: " + tracks + " tracks");
+            if(hardcore) score = (int) (11.1d * tracks - minutes + 1);
         }
+
         System.out.println("\nTime: " + (end - start) / timeFormat + " " + (timeFormat == 1000000000L ? "second" : "minute") + ((end - start) / timeFormat != 1 ? "s" : ""));
-        System.out.println(GREEN + "Score: " + score);
+        if(!zen) System.out.println(GREEN + "Score: " + score);
+        else {
+            writer.flush();
+            return;
+        }
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
         writer.write(score + " (" + tracks + ") " + dateFormat.format(new Date()) + "\n");
