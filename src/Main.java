@@ -196,10 +196,7 @@ public class Main {
 
         System.out.println("\nTime: " + (end - start) / timeFormat + " " + (timeFormat == 1000000000L ? "second" : "minute") + ((end - start) / timeFormat != 1 ? "s" : ""));
         if(!zen) System.out.println(GREEN + "Score: " + score);
-        else {
-            writer.flush();
-            return;
-        }
+        else return;
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
         writer.write(score + " (" + tracks + ") " + dateFormat.format(new Date()) + "\n");
