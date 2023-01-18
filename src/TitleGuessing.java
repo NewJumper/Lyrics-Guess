@@ -9,7 +9,6 @@ public class TitleGuessing {
     static boolean hardcore = Main.hardcore;
     static boolean opening = Main.opening;
     static boolean closing = Main.closing;
-    static boolean zen = Main.zen;
     static boolean random = Main.random;
 
     static boolean debug = Main.debug;

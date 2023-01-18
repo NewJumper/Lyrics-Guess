@@ -134,6 +134,15 @@ public class Main {
                     case "ZEN" -> {
                         zen = true;
                         writer.flush();
+                        System.out.println(RESET + WHITE + "\nZen mode " + BOLD + """
+                                chosen
+                                Try to guess the song's name from two neighboring lines!
+                                You have infinite guesses, no penalties, and no scores!
+                                If you want to end the game, type "quit" after the song's name is revealed.
+                                """);
+
+                        TitleGuessing.allSongsGuessing();
+                        System.out.println(PURPLE_L + "\nZEN" + RESET + " mode");
                         return;
                     }
                     default -> {
