@@ -1,3 +1,5 @@
+package game;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -48,8 +50,8 @@ public class Main {
         albums.add(Files.readAllLines(Paths.get("src/albums/evermore.txt")));
         albums.add(Files.readAllLines(Paths.get("src/albums/midnights.txt")));
 
-        scores = Files.readAllLines(Paths.get("src/scores.txt"));
-        BufferedWriter writer = new BufferedWriter(new FileWriter("src/scores.txt", true));
+        scores = Files.readAllLines(Paths.get("src/game/scores.txt"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("src/game/scores.txt", true));
 
         System.out.format(PURPLE_L + """
                 \nWhich gamemode do you want to play?
