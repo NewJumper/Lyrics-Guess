@@ -195,9 +195,10 @@ public class Main {
             System.out.format("""
                     Tracks: %s
                     Correct: %s
-                    Incorrect: %s""", tracks, correct, incorrect);
+                    Incorrect: %s
+                    """, tracks, correct, incorrect);
             if(!(opening || closing)) {
-                System.out.print("\nLines Given: " + lines);
+                System.out.println("Lines Given: " + lines);
                 score = (int) (10 * correct - 2 * incorrect - lines - minutes);
             } else score = (int) (5 * correct - 2 * incorrect - minutes);
         } else {
@@ -205,7 +206,7 @@ public class Main {
             if(hardcore) score = (int) (11.1d * tracks - minutes + 1);
         }
 
-        System.out.println("\nTime: " + (end - start) / timeFormat + " " + (timeFormat == 1000000000L ? "second" : "minute") + ((end - start) / timeFormat != 1 ? "s" : ""));
+        System.out.println("Time: " + (end - start) / timeFormat + " " + (timeFormat == 1000000000L ? "second" : "minute") + ((end - start) / timeFormat != 1 ? "s" : ""));
         if(!zen) System.out.println(GREEN + "Score: " + score);
         else return;
 
