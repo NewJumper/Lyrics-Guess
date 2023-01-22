@@ -1,8 +1,5 @@
 /.idea
 /App/.gradle
 /App/build
-/App/gradle
-/App/gradlew
-/App/gradlew.bat
 /out
 TS Games.iml
