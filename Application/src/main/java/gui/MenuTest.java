@@ -37,7 +37,7 @@ public class MenuTest extends Application {
         window.setTitle("TS Games");
         window.setOnCloseRequest(event -> {
             event.consume();
-            closeProgram(window);
+            if(ConfirmBox.display("Quit?", "Are you sure you want to quit?")) stage.close();
         });
 
         window.setScene(new Scene(root, 300, 300));
@@ -50,10 +50,6 @@ public class MenuTest extends Application {
 
     private boolean checkTheGuess(String string) {
         return TitleGuessing.checkGuess("I Almost Do", string);
-    }
-
-    private void closeProgram(Stage stage) {
-        if(ConfirmBox.display("Quit?", "Are you sure you want to quit?")) stage.close();
     }
 
     private void firstMenuTest(Stage stage) {
