@@ -12,7 +12,6 @@ import java.util.Objects;
 
 public class QuitMenu {
     public static Stage window;
-    public boolean result;
 
     public static void display() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(QuitMenu.class.getResource("quit-menu.fxml")));
@@ -27,13 +26,11 @@ public class QuitMenu {
     }
 
     public void onAccept() {
-        this.result = true;
         window.close();
         MainMenu.window.close();
     }
 
     public void onDecline() {
-        this.result = false;
         window.close();
     }
 }
