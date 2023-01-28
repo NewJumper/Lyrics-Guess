@@ -1,18 +1,22 @@
 package gui;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class PlayMenu {
-    public static void playMenu(Stage stage) {
-        StackPane layout2 = new StackPane();
-        Button button = new Button("test");
-        layout2.getChildren().add(button);
-        Scene scene = new Scene(layout2, 500, 500);
+import java.io.IOException;
+import java.util.Objects;
 
-        stage.setScene(scene);
-        stage.show();
+public class PlayMenu {
+    public static Stage window = MainMenu.window;
+
+    public static void playMenu() throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("play-menu.fxml"))));
+        window.setScene(new Scene(root, 512, 512));
+    }
+
+    public void returnToMenu() throws IOException {
+        MainMenu.showMenu();
     }
 }

@@ -20,7 +20,6 @@ public class MainMenu extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         window = stage;
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main.fxml")));
         stage.setTitle("TS Games");
         stage.getIcons().add(new Image("gui/textures/icon.png"));
         stage.setOnCloseRequest(event -> {
@@ -32,18 +31,25 @@ public class MainMenu extends Application {
             }
         });
 
-        stage.setScene(new Scene(root, 512, 512));
+        showMenu();
         stage.show();
     }
 
-    public void play() {
-        PlayMenu.playMenu(window);
+    public static void showMenu() throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(MainMenu.class.getResource("main.fxml")));
+        window.setScene(new Scene(root, 512, 512));
+    }
+
+    public void play() throws IOException {
+        PlayMenu.playMenu();
     }
 
     public void scores() {
+        System.out.println("scores");
     }
 
     public void settings() {
+        System.out.println("settings");
     }
 
     public void quit() {
