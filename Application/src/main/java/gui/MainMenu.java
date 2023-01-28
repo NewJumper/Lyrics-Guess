@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -12,16 +11,11 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class MainMenu extends Application {
-    public Button playButton;
-    public Button scoresButton;
-    public Button settingsButton;
-    public Button quitButton;
+    public static Stage window;
 
     public static void main(String[] args) {
         launch();
     }
-
-    public static Stage window;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -31,7 +25,11 @@ public class MainMenu extends Application {
         stage.getIcons().add(new Image("gui/textures/icon.png"));
         stage.setOnCloseRequest(event -> {
             event.consume();
-            if(ConfirmBox.display("Quit?", "Are you sure you want to quit?")) stage.close();
+            try {
+                QuitMenu.display();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
 
         stage.setScene(new Scene(root, 512, 512));
