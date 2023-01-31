@@ -44,8 +44,8 @@ public class MainMenu extends Application {
         PlayMenu.playMenu();
     }
 
-    public void scores() {
-        System.out.println("scores");
+    public void scores() throws IOException {
+        ScoresMenu.scoresMenu();
     }
 
     public void settings() {
