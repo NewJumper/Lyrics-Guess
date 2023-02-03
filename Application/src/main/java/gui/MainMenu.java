@@ -37,7 +37,7 @@ public class MainMenu extends Application {
 
     public static void showMenu() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(MainMenu.class.getResource("main.fxml")));
-        window.setScene(new Scene(root, 512, 512));
+        window.setScene(new Scene(root));
     }
 
     public void play() throws IOException {
