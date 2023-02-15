@@ -20,22 +20,22 @@
            </rowConstraints>
            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#play" prefHeight="145.0" prefWidth="246.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="PLAY" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
               <font>
-                  <Font size="30.0" />
+                  <Font name="System Bold" size="30.0" />
               </font>
            </Button>
            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#scores" prefHeight="145.0" prefWidth="246.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="SCORES" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
               <font>
-                  <Font size="30.0" />
+                  <Font name="System Bold" size="30.0" />
               </font>
            </Button>
            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#settings" prefHeight="145.0" prefWidth="246.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="SETTINGS" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
               <font>
-                  <Font size="30.0" />
+                  <Font name="System Bold" size="30.0" />
               </font>
            </Button>
            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#quit" prefHeight="145.0" prefWidth="246.0" style="-fx-background-color: #bf616f; -fx-background-radius: 16;" text="QUIT" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
               <font>
-                  <Font size="30.0" />
+                  <Font name="System Bold" size="30.0" />
               </font>
            </Button>
          <padding>
@@ -44,9 +44,9 @@
        </GridPane>
    </center>
    <top>
-      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TAYLOR SWIFT GAMES" textAlignment="CENTER" wrappingWidth="386.0" BorderPane.alignment="BOTTOM_CENTER">
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TAYLOR SWIFT GAMES" textAlignment="CENTER" wrappingWidth="514.7999267578125" BorderPane.alignment="BOTTOM_CENTER">
          <font>
-            <Font name="System Bold" size="30.0" />
+            <Font name="System Bold" size="40.0" />
          </font>
       </Text>
    </top>
