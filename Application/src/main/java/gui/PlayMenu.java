@@ -30,7 +30,7 @@ public class PlayMenu {
         // if hovering over a button, change color of button to #69cf79
     }
 
-    public void allSongs() throws IOException {
+    public void difficultyMenu() throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("difficulty-menu.fxml"))));
         Scene scene = new Scene(root, window.getWidth() - 15, window.getHeight() - 39);
         window.setScene(scene);
@@ -44,6 +44,10 @@ public class PlayMenu {
                 }
             }
         });
+    }
+
+    public void playGame() throws IOException {
+        GuessingMenu.guessing();
     }
 
     public void returnToMenu() throws IOException {
