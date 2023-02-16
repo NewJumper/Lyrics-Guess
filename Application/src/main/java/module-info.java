@@ -4,4 +4,6 @@ module gui {
 
     opens gui to javafx.fxml;
     exports gui;
+    exports game;
+    opens game to javafx.fxml;
 }

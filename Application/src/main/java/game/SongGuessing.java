@@ -1,4 +1,4 @@
-package gui;
+package game;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GenerateLine {
+public class SongGuessing {
     public static List<List<String>> albums = new ArrayList<>();
     public static List<String> rows = new ArrayList<>();
 
@@ -47,9 +47,7 @@ public class GenerateLine {
     }
 
     public static String randomLine(List<String> song) {
-        String songName = filterSongName(song.get(0));
-        songName = songName.replace("&", "and").replace("...", "").replace("?", "");
-
+        String songName = filterSongName(song.get(0)).replace("&", "and").replace("...", "").replace("?", "");
         int counter = 0;
         int row = (int) (Math.random() * (song.size() - 2) + 1);
         while(rows.contains(song.get(row)) || song.get(row).equalsIgnoreCase(songName) || checkValidCase(song.get(row))) {
@@ -105,5 +103,27 @@ public class GenerateLine {
         if(name.equals("Snow On The Beach")) return result.replace("snow at the beach", "____ __ ___ _____");
         if(name.equals("the 1")) return result.replace("the one", "___ _");
         return result;
+    }
+
+    public static boolean checkGuess(String name, String guess) {
+        name = filterSongName(name);
+        if(guess.length() == 0) return false;
+        if(name.equalsIgnoreCase(guess)) return true;
+
+        name = name.replace("&", "and");
+        if(name.equals("Come Back...Be Here")) name = "Come Back... Be Here";
+        if(guess.length() > name.length()) return false;
+
+        int buffer = 0;
+        for(int i = 0; i < name.length(); i++) {
+            if(i >= guess.length() + buffer || !guess.substring(i - buffer, i - buffer + 1).equalsIgnoreCase(name.substring(i, i + 1))) {
+                if(name.charAt(i) == '\'' || name.charAt(i) == '.' || name.charAt(i) == ',' || name.charAt(i) == '!' || name.charAt(i) == '?') buffer++;
+                else return false;
+            }
+
+            if(i == name.length() - 1 && i != guess.length() + buffer - 1) return false;
+        }
+
+        return true;
     }
 }

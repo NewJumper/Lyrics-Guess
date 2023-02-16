@@ -1,5 +1,6 @@
 package gui;
 
+import game.SongGuessing;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,8 +18,11 @@ public class GuessingMenu {
     public static Stage window = MainMenu.window;
     public Text lines;
     public TextField textBox;
-    private boolean flag = true;
+
+    private boolean newSong = true;
     private List<String> song;
+    private int correct;
+    private int incorrect;
 
     public static void guessing() throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("guessing-menu.fxml"))));
@@ -32,16 +36,25 @@ public class GuessingMenu {
 
     public void checkGuess(KeyEvent keyEvent) throws IOException {
         if(keyEvent.getCode() == KeyCode.ENTER) {
-            if(flag) {
-                song = GenerateLine.randomSong();
-                flag = false;
+            if(!newSong) {
+                String guess = textBox.getText();
+                if(SongGuessing.checkGuess(song.get(0), guess)) {
+                    newSong = true;
+                    correct++;
+                } else {
+                    incorrect++;
+                }
             }
-            String line = GenerateLine.randomLine(song);
-
-            lines.setText(line);
-
-            String guess = textBox.getText();
             textBox.clear();
+
+            if(newSong) {
+                song = SongGuessing.randomSong();
+                System.out.println(SongGuessing.filterSongName(song.get(0)));
+                newSong = false;
+            }
+
+            String line = SongGuessing.randomLine(song);
+            lines.setText(line);
         }
     }
 }
