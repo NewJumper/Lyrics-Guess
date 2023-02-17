@@ -31,6 +31,7 @@ public class GuessingMenu {
     public Text lines11;
     public Text track;
     public TextField textBox;
+    public Text guessHistory;
 
     private boolean newSong = true;
     private List<String> currentSong;
@@ -58,9 +59,11 @@ public class GuessingMenu {
             if(!newSong) {
                 String guess = textBox.getText();
                 if(SongGuessing.checkGuess(currentSong.get(0), guess)) {
+                    guessHistory.setText(SongGuessing.filterSongName(currentSong.get(0)) + ", " + SongGuessing.albums.get(SongGuessing.order.get(trackCount - 1)[0]).get(0));
                     newSong = true;
                     correct++;
                 } else {
+                    if(!guess.equals("")) guessHistory.setText(guess);
                     incorrect++;
                 }
             }
