@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -32,6 +33,8 @@ public class GuessingMenu {
     public Text track;
     public TextField textBox;
     public Text guessHistory;
+    public Text albumAnswer;
+    public Text albumAnswerB;
 
     private boolean newSong = true;
     private List<String> currentSong;
@@ -59,11 +62,19 @@ public class GuessingMenu {
             if(!newSong) {
                 String guess = textBox.getText();
                 if(SongGuessing.checkGuess(currentSong.get(0), guess)) {
-                    guessHistory.setText(SongGuessing.filterSongName(currentSong.get(0)) + ", " + SongGuessing.albums.get(SongGuessing.order.get(trackCount - 1)[0]).get(0));
+                    guessHistory.setFill(Color.valueOf("#3fbf53"));
+                    guessHistory.setText(SongGuessing.filterSongName(currentSong.get(0)));
+                    albumAnswerB.setText(", ");
+                    albumAnswer.setText(SongGuessing.albums.get(SongGuessing.order.get(trackCount - 1)[0]).get(0));
                     newSong = true;
                     correct++;
                 } else {
-                    if(!guess.equals("")) guessHistory.setText(guess);
+                    if(!guess.equals("")) {
+                        guessHistory.setFill(Color.valueOf("#bbbbbb"));
+                        guessHistory.setText(guess);
+                        albumAnswerB.setText("");
+                        albumAnswer.setText("");
+                    }
                     incorrect++;
                 }
             }

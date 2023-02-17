@@ -52,7 +52,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <Text fx:id="lines11" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" text="11" textAlignment="CENTER" translateY="103.5" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                 <font>
@@ -124,11 +124,23 @@
                     <Insets left="50.0" right="50.0" />
                 </GridPane.margin>
             </TextField>
-         <Text fx:id="guessHistory" fill="#bbbbbb" layoutX="255.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="history" textAlignment="CENTER" translateY="-30.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="14" GridPane.valignment="CENTER">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </Text>
+            <TextFlow prefHeight="200.0" prefWidth="200.0" textAlignment="CENTER" translateY="-23.0" GridPane.halignment="CENTER" GridPane.rowIndex="14" GridPane.valignment="CENTER">
+                <Text fx:id="guessHistory" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" text="song name" textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Text>
+            <Text fx:id="albumAnswerB" fill="#ffffff" layoutX="625.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text=", " textAlignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+                <Text fx:id="albumAnswer" fill="#888888" strokeType="OUTSIDE" strokeWidth="0.0" text="album" textAlignment="CENTER">
+                    <font>
+                        <Font name="System Italic" size="16.0" />
+                    </font>
+                </Text>
+            </TextFlow>
         </GridPane>
     </center>
 </BorderPane>
