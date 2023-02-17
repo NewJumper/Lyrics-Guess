@@ -71,26 +71,19 @@ public class GuessingMenu {
                 System.out.println(SongGuessing.filterSongName(currentSong.get(0)));
                 trackCount++;
                 newSong = false;
-                reset();
+
+                SongGuessing.rows.clear();
+                storeLines.forEach(text -> text.setText(""));
+                track.setText("Track " + trackCount + "/" + SongGuessing.order.size());
             }
 
-            String line = SongGuessing.randomLine(currentSong);
-            shiftLines();
-            lines0.setText(line);
+            SongGuessing.randomLine(currentSong);
+            for(int i = storeLines.size() - 1; i >= 0; i--) {
+                if(i >= SongGuessing.rows.size()) continue;
+                String songName = SongGuessing.filterSongName(currentSong.get(0)).replace("&", "and").replace("...", "").replace("?", "");
+                String line = SongGuessing.replaceName(SongGuessing.rows.get(i), songName);
+                storeLines.get(i).setText(line);
+            }
         }
-    }
-
-    public void shiftLines() {
-        for(int i = storeLines.size() - 1; i >= 0; i--) {
-            if(i >= SongGuessing.rows.size()) continue;
-            String lineTest = SongGuessing.rows.get(i);
-            storeLines.get(i).setText(lineTest);
-        }
-    }
-
-    public void reset() {
-        SongGuessing.rows.clear();
-        storeLines.forEach(text -> text.setText(""));
-        track.setText("Track " + trackCount + "/" + SongGuessing.order.size());
     }
 }

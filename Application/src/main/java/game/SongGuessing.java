@@ -44,19 +44,18 @@ public class SongGuessing {
         return song;
     }
 
-    public static String randomLine(List<String> song) {
+    public static void randomLine(List<String> song) {
         String songName = filterSongName(song.get(0)).replace("&", "and").replace("...", "").replace("?", "");
         int counter = 0;
         int row = (int) (Math.random() * (song.size() - 2) + 1);
         while(rows.contains(song.get(row)) || song.get(row).equalsIgnoreCase(songName) || checkValidCase(song.get(row))) {
             counter++;
-            if(counter == song.size()) return replaceName(rows.get(0), songName);
+            if(counter == song.size()) return;
 
             row = (int) (Math.random() * (song.size() - 2) + 1);
         }
 
         rows.add(0, song.get(row));
-        return replaceName(song.get(row), songName);
     }
 
     public static String filterSongName(String songName) {
