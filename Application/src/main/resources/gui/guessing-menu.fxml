@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,131 +17,112 @@
             </font>
         </Text>
     </top>
-   <bottom>
-       <GridPane prefHeight="30.0" prefWidth="449.0" BorderPane.alignment="CENTER">
-           <columnConstraints>
-               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-           </columnConstraints>
-           <rowConstraints>
-               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-           </rowConstraints>
-           <ImageView fitHeight="52.0" fitWidth="52.0" onMouseClicked="#returnToMenu" pickOnBounds="true" preserveRatio="true" translateX="-44.0" translateY="10.0" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
-               <Image url="@textures/home.png" />
-           </ImageView>
-       </GridPane>
-   </bottom>
-   <center>
-       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <Text fx:id="lines11" fill="#bbbbbb" layoutX="255.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
-            <font>
-               <Font size="16.0" />
-            </font>
-            <VBox.margin>
-               <Insets left="245.0" right="245.0" />
-            </VBox.margin>
-         </Text>
-         <Text fx:id="lines10" fill="#bbbbbb" layoutX="255.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
-            <font>
-               <Font size="16.0" />
-            </font>
-            <VBox.margin>
-               <Insets left="245.0" right="245.0" />
-            </VBox.margin>
-         </Text>
-         <Text fx:id="lines9" fill="#bbbbbb" layoutX="255.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
-            <font>
-               <Font size="16.0" />
-            </font>
-            <VBox.margin>
-               <Insets left="245.0" right="245.0" />
-            </VBox.margin>
-         </Text>
-         <Text fx:id="lines8" fill="#bbbbbb" layoutX="255.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
-            <font>
-               <Font size="16.0" />
-            </font>
-            <VBox.margin>
-               <Insets left="245.0" right="245.0" />
-            </VBox.margin>
-         </Text>
-         <Text fx:id="lines7" fill="#bbbbbb" layoutX="255.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
-            <font>
-               <Font size="16.0" />
-            </font>
-            <VBox.margin>
-               <Insets left="245.0" right="245.0" />
-            </VBox.margin>
-         </Text>
-         <Text fx:id="lines6" fill="#bbbbbb" layoutX="255.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
-            <font>
-               <Font size="16.0" />
-            </font>
-            <VBox.margin>
-               <Insets left="245.0" right="245.0" />
-            </VBox.margin>
-         </Text>
-         <Text fx:id="lines5" fill="#bbbbbb" layoutX="255.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
-            <font>
-               <Font size="16.0" />
-            </font>
-            <VBox.margin>
-               <Insets left="245.0" right="245.0" />
-            </VBox.margin>
-         </Text>
-         <Text fx:id="lines4" fill="#bbbbbb" layoutX="255.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
-            <font>
-               <Font size="16.0" />
-            </font>
-            <VBox.margin>
-               <Insets left="245.0" right="245.0" />
-            </VBox.margin>
-         </Text>
-         <Text fx:id="lines3" fill="#bbbbbb" layoutX="255.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
-            <font>
-               <Font size="16.0" />
-            </font>
-            <VBox.margin>
-               <Insets left="245.0" right="245.0" />
-            </VBox.margin>
-         </Text>
-         <Text fx:id="lines2" fill="#bbbbbb" layoutX="255.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
-            <font>
-               <Font size="16.0" />
-            </font>
-            <VBox.margin>
-               <Insets left="245.0" right="245.0" />
-            </VBox.margin>
-         </Text>
-         <Text fx:id="lines1" fill="#bbbbbb" layoutX="255.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
-            <font>
-               <Font size="16.0" />
-            </font>
-            <VBox.margin>
-               <Insets left="245.0" right="245.0" />
-            </VBox.margin>
-         </Text>
-         <Text fx:id="lines0" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Press ENTER to start!" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
-            <font>
-               <Font size="20.0" />
-            </font>
-            <VBox.margin>
-               <Insets left="245.0" right="245.0" />
-            </VBox.margin>
-         </Text>
-         <Text fx:id="track" fill="WHITE" layoutX="255.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="135.0" wrappingWidth="670.0">
-            <font>
-               <Font name="System Bold" size="16.0" />
-            </font>
-            <VBox.margin>
-               <Insets left="245.0" right="245.0" />
-            </VBox.margin>
-         </Text>
-           <TextField fx:id="textBox" alignment="CENTER" onKeyPressed="#checkGuess" prefHeight="32.0" prefWidth="1024.0" promptText="GUESS" style="-fx-background-radius: 16;" translateY="40.0">
-              <VBox.margin>
-                  <Insets left="50.0" right="50.0" top="100.0" />
-              </VBox.margin>
-           </TextField>
-       </VBox>
-   </center>
+    <bottom>
+        <GridPane prefHeight="30.0" prefWidth="449.0" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <ImageView fitHeight="52.0" fitWidth="52.0" onMouseClicked="#returnToMenu" pickOnBounds="true" preserveRatio="true" translateX="-44.0" translateY="10.0" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                <Image url="@textures/home.png" />
+            </ImageView>
+        </GridPane>
+    </bottom>
+    <center>
+        <GridPane BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <Text fx:id="lines11" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" text="11" textAlignment="CENTER" translateY="103.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Text>
+            <Text fx:id="lines10" fill="#bbbbbb" layoutX="255.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" translateY="87.5" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Text>
+            <Text fx:id="lines9" fill="#bbbbbb" layoutX="10.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9" textAlignment="CENTER" translateY="71.5" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Text>
+            <Text fx:id="lines8" fill="#bbbbbb" layoutX="10.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8" textAlignment="CENTER" translateY="55.5" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Text>
+            <Text fx:id="lines7" fill="#bbbbbb" layoutX="10.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7" textAlignment="CENTER" translateY="39.5" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Text>
+            <Text fx:id="lines6" fill="#bbbbbb" layoutX="10.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6" textAlignment="CENTER" translateY="23.5" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Text>
+            <Text fx:id="lines5" fill="#bbbbbb" layoutX="10.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" textAlignment="CENTER" translateY="8.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Text>
+            <Text fx:id="lines4" fill="#bbbbbb" layoutX="10.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" translateY="-8.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Text>
+            <Text fx:id="lines3" fill="#bbbbbb" layoutX="10.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" translateY="-24.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Text>
+            <Text fx:id="lines2" fill="#bbbbbb" layoutX="10.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" translateY="-39.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Text>
+            <Text fx:id="lines1" fill="#bbbbbb" layoutX="10.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" translateY="-55.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Text>
+            <Text fx:id="lines0" fill="WHITE" layoutX="10.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Press ENTER to start!" textAlignment="CENTER" translateY="-68.5" wrappingWidth="1024.0" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER">
+                <font>
+                    <Font size="20.0" />
+                </font>
+            </Text>
+            <Text fx:id="track" fill="WHITE" layoutX="240.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" text="track" textAlignment="CENTER" translateY="-57.0" wrappingWidth="300.0" GridPane.halignment="CENTER" GridPane.rowIndex="12" GridPane.valignment="CENTER">
+                <font>
+                    <Font name="System Bold" size="16.0" />
+                </font>
+            </Text>
+            <TextField fx:id="textBox" alignment="CENTER" onKeyPressed="#checkGuess" prefHeight="32.0" prefWidth="1024.0" promptText="GUESS" style="-fx-background-radius: 16;" translateY="-62.0" GridPane.rowIndex="13">
+                <GridPane.margin>
+                    <Insets left="50.0" right="50.0" />
+                </GridPane.margin>
+            </TextField>
+        </GridPane>
+    </center>
 </BorderPane>
