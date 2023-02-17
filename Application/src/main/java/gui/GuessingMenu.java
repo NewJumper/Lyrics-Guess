@@ -38,6 +38,7 @@ public class GuessingMenu {
 
     private boolean newSong = true;
     private List<String> currentSong;
+    private int score;
     private int trackCount;
     private int correct;
     private int incorrect;
@@ -78,26 +79,44 @@ public class GuessingMenu {
                     incorrect++;
                 }
             }
+
             textBox.clear();
+            if(newSong) nextTrack();
+            updateLines();
+        }
+    }
 
-            if(newSong) {
-                currentSong = SongGuessing.getSong(SongGuessing.albums.get(SongGuessing.order.get(trackCount)[0]), SongGuessing.order.get(trackCount)[1]);
-                System.out.println(SongGuessing.filterSongName(currentSong.get(0)));
-                trackCount++;
-                newSong = false;
+    public void skip() {
+        guessHistory.setFill(Color.valueOf("#bf3f3f"));
+        guessHistory.setText(SongGuessing.filterSongName(currentSong.get(0)));
+        albumAnswerB.setText(", ");
+        albumAnswer.setText(SongGuessing.albums.get(SongGuessing.order.get(trackCount - 1)[0]).get(0));
+        newSong = true;
+        incorrect++;
 
-                SongGuessing.rows.clear();
-                storeLines.forEach(text -> text.setText(""));
-                track.setText("Track " + trackCount + "/" + SongGuessing.order.size());
-            }
+        textBox.clear();
+        nextTrack();
+        updateLines();
+    }
 
-            SongGuessing.randomLine(currentSong);
-            for(int i = storeLines.size() - 1; i >= 0; i--) {
-                if(i >= SongGuessing.rows.size()) continue;
-                String songName = SongGuessing.filterSongName(currentSong.get(0)).replace("&", "and").replace("...", "").replace("?", "");
-                String line = SongGuessing.replaceName(SongGuessing.rows.get(i), songName);
-                storeLines.get(i).setText(line);
-            }
+    public void nextTrack() {
+        currentSong = SongGuessing.getSong(SongGuessing.albums.get(SongGuessing.order.get(trackCount)[0]), SongGuessing.order.get(trackCount)[1]);
+        System.out.println(SongGuessing.filterSongName(currentSong.get(0)));
+        trackCount++;
+        newSong = false;
+
+        SongGuessing.rows.clear();
+        storeLines.forEach(text -> text.setText(""));
+        track.setText("Track " + trackCount + "/" + SongGuessing.order.size());
+    }
+
+    public void updateLines() {
+        SongGuessing.randomLine(currentSong);
+        for(int i = storeLines.size() - 1; i >= 0; i--) {
+            if(i >= SongGuessing.rows.size()) continue;
+            String songName = SongGuessing.filterSongName(currentSong.get(0)).replace("&", "and").replace("...", "").replace("?", "");
+            String line = SongGuessing.replaceName(SongGuessing.rows.get(i), songName);
+            storeLines.get(i).setText(line);
         }
     }
 }
