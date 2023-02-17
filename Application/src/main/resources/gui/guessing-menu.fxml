@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.*?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #383838;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GuessingMenu">
     <padding>
         <Insets bottom="40.0" left="60.0" right="60.0" top="40.0" />
     </padding>
     <top>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="NORMAL" textAlignment="CENTER" translateY="35.0" wrappingWidth="466.0" BorderPane.alignment="CENTER">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="NORMAL" textAlignment="CENTER" translateY="40.0" wrappingWidth="466.0" BorderPane.alignment="CENTER">
             <font>
                 <Font name="System Bold" size="40.0" />
             </font>
@@ -34,7 +33,95 @@
    </bottom>
    <center>
        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <Text fx:id="lines" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Press ENTER to start!" textAlignment="CENTER" translateY="200.0" wrappingWidth="670.0">
+         <Text fx:id="lines11" fill="#bbbbbb" layoutX="255.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
+            <font>
+               <Font size="16.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="245.0" right="245.0" />
+            </VBox.margin>
+         </Text>
+         <Text fx:id="lines10" fill="#bbbbbb" layoutX="255.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
+            <font>
+               <Font size="16.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="245.0" right="245.0" />
+            </VBox.margin>
+         </Text>
+         <Text fx:id="lines9" fill="#bbbbbb" layoutX="255.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
+            <font>
+               <Font size="16.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="245.0" right="245.0" />
+            </VBox.margin>
+         </Text>
+         <Text fx:id="lines8" fill="#bbbbbb" layoutX="255.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
+            <font>
+               <Font size="16.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="245.0" right="245.0" />
+            </VBox.margin>
+         </Text>
+         <Text fx:id="lines7" fill="#bbbbbb" layoutX="255.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
+            <font>
+               <Font size="16.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="245.0" right="245.0" />
+            </VBox.margin>
+         </Text>
+         <Text fx:id="lines6" fill="#bbbbbb" layoutX="255.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
+            <font>
+               <Font size="16.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="245.0" right="245.0" />
+            </VBox.margin>
+         </Text>
+         <Text fx:id="lines5" fill="#bbbbbb" layoutX="255.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
+            <font>
+               <Font size="16.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="245.0" right="245.0" />
+            </VBox.margin>
+         </Text>
+         <Text fx:id="lines4" fill="#bbbbbb" layoutX="255.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
+            <font>
+               <Font size="16.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="245.0" right="245.0" />
+            </VBox.margin>
+         </Text>
+         <Text fx:id="lines3" fill="#bbbbbb" layoutX="255.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
+            <font>
+               <Font size="16.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="245.0" right="245.0" />
+            </VBox.margin>
+         </Text>
+         <Text fx:id="lines2" fill="#bbbbbb" layoutX="255.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
+            <font>
+               <Font size="16.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="245.0" right="245.0" />
+            </VBox.margin>
+         </Text>
+         <Text fx:id="lines1" fill="#bbbbbb" layoutX="255.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
+            <font>
+               <Font size="16.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="245.0" right="245.0" />
+            </VBox.margin>
+         </Text>
+         <Text fx:id="lines0" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Press ENTER to start!" textAlignment="CENTER" translateY="110.0" wrappingWidth="670.0">
             <font>
                <Font size="20.0" />
             </font>
@@ -42,7 +129,15 @@
                <Insets left="245.0" right="245.0" />
             </VBox.margin>
          </Text>
-           <TextField fx:id="textBox" alignment="CENTER" onKeyPressed="#checkGuess" prefHeight="32.0" prefWidth="1024.0" promptText="GUESS" style="-fx-background-radius: 16;" translateY="300.0">
+         <Text fx:id="track" fill="WHITE" layoutX="255.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="135.0" wrappingWidth="670.0">
+            <font>
+               <Font name="System Bold" size="16.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="245.0" right="245.0" />
+            </VBox.margin>
+         </Text>
+           <TextField fx:id="textBox" alignment="CENTER" onKeyPressed="#checkGuess" prefHeight="32.0" prefWidth="1024.0" promptText="GUESS" style="-fx-background-radius: 16;" translateY="40.0">
               <VBox.margin>
                   <Insets left="50.0" right="50.0" top="100.0" />
               </VBox.margin>

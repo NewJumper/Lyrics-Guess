@@ -10,8 +10,9 @@ import java.util.List;
 public class SongGuessing {
     public static List<List<String>> albums = new ArrayList<>();
     public static List<String> rows = new ArrayList<>();
+    public static List<int[]> order = new ArrayList<>();
 
-    public static List<String> randomSong() throws IOException {
+    public static void randomSong() throws IOException {
         albums.add(Files.readAllLines(Paths.get("Application/src/main/resources/albums/taylor swift.txt")));
         albums.add(Files.readAllLines(Paths.get("Application/src/main/resources/albums/fearless.txt")));
         albums.add(Files.readAllLines(Paths.get("Application/src/main/resources/albums/speak now.txt")));
@@ -23,15 +24,12 @@ public class SongGuessing {
         albums.add(Files.readAllLines(Paths.get("Application/src/main/resources/albums/evermore.txt")));
         albums.add(Files.readAllLines(Paths.get("Application/src/main/resources/albums/midnights.txt")));
 
-        List<int[]> order = new ArrayList<>();
         for(int i = 0; i < albums.size(); i++) {
             for(int j = 1; j <= Integer.parseInt(albums.get(i).get(1)); j++) {
                 order.add(new int[]{i, j});
             }
         }
         Collections.shuffle(order);
-
-        return getSong(albums.get(order.get(0)[0]), order.get(0)[1]);
     }
 
     public static List<String> getSong(List<String> album, int track) {
@@ -72,6 +70,8 @@ public class SongGuessing {
                 line.contains("But we are never, ever, ever, ever getting back together") ||
                 line.contains("Bye, bye, baby") ||
                 line.contains("Don't you ever grow up") ||
+                line.contains("Look what you just made me...") ||
+                line.contains("Look what you just made me do") ||
                 line.contains("Oh, all you had to do was-") ||
                 line.contains("Ooh-ah, you'll get better") ||
                 line.contains("We are never, ever, ever getting back together")||
