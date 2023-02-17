@@ -35,6 +35,7 @@ public class GuessingMenu {
     public Text guessHistory;
     public Text albumAnswer;
     public Text albumAnswerB;
+    public Text scoreText;
 
     private boolean newSong = true;
     private List<String> currentSong;
@@ -64,11 +65,15 @@ public class GuessingMenu {
                 String guess = textBox.getText();
                 if(SongGuessing.checkGuess(currentSong.get(0), guess)) {
                     guessHistory.setFill(Color.valueOf("#3fbf53"));
-                    guessHistory.setText(SongGuessing.filterSongName(currentSong.get(0)));
+                    guessHistory.setText(currentSong.get(0).replaceAll("=", ""));
                     albumAnswerB.setText(", ");
                     albumAnswer.setText(SongGuessing.albums.get(SongGuessing.order.get(trackCount - 1)[0]).get(0));
                     newSong = true;
+
                     correct++;
+                    score += 10;
+                    scoreText.setFill(Color.valueOf("#3fbf53"));
+                    scoreText.setText(String.valueOf(score));
                 } else {
                     if(!guess.equals("")) {
                         guessHistory.setFill(Color.valueOf("#bbbbbb"));
@@ -76,7 +81,11 @@ public class GuessingMenu {
                         albumAnswerB.setText("");
                         albumAnswer.setText("");
                     }
+
                     incorrect++;
+                    score--;
+                    scoreText.setFill(Color.valueOf("#bf3f3f"));
+                    scoreText.setText(String.valueOf(score));
                 }
             }
 
@@ -92,7 +101,11 @@ public class GuessingMenu {
         albumAnswerB.setText(", ");
         albumAnswer.setText(SongGuessing.albums.get(SongGuessing.order.get(trackCount - 1)[0]).get(0));
         newSong = true;
-        incorrect++;
+
+        incorrect += 2;
+        score -= 2;
+        scoreText.setFill(Color.valueOf("#bf3f3f"));
+        scoreText.setText(String.valueOf(score));
 
         textBox.clear();
         nextTrack();

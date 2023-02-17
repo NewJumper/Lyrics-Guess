@@ -144,17 +144,29 @@
             </TextFlow>
             <GridPane GridPane.rowIndex="15">
                 <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 </rowConstraints>
-                <Button maxHeight="28.0" mnemonicParsing="false" onMouseClicked="#skip" prefHeight="28.0" prefWidth="64.0" style="-fx-background-radius: 16; -fx-background-color: #e04848;" text="SKIP" textAlignment="CENTER" textFill="WHITE" translateX="207.0" translateY="-68.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                <Button alignment="CENTER" maxHeight="28.0" mnemonicParsing="false" onMouseClicked="#skip" prefHeight="28.0" prefWidth="64.0" style="-fx-background-radius: 16; -fx-background-color: #e04848;" text="SKIP" textAlignment="CENTER" textFill="WHITE" translateX="206.5" translateY="-68.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                     <font>
-                        <Font name="System Bold" size="14.0"/>
+                        <Font name="System Bold" size="14.0" />
                     </font>
                 </Button>
+                <TextFlow maxWidth="256.0" prefHeight="200.0" prefWidth="256.0" translateX="-100.0" translateY="-136.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Score: " textAlignment="CENTER" wrappingWidth="300.0">
+                        <font>
+                            <Font name="System Bold" size="16.0" />
+                        </font>
+                    </Text>
+                    <Text fx:id="scoreText" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="300.0">
+                        <font>
+                            <Font name="System Bold" size="16.0" />
+                        </font>
+                    </Text>
+                </TextFlow>
             </GridPane>
         </GridPane>
     </center>
