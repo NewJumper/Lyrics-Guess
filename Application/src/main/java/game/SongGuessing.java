@@ -5,12 +5,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class SongGuessing {
     public static List<List<String>> albums = new ArrayList<>();
-    public static List<String> rows = new ArrayList<>();
     public static List<int[]> order = new ArrayList<>();
+    public static LinkedHashMap<Integer, String> history = new LinkedHashMap<>();
 
     public static void randomSong() throws IOException {
         albums.add(Files.readAllLines(Paths.get("Application/src/main/resources/albums/taylor swift.txt")));
@@ -48,14 +49,15 @@ public class SongGuessing {
         String songName = filterSongName(song.get(0)).replace("&", "and").replace("...", "").replace("?", "");
         int counter = 0;
         int row = (int) (Math.random() * (song.size() - 2) + 1);
-        while(rows.contains(song.get(row)) || song.get(row).equalsIgnoreCase(songName) || checkValidCase(song.get(row))) {
+
+        while(history.containsValue(song.get(row)) || song.get(row).equalsIgnoreCase(songName) || checkValidCase(song.get(row))) {
             counter++;
             if(counter == song.size()) return;
 
             row = (int) (Math.random() * (song.size() - 2) + 1);
         }
 
-        rows.add(0, song.get(row));
+        history.put(row, song.get(row));
     }
 
     public static String filterSongName(String songName) {
