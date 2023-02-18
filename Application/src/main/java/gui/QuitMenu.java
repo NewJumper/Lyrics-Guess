@@ -7,7 +7,11 @@ import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 public class QuitMenu {
@@ -25,7 +29,14 @@ public class QuitMenu {
         stage.showAndWait();
     }
 
-    public void onAccept() {
+    public void onAccept() throws IOException {
+        if(GuessingMenu.score != 0) {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
+            writer.write("NORMAL - " + GuessingMenu.score + " (" + GuessingMenu.trackCount + ") " + dateFormat.format(new Date()) + "\n");
+            writer.flush();
+        }
+
         window.close();
         MainMenu.window.close();
     }

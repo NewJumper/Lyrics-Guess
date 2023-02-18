@@ -4,6 +4,7 @@ import game.SongGuessing;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -11,8 +12,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,10 +31,12 @@ public class GuessingMenu {
     public Text albumAnswer, albumAnswerB;
     public Text answer1, answer2, answer3;
     public Text scoreText;
+    public Button skipButton;
 
     private boolean newSong = true;
     private List<String> currentSong;
-    private int score, trackCount, correct, incorrect;
+    public static int score;
+    public static int trackCount;
 
     public static void guessing() throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("guessing-menu.fxml"))));
@@ -47,6 +54,7 @@ public class GuessingMenu {
                 SongGuessing.randomSong();
                 storeLines = List.of(lines0, lines1, lines2, lines3, lines4, lines5, lines6, lines7, lines8, lines9, lines10, lines11);
             }
+            if(skipButton.isDisabled()) return;
 
             if(!newSong) {
                 String guess = textBox.getText();
@@ -59,7 +67,6 @@ public class GuessingMenu {
 
                     revealNeighbors();
 
-                    correct++;
                     score += 10;
                     scoreText.setFill(Color.valueOf("#3fbf53"));
                     scoreText.setText(String.valueOf(score));
@@ -74,7 +81,6 @@ public class GuessingMenu {
                         answer3.setText("---");
                     }
 
-                    incorrect++;
                     score--;
                     scoreText.setFill(Color.valueOf("#bf3f3f"));
                     scoreText.setText(String.valueOf(score));
@@ -82,6 +88,11 @@ public class GuessingMenu {
             }
 
             textBox.clear();
+            if(trackCount == SongGuessing.order.size()) {
+                endGame();
+                skipButton.setDisable(true);
+                return;
+            }
             if(newSong) nextTrack();
             updateLines();
         }
@@ -98,7 +109,7 @@ public class GuessingMenu {
     }
 
     public void skipTrack() {
-        if(trackCount == 0) return;
+        if(trackCount == 0 || trackCount == SongGuessing.order.size()) return;
 
         guessHistory.setFill(Color.valueOf("#bf3f3f"));
         guessHistory.setText(SongGuessing.filterSongName(currentSong.get(0)));
@@ -108,7 +119,6 @@ public class GuessingMenu {
 
         revealNeighbors();
 
-        incorrect += 2;
         score -= 2;
         scoreText.setFill(Color.valueOf("#bf3f3f"));
         scoreText.setText(String.valueOf(score));
@@ -138,5 +148,12 @@ public class GuessingMenu {
             String line = SongGuessing.replaceName(SongGuessing.history.get(keys.get(keys.size() - i - 1)), songName);
             storeLines.get(i).setText(line);
         }
+    }
+
+    public void endGame() throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
+        writer.write("NORMAL - " + score + " (" + trackCount + ") " + dateFormat.format(new Date()) + "\n");
+        writer.flush();
     }
 }
