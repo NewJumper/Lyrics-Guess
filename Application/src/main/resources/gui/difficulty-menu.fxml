@@ -25,7 +25,7 @@
             <padding>
                 <Insets top="10.0" />
             </padding>
-            <Button mnemonicParsing="false" onMouseClicked="#playGame" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="NORMAL" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button mnemonicParsing="false" onMouseClicked="#normal" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="NORMAL" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                 <font>
                     <Font name="System Bold" size="30.0" />
                 </font>

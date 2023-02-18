@@ -26,8 +26,6 @@ public class PlayMenu {
                 }
             }
         });
-
-        // if hovering over a button, change color of button to #69cf79
     }
 
     public void difficultyMenu() throws IOException {
@@ -46,7 +44,7 @@ public class PlayMenu {
         });
     }
 
-    public void playGame() throws IOException {
+    public void normal() throws IOException {
         GuessingMenu.guessing();
     }
 

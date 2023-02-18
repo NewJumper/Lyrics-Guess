@@ -19,34 +19,17 @@ import java.util.Objects;
 public class GuessingMenu {
     public static Stage window = MainMenu.window;
     public List<Text> storeLines;
-    public Text lines0;
-    public Text lines1;
-    public Text lines2;
-    public Text lines3;
-    public Text lines4;
-    public Text lines5;
-    public Text lines6;
-    public Text lines7;
-    public Text lines8;
-    public Text lines9;
-    public Text lines10;
-    public Text lines11;
+    public Text lines0, lines1, lines2, lines3, lines4, lines5, lines6, lines7, lines8, lines9, lines10, lines11;
     public Text track;
     public TextField textBox;
     public Text guessHistory;
-    public Text albumAnswer;
-    public Text albumAnswerB;
-    public Text answer1;
-    public Text answer2;
-    public Text answer3;
+    public Text albumAnswer, albumAnswerB;
+    public Text answer1, answer2, answer3;
     public Text scoreText;
 
     private boolean newSong = true;
     private List<String> currentSong;
-    private int score;
-    private int trackCount;
-    private int correct;
-    private int incorrect;
+    private int score, trackCount, correct, incorrect;
 
     public static void guessing() throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("guessing-menu.fxml"))));
