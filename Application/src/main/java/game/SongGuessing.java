@@ -68,6 +68,8 @@ public class SongGuessing {
                 line.contains("Beautiful tragic") ||
                 line.contains("But we are never, ever, ever, ever getting back together") ||
                 line.contains("Bye, bye, baby") ||
+                line.contains("Come back, be here") ||
+                line.contains("Come back, be here, come back, be here") ||
                 line.contains("Don't you ever grow up") ||
                 line.contains("Look what you just made me...") ||
                 line.contains("Look what you just made me do") ||
