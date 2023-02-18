@@ -115,6 +115,8 @@ public class GuessingMenu {
     }
 
     public void skipTrack() {
+        if(trackCount == 0) return;
+
         guessHistory.setFill(Color.valueOf("#bf3f3f"));
         guessHistory.setText(SongGuessing.filterSongName(currentSong.get(0)));
         albumAnswerB.setText(", ");
@@ -135,7 +137,6 @@ public class GuessingMenu {
 
     public void nextTrack() {
         currentSong = SongGuessing.getSong(SongGuessing.albums.get(SongGuessing.order.get(trackCount)[0]), SongGuessing.order.get(trackCount)[1]);
-        System.out.println(SongGuessing.filterSongName(currentSong.get(0)));
         trackCount++;
         newSong = false;
 
