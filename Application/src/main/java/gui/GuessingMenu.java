@@ -46,7 +46,12 @@ public class GuessingMenu {
     public static int guesses;
     public static long startTime;
     public static long time;
-    public Timeline timeline;
+    public Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, event -> {
+        if(startTime == 0) return;
+        time = System.nanoTime();
+        long secondsText = (time - startTime) / 1000000000L % 60;
+        timeText.setText((time - startTime) / 60000000000L + ":" + (secondsText < 10 ? "0" + secondsText : secondsText));
+    }), new KeyFrame(Duration.seconds(1)));
 
     public static void guessing() throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("guessing-menu.fxml"))));
@@ -60,65 +65,55 @@ public class GuessingMenu {
     }
 
     public void checkGuess(KeyEvent keyEvent) throws IOException {
-        if(keyEvent.getCode() == KeyCode.ENTER) {
-            if(trackCount == 0) {
-                startTime = System.nanoTime();
-                timeline = new Timeline(new KeyFrame(Duration.ZERO, event -> {
-                    if(startTime == 0) return;
-                    time = System.nanoTime();
-                    long secondsText = (time - startTime) / 1000000000L % 60;
-                    timeText.setText((time - startTime) / 60000000000L + ":" + (secondsText < 10 ? "0" + secondsText : secondsText));
-                }), new KeyFrame(Duration.seconds(1)));
-                timeline.setCycleCount(Timeline.INDEFINITE);
-                timeline.play();
+        if(keyEvent.getCode() != KeyCode.ENTER) return;
 
-                SongGuessing.randomSong();
-                storeLines = List.of(lines0, lines1, lines2, lines3, lines4, lines5, lines6, lines7, lines8, lines9, lines10, lines11);
-            }
-            if(skipButton.isDisabled()) return;
+        if(trackCount == 0) {
+            startTime = System.nanoTime();
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            timeline.play();
 
-            if(!newSong) {
-                String guess = textBox.getText();
-                if(SongGuessing.checkGuess(currentSong.get(0), guess)) {
-                    guessHistory.setFill(Color.valueOf("#3fbf53"));
-                    guessHistory.setText(currentSong.get(0).replaceAll("=", ""));
-                    albumAnswerB.setText(", ");
-                    albumAnswer.setText(SongGuessing.albums.get(SongGuessing.order.get(trackCount - 1)[0]).get(0));
-                    newSong = true;
-
-                    revealNeighbors();
-
-                    correct++;
-                    score = 10 * correct - 2 * incorrect - guesses; // - minutes;
-                    scoreText.setFill(Color.valueOf("#3fbf53"));
-                    scoreText.setText(String.valueOf(score));
-                } else {
-                    if(!guess.equals("")) {
-                        guessHistory.setFill(Color.valueOf("#bbbbbb"));
-                        guessHistory.setText(guess);
-                        albumAnswerB.setText("");
-                        albumAnswer.setText("");
-                        answer1.setText("---");
-                        answer2.setText("---");
-                        answer3.setText("---");
-                    }
-
-                    guesses++;
-                    score = 10 * correct - 2 * incorrect - guesses; // - minutes;
-                    scoreText.setFill(Color.valueOf("#bf3f3f"));
-                    scoreText.setText(String.valueOf(score));
-                }
-            }
-
-            textBox.clear();
-            if(trackCount == SongGuessing.order.size()) {
-                endGame();
-                skipButton.setDisable(true);
-                return;
-            }
-            if(newSong) nextTrack();
-            updateLines();
+            SongGuessing.randomSong();
+            storeLines = List.of(lines0, lines1, lines2, lines3, lines4, lines5, lines6, lines7, lines8, lines9, lines10, lines11);
         }
+        if(skipButton.isDisabled()) return;
+
+        if(!newSong) {
+            String guess = textBox.getText();
+            if(SongGuessing.checkGuess(currentSong.get(0), guess)) {
+                guessHistory.setFill(Color.valueOf("#3fbf53"));
+                guessHistory.setText(currentSong.get(0).replaceAll("=", ""));
+                albumAnswerB.setText(", ");
+                albumAnswer.setText(SongGuessing.albums.get(SongGuessing.order.get(trackCount - 1)[0]).get(0));
+                newSong = true;
+
+                revealNeighbors();
+
+                correct++;
+                score = updateScore(true);
+            } else {
+                if(!guess.equals("")) {
+                    guessHistory.setFill(Color.valueOf("#bbbbbb"));
+                    guessHistory.setText(guess);
+                    albumAnswerB.setText("");
+                    albumAnswer.setText("");
+                    answer1.setText("---");
+                    answer2.setText("---");
+                    answer3.setText("---");
+                }
+
+                guesses++;
+                score = updateScore(false);
+            }
+        }
+
+        textBox.clear();
+        if(trackCount == SongGuessing.order.size()) {
+            endGame();
+            skipButton.setDisable(true);
+            return;
+        }
+        if(newSong) nextTrack();
+        updateLines();
     }
 
     public void revealNeighbors() {
@@ -143,9 +138,7 @@ public class GuessingMenu {
         revealNeighbors();
 
         incorrect++;
-        score = 10 * correct - 2 * incorrect - guesses; // - minutes;
-        scoreText.setFill(Color.valueOf("#bf3f3f"));
-        scoreText.setText(String.valueOf(score));
+        score = updateScore(false);
 
         textBox.clear();
         nextTrack();
@@ -174,10 +167,27 @@ public class GuessingMenu {
         }
     }
 
+    public int updateScore(boolean green) {
+        score = 10 * correct - 2 * incorrect - guesses - (int) ((time - startTime) / 30000000000L);
+
+        if(green) scoreText.setFill(Color.valueOf("#3fbf53"));
+        else scoreText.setFill(Color.valueOf("#bf3f3f"));
+        scoreText.setText(String.valueOf(score));
+
+        return score;
+    }
+
     public void endGame() throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
         writer.write("NORMAL - " + score + " (" + trackCount + ") " + dateFormat.format(new Date()) + "\n");
         writer.flush();
+
+        trackCount = 0;
+        correct = 0;
+        incorrect = 0;
+        guesses = 0;
+
+        returnToMenu();
     }
 }
