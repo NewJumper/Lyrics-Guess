@@ -1,6 +1,8 @@
 package gui;
 
 import game.SongGuessing;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -31,12 +34,19 @@ public class GuessingMenu {
     public Text albumAnswer, albumAnswerB;
     public Text answer1, answer2, answer3;
     public Text scoreText;
+    public Text timeText;
     public Button skipButton;
 
     private boolean newSong = true;
     private List<String> currentSong;
     public static int score;
     public static int trackCount;
+    public static int correct;
+    public static int incorrect;
+    public static int guesses;
+    public static long startTime;
+    public static long time;
+    public Timeline timeline;
 
     public static void guessing() throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("guessing-menu.fxml"))));
@@ -45,12 +55,23 @@ public class GuessingMenu {
     }
 
     public void returnToMenu() throws IOException {
+        timeline.stop();
         MainMenu.showMenu();
     }
 
     public void checkGuess(KeyEvent keyEvent) throws IOException {
         if(keyEvent.getCode() == KeyCode.ENTER) {
             if(trackCount == 0) {
+                startTime = System.nanoTime();
+                timeline = new Timeline(new KeyFrame(Duration.ZERO, event -> {
+                    if(startTime == 0) return;
+                    time = System.nanoTime();
+                    long secondsText = (time - startTime) / 1000000000L % 60;
+                    timeText.setText((time - startTime) / 60000000000L + ":" + (secondsText < 10 ? "0" + secondsText : secondsText));
+                }), new KeyFrame(Duration.seconds(1)));
+                timeline.setCycleCount(Timeline.INDEFINITE);
+                timeline.play();
+
                 SongGuessing.randomSong();
                 storeLines = List.of(lines0, lines1, lines2, lines3, lines4, lines5, lines6, lines7, lines8, lines9, lines10, lines11);
             }
@@ -67,7 +88,8 @@ public class GuessingMenu {
 
                     revealNeighbors();
 
-                    score += 10;
+                    correct++;
+                    score = 10 * correct - 2 * incorrect - guesses; // - minutes;
                     scoreText.setFill(Color.valueOf("#3fbf53"));
                     scoreText.setText(String.valueOf(score));
                 } else {
@@ -81,7 +103,8 @@ public class GuessingMenu {
                         answer3.setText("---");
                     }
 
-                    score--;
+                    guesses++;
+                    score = 10 * correct - 2 * incorrect - guesses; // - minutes;
                     scoreText.setFill(Color.valueOf("#bf3f3f"));
                     scoreText.setText(String.valueOf(score));
                 }
@@ -119,7 +142,8 @@ public class GuessingMenu {
 
         revealNeighbors();
 
-        score -= 2;
+        incorrect++;
+        score = 10 * correct - 2 * incorrect - guesses; // - minutes;
         scoreText.setFill(Color.valueOf("#bf3f3f"));
         scoreText.setText(String.valueOf(score));
 
