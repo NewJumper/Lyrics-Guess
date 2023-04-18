@@ -12,6 +12,7 @@ public class SongGuessing {
     public static List<List<String>> albums = new ArrayList<>();
     public static List<int[]> order = new ArrayList<>();
     public static LinkedHashMap<Integer, String> history = new LinkedHashMap<>();
+    public static boolean capped;
 
     public static void randomSong() throws IOException {
         albums.clear();
@@ -53,10 +54,14 @@ public class SongGuessing {
         String songName = filterSongName(song.get(0)).replace("&", "and").replace("...", "").replace("?", "");
         int counter = 0;
         int row = (int) (Math.random() * (song.size() - 2) + 1);
+        capped = false;
 
         while(history.containsValue(song.get(row)) || song.get(row).equalsIgnoreCase(songName) || checkValidCase(song.get(row))) {
             counter++;
-            if(counter == song.size()) return;
+            if(counter == song.size()) {
+                capped = true;
+                return;
+            }
 
             row = (int) (Math.random() * (song.size() - 2) + 1);
         }

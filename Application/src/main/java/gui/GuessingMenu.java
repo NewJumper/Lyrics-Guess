@@ -101,8 +101,10 @@ public class GuessingMenu {
                     answer3.setText("---");
                 }
 
-                guesses++;
-                score = updateScore(false);
+                if(!SongGuessing.capped) {
+                    guesses++;
+                    score = updateScore(false);
+                }
             }
         }
 
