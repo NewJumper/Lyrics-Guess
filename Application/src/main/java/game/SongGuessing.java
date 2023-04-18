@@ -115,6 +115,7 @@ public class SongGuessing {
 
         name = name.replace("&", "and");
         if(name.equals("Come Back...Be Here")) name = "Come Back... Be Here";
+        if(name.equals("Anti-Hero")) name = "Anti Hero";
         if(guess.length() > name.length()) return false;
 
         int buffer = 0;
