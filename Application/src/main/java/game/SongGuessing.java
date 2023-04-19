@@ -17,7 +17,6 @@ public class SongGuessing {
     public static void randomSong() throws IOException {
         albums.clear();
         order.clear();
-        history.clear();
 
         albums.add(Files.readAllLines(Paths.get("Application/src/main/resources/albums/taylor swift.txt")));
         albums.add(Files.readAllLines(Paths.get("Application/src/main/resources/albums/fearless.txt")));

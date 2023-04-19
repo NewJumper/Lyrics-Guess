@@ -70,7 +70,6 @@ public class GuessingMenu {
             SongGuessing.randomSong();
             storeLines = List.of(lines0, lines1, lines2, lines3, lines4, lines5, lines6, lines7, lines8, lines9, lines10, lines11);
         }
-        if(skipButton.isDisabled()) return;
 
         if(!newSong) {
             String guess = textBox.getText();
@@ -104,9 +103,10 @@ public class GuessingMenu {
         }
 
         textBox.clear();
-        if(trackCount == SongGuessing.order.size()) {
+        if(trackCount == SongGuessing.order.size() && !skipButton.isDisabled()) skipButton.setDisable(true);
+        if(trackCount - 1 == SongGuessing.order.size()) {
+            trackCount--;
             endGame();
-            skipButton.setDisable(true);
             return;
         }
         if(newSong) nextTrack();
@@ -143,6 +143,10 @@ public class GuessingMenu {
     }
 
     public void nextTrack() {
+        if(trackCount == 188) {
+            trackCount++;
+            return;
+        }
         currentSong = SongGuessing.getSong(SongGuessing.albums.get(SongGuessing.order.get(trackCount)[0]), SongGuessing.order.get(trackCount)[1]);
         trackCount++;
         newSong = false;
@@ -177,7 +181,7 @@ public class GuessingMenu {
     public void endGame() throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
-        writer.write("NORMAL - " + score + " (" + trackCount + ") " + dateFormat.format(new Date()) + "\n");
+        writer.write("NORMAL - " + score + " (" + (correct + incorrect) + ") " + dateFormat.format(new Date()) + "\n");
         writer.flush();
 
         trackCount = 0;

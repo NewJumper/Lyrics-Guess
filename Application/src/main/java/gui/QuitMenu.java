@@ -33,8 +33,13 @@ public class QuitMenu {
         if(GuessingMenu.score != 0) {
             BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
             SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
-            writer.write("NORMAL - " + GuessingMenu.score + " (" + GuessingMenu.trackCount + ") " + dateFormat.format(new Date()) + "\n");
+            writer.write("NORMAL - " + GuessingMenu.score + " (" + (GuessingMenu.correct + GuessingMenu.incorrect) + ") " + dateFormat.format(new Date()) + "\n");
             writer.flush();
+
+            GuessingMenu.trackCount = 0;
+            GuessingMenu.correct = 0;
+            GuessingMenu.incorrect = 0;
+            GuessingMenu.guesses = 0;
         }
 
         window.close();
