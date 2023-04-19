@@ -59,11 +59,6 @@ public class GuessingMenu {
         window.setScene(scene);
     }
 
-    public void returnToMenu() throws IOException {
-        timeline.stop();
-        MainMenu.showMenu();
-    }
-
     public void checkGuess(KeyEvent keyEvent) throws IOException {
         if(keyEvent.getCode() != KeyCode.ENTER) return;
 
@@ -189,7 +184,8 @@ public class GuessingMenu {
         correct = 0;
         incorrect = 0;
         guesses = 0;
+        timeline.stop();
 
-        returnToMenu();
+        MainMenu.showMenu();
     }
 }
