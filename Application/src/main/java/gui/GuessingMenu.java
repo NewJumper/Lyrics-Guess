@@ -179,17 +179,19 @@ public class GuessingMenu {
     }
 
     public void endGame() throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
-        writer.write("NORMAL - " + score + " (" + (correct + incorrect) + ") " + dateFormat.format(new Date()) + "\n");
-        writer.flush();
+        if(trackCount != 0) {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
+            writer.write("NORMAL - " + score + " (" + (correct + incorrect) + ") " + dateFormat.format(new Date()) + "\n");
+            writer.flush();
 
-        trackCount = 0;
-        correct = 0;
-        incorrect = 0;
-        guesses = 0;
+            trackCount = 0;
+            correct = 0;
+            incorrect = 0;
+            guesses = 0;
+        }
+
         timeline.stop();
-
         MainMenu.showMenu();
     }
 }

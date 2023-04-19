@@ -30,7 +30,7 @@ public class QuitMenu {
     }
 
     public void onAccept() throws IOException {
-        if(GuessingMenu.score != 0) {
+        if(GuessingMenu.trackCount != 0) {
             BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
             SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
             writer.write("NORMAL - " + GuessingMenu.score + " (" + (GuessingMenu.correct + GuessingMenu.incorrect) + ") " + dateFormat.format(new Date()) + "\n");
