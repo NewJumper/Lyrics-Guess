@@ -35,94 +35,94 @@
     <center>
         <GridPane BorderPane.alignment="CENTER">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
             </rowConstraints>
             <GridPane>
                 <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                 </rowConstraints>
-                <Text fx:id="lines11" fill="#bbbbbb" layoutX="255.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="156.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                <Text fx:id="lines11" fill="#bbbbbb" layoutX="255.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="156.0" wrappingWidth="670.0">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Text>
-                <Text fx:id="lines10" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="168.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                <Text fx:id="lines10" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="168.0" wrappingWidth="670.0" GridPane.rowIndex="1">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Text>
-                <Text fx:id="lines9" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="179.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                <Text fx:id="lines9" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="179.0" wrappingWidth="670.0" GridPane.rowIndex="2">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Text>
-                <Text fx:id="lines8" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="189.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                <Text fx:id="lines8" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="189.0" wrappingWidth="670.0" GridPane.rowIndex="3">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Text>
-                <Text fx:id="lines7" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="201.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                <Text fx:id="lines7" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="201.0" wrappingWidth="670.0" GridPane.rowIndex="4">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Text>
-                <Text fx:id="lines6" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="212.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                <Text fx:id="lines6" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="212.0" wrappingWidth="670.0" GridPane.rowIndex="5">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Text>
-                <Text fx:id="lines5" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="224.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                <Text fx:id="lines5" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="224.0" wrappingWidth="670.0" GridPane.rowIndex="6">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Text>
-                <Text fx:id="lines4" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="235.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                <Text fx:id="lines4" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="235.0" wrappingWidth="670.0" GridPane.rowIndex="7">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Text>
-                <Text fx:id="lines3" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="246.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER">
+                <Text fx:id="lines3" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="246.0" wrappingWidth="670.0" GridPane.rowIndex="8">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Text>
-                <Text fx:id="lines2" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="258.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+                <Text fx:id="lines2" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="258.0" wrappingWidth="670.0" GridPane.rowIndex="9">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Text>
-                <Text fx:id="lines1" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="269.0" wrappingWidth="670.0" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+                <Text fx:id="lines1" fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" translateY="269.0" wrappingWidth="670.0" GridPane.rowIndex="10">
                     <font>
                         <Font size="16.0" />
                     </font>
