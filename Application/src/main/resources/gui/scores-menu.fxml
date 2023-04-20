@@ -4,26 +4,422 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #383838;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ScoresMenu">
+<?import javafx.scene.text.*?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#testing" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #383838;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ScoresMenu">
     <padding>
         <Insets bottom="40.0" left="60.0" right="60.0" top="40.0" />
     </padding>
     <center>
-        <GridPane alignment="CENTER" hgap="40.0" BorderPane.alignment="CENTER">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <padding>
-                <Insets top="10.0" />
-            </padding>
-        </GridPane>
+       <GridPane alignment="CENTER" hgap="40.0" BorderPane.alignment="CENTER">
+          <columnConstraints>
+             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          </columnConstraints>
+          <rowConstraints>
+             <RowConstraints maxHeight="263.5999816894531" minHeight="10.0" prefHeight="79.59998168945307" vgrow="SOMETIMES" />
+             <RowConstraints maxHeight="457.2000183105468" minHeight="10.0" prefHeight="457.2000183105468" vgrow="SOMETIMES" />
+          </rowConstraints>
+          <padding>
+             <Insets top="10.0" />
+          </padding>
+          <GridPane>
+             <columnConstraints>
+              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+             </columnConstraints>
+             <rowConstraints>
+              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+             </rowConstraints>
+          </GridPane>
+          <GridPane GridPane.rowIndex="1">
+             <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="470.0" minWidth="10.0" prefWidth="370.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="400.0" minWidth="10.0" prefWidth="300.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="500.0" />
+             </columnConstraints>
+             <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+             </rowConstraints>
+             <Text fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" text="MODE - score (tracks)" textAlignment="CENTER" translateY="-20.0" GridPane.columnIndex="1">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="#bbbbbb" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" textAlignment="CENTER" translateY="-20.0" GridPane.columnIndex="2">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="1." textAlignment="CENTER" translateX="-20.0" translateY="-15.0" GridPane.rowIndex="1">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="WHITE" layoutX="56.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2." textAlignment="CENTER" translateX="-20.0" translateY="-15.0" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="WHITE" layoutX="10.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3." textAlignment="CENTER" translateX="-20.0" translateY="-15.0" GridPane.rowIndex="3">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="WHITE" layoutX="10.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4." textAlignment="CENTER" translateX="-20.0" translateY="-15.0" GridPane.rowIndex="4">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="WHITE" layoutX="10.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5." textAlignment="CENTER" translateX="-20.0" translateY="-15.0" GridPane.rowIndex="5">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="WHITE" layoutX="10.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6." textAlignment="CENTER" translateX="-20.0" translateY="-15.0" GridPane.rowIndex="6">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="WHITE" layoutX="10.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7." textAlignment="CENTER" translateX="-20.0" translateY="-15.0" GridPane.rowIndex="7">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="WHITE" layoutX="10.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8." textAlignment="CENTER" translateX="-20.0" translateY="-15.0" GridPane.rowIndex="8">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="WHITE" layoutX="10.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9." textAlignment="CENTER" translateX="-20.0" translateY="-15.0" GridPane.rowIndex="9">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="WHITE" layoutX="10.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10." textAlignment="CENTER" translateX="-20.0" translateY="-15.0" GridPane.rowIndex="10">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="WHITE" layoutX="10.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11." textAlignment="CENTER" translateX="-20.0" translateY="-15.0" GridPane.rowIndex="11">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="WHITE" layoutX="10.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12." textAlignment="CENTER" translateX="-20.0" translateY="-15.0" GridPane.rowIndex="12">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="WHITE" layoutX="46.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="13." textAlignment="CENTER" translateX="-20.0" translateY="-15.0" GridPane.rowIndex="13">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="WHITE" layoutX="46.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="14." textAlignment="CENTER" translateX="-20.0" translateY="-15.0" GridPane.rowIndex="14">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="WHITE" layoutX="46.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="15." textAlignment="CENTER" translateX="-20.0" translateY="-15.0" GridPane.rowIndex="15">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fill="WHITE" layoutX="46.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16." textAlignment="CENTER" translateX="-20.0" translateY="-15.0" GridPane.rowIndex="16">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <TextFlow prefHeight="200.0" prefWidth="200.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Text fx:id="score1A" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+                <Text fx:id="score1B" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+             </TextFlow>
+             <TextFlow layoutX="361.0" layoutY="37.0" prefHeight="200.0" prefWidth="200.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <Text fx:id="score2A" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+                <Text fx:id="score2B" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+             </TextFlow>
+             <TextFlow layoutX="361.0" layoutY="64.0" prefHeight="200.0" prefWidth="200.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <Text fx:id="score3A" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+                <Text fx:id="score3B" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+             </TextFlow>
+             <TextFlow layoutX="361.0" layoutY="92.0" prefHeight="200.0" prefWidth="200.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <Text fx:id="score4A" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+                <Text fx:id="score4B" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+             </TextFlow>
+             <TextFlow layoutX="361.0" layoutY="120.0" prefHeight="200.0" prefWidth="200.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                <Text fx:id="score5A" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+                <Text fx:id="score5B" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+             </TextFlow>
+             <TextFlow layoutX="361.0" layoutY="147.0" prefHeight="200.0" prefWidth="200.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                <Text fx:id="score6A" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+                <Text fx:id="score6B" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+             </TextFlow>
+             <TextFlow layoutX="361.0" layoutY="174.0" prefHeight="200.0" prefWidth="200.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                <Text fx:id="score7A" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+                <Text fx:id="score7B" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+             </TextFlow>
+             <TextFlow layoutX="361.0" layoutY="201.0" prefHeight="200.0" prefWidth="200.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                <Text fx:id="score8A" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+                <Text fx:id="score8B" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+             </TextFlow>
+             <TextFlow layoutX="361.0" layoutY="229.0" prefHeight="200.0" prefWidth="200.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                <Text fx:id="score9A" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+                <Text fx:id="score9B" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+             </TextFlow>
+             <TextFlow layoutX="361.0" layoutY="256.0" prefHeight="200.0" prefWidth="200.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                <Text fx:id="score10A" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+                <Text fx:id="score10B" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+             </TextFlow>
+             <TextFlow layoutX="361.0" layoutY="284.0" prefHeight="200.0" prefWidth="200.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                <Text fx:id="score11A" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+                <Text fx:id="score11B" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+             </TextFlow>
+             <TextFlow layoutX="361.0" layoutY="311.0" prefHeight="200.0" prefWidth="200.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                <Text fx:id="score12A" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+                <Text fx:id="score12B" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+             </TextFlow>
+             <TextFlow layoutX="361.0" layoutY="339.0" prefHeight="200.0" prefWidth="200.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                <Text fx:id="score13A" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+                <Text fx:id="score13B" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+             </TextFlow>
+             <TextFlow layoutX="361.0" layoutY="366.0" prefHeight="200.0" prefWidth="200.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                <Text fx:id="score14A" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+                <Text fx:id="score14B" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+             </TextFlow>
+             <TextFlow layoutX="361.0" layoutY="393.0" prefHeight="200.0" prefWidth="200.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="15">
+                <Text fx:id="score15A" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+                <Text fx:id="score15B" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+             </TextFlow>
+             <TextFlow layoutX="361.0" layoutY="420.0" prefHeight="200.0" prefWidth="200.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="16">
+                <Text fx:id="score16A" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+                <Text fx:id="score16B" fill="WHITE" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                   <font>
+                      <Font name="Consolas Bold" size="19.0" />
+                   </font>
+                </Text>
+             </TextFlow>
+             <Text fx:id="date1" fill="WHITE" layoutX="113.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="-15.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fx:id="date2" fill="WHITE" layoutX="642.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="-15.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fx:id="date3" fill="WHITE" layoutX="642.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="-15.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fx:id="date4" fill="WHITE" layoutX="642.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="-15.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fx:id="date5" fill="WHITE" layoutX="642.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="-15.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fx:id="date6" fill="WHITE" layoutX="642.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="-15.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fx:id="date7" fill="WHITE" layoutX="642.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="-15.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fx:id="date8" fill="WHITE" layoutX="642.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="-15.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fx:id="date9" fill="WHITE" layoutX="642.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="-15.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fx:id="date10" fill="WHITE" layoutX="642.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="-15.0" GridPane.columnIndex="2" GridPane.rowIndex="10">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fx:id="date11" fill="WHITE" layoutX="642.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="-15.0" GridPane.columnIndex="2" GridPane.rowIndex="11">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fx:id="date12" fill="WHITE" layoutX="642.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="-15.0" GridPane.columnIndex="2" GridPane.rowIndex="12">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fx:id="date13" fill="WHITE" layoutX="642.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="-15.0" GridPane.columnIndex="2" GridPane.rowIndex="13">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fx:id="date14" fill="WHITE" layoutX="642.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="-15.0" GridPane.columnIndex="2" GridPane.rowIndex="14">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fx:id="date15" fill="WHITE" layoutX="642.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="-15.0" GridPane.columnIndex="2" GridPane.rowIndex="15">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+             <Text fx:id="date16" fill="WHITE" layoutX="642.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" translateY="-15.0" GridPane.columnIndex="2" GridPane.rowIndex="16">
+                <font>
+                   <Font name="Consolas Bold" size="19.0" />
+                </font>
+             </Text>
+          </GridPane>
+       </GridPane>
     </center>
     <top>
         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TOP SCORES" textAlignment="CENTER" wrappingWidth="386.0" BorderPane.alignment="CENTER">
@@ -34,7 +430,7 @@
     </top>
    <bottom>
        <ImageView fitHeight="52.0" fitWidth="52.0" onMouseClicked="#returnToMenu" pickOnBounds="true" preserveRatio="true" translateX="-44.0" translateY="21.0" BorderPane.alignment="BOTTOM_LEFT">
-           <Image url="@textures/home.png"/>
+           <Image url="@textures/home.png" />
        </ImageView>
    </bottom>
 </BorderPane>
