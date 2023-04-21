@@ -31,10 +31,18 @@ public class QuitMenu {
 
     public void onAccept() throws IOException {
         if(GuessingMenu.trackCount != 0) {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
-            writer.write("NORMAL - " + GuessingMenu.score + " (" + (GuessingMenu.correct + GuessingMenu.incorrect) + ") " + dateFormat.format(new Date()) + "\n");
-            writer.flush();
+            if(GuessingMenu.mode != 0) {
+                String modeName;
+                switch (GuessingMenu.mode) {
+                    default -> modeName = "NORMAL";
+                    case 2 -> modeName = "HARDCORE";
+                }
+
+                BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
+                SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
+                writer.write(modeName + " - " + GuessingMenu.score + " (" + (GuessingMenu.correct + GuessingMenu.incorrect) + ") " + dateFormat.format(new Date()) + "\n");
+                writer.flush();
+            }
 
             GuessingMenu.trackCount = 0;
             GuessingMenu.correct = 0;

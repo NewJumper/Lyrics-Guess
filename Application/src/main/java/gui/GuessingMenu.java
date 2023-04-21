@@ -37,6 +37,7 @@ public class GuessingMenu {
     public Text timeText;
     public Button skipButton;
 
+    public static int mode;
     private boolean newSong = true;
     private List<String> currentSong;
     public static int score;
@@ -44,6 +45,7 @@ public class GuessingMenu {
     public static int correct;
     public static int incorrect;
     public static int guesses;
+    public static int strikes;
     public static long startTime;
     public static long time;
     public Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, event -> {
@@ -53,16 +55,25 @@ public class GuessingMenu {
         timeText.setText((time - startTime) / 60000000000L + ":" + (secondsText < 10 ? "0" + secondsText : secondsText));
     }), new KeyFrame(Duration.seconds(1)));
 
-    public static void guessing() throws IOException {
+    /**
+     *  0 - ZEN
+     *  1 - NORMAL
+     *  2 - HARDCORE
+     */
+    public static void guessing(int mode) throws IOException {
+        GuessingMenu.mode = mode;
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("guessing-menu.fxml"))));
         Scene scene = new Scene(root, window.getWidth() - 15, window.getHeight() - 39);
         window.setScene(scene);
     }
 
+
     public void checkGuess(KeyEvent keyEvent) throws IOException {
         if(keyEvent.getCode() != KeyCode.ENTER) return;
 
         if(trackCount == 0) {
+            if(mode == 0) scoreText.setText("--");
+
             startTime = System.nanoTime();
             timeline.setCycleCount(Timeline.INDEFINITE);
             timeline.play();
@@ -74,6 +85,7 @@ public class GuessingMenu {
         if(!newSong) {
             String guess = textBox.getText();
             if(SongGuessing.checkGuess(currentSong.get(0), guess)) {
+                strikes = 0;
                 guessHistory.setFill(Color.valueOf("#3fbf53"));
                 guessHistory.setText(currentSong.get(0).replaceAll("=", ""));
                 albumAnswerB.setText(", ");
@@ -85,6 +97,20 @@ public class GuessingMenu {
                 correct++;
                 score = updateScore(true);
             } else {
+                if(mode == 2) {
+                    if(incorrect == 3) {
+                        skipTrack();
+                        strikes = 0;
+                        endGame();
+                    }
+
+                    if(strikes == 1) {
+                        strikes = 0;
+                        skipTrack();
+                        return;
+                    } else strikes++;
+                }
+
                 if(!guess.equals("")) {
                     guessHistory.setFill(Color.valueOf("#bbbbbb"));
                     guessHistory.setText(guess);
@@ -173,17 +199,25 @@ public class GuessingMenu {
 
         if(green) scoreText.setFill(Color.valueOf("#3fbf53"));
         else scoreText.setFill(Color.valueOf("#bf3f3f"));
-        scoreText.setText(String.valueOf(score));
+        if(mode != 0) scoreText.setText(String.valueOf(score));
 
         return score;
     }
 
     public void endGame() throws IOException {
         if(trackCount != 0) {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
-            writer.write("NORMAL - " + score + " (" + (correct + incorrect) + ") " + dateFormat.format(new Date()) + "\n");
-            writer.flush();
+            if(mode != 0) {
+                String modeName;
+                switch (mode) {
+                    default -> modeName = "NORMAL";
+                    case 2 -> modeName = "HARDCORE";
+                }
+
+                BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
+                SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
+                writer.write(modeName + " - " + score + " (" + (correct + incorrect) + ") " + dateFormat.format(new Date()) + "\n");
+                writer.flush();
+            }
 
             trackCount = 0;
             correct = 0;

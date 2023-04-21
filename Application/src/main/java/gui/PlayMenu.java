@@ -44,8 +44,16 @@ public class PlayMenu {
         });
     }
 
+    public void zen() throws IOException {
+        GuessingMenu.guessing(0);
+    }
+
     public void normal() throws IOException {
-        GuessingMenu.guessing();
+        GuessingMenu.guessing(1);
+    }
+
+    public void hardcore() throws IOException {
+        GuessingMenu.guessing(2);
     }
 
     public void returnToMenu() throws IOException {
