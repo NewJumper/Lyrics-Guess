@@ -107,6 +107,7 @@ public class SongGuessing {
             }
         }
 
+        if(name.equals("Bye Bye Baby")) return result.replace("Bye, bye", "___, ___");
         if(name.equals("Dancing With Our Hands Tied")) return result.replace("_, hands tied", "_, _____ ____");
         if(name.equals("Mary's Song")) return result.replace("Oh my, my, my", "__ __, __, __");
         if(name.equals("Me!")) return result.replace("\"me\"", "\"__\"").replace("me-e-e", "__-_-_").replace(" me", " __").replace("after __", "after me").replace("Let __", "Let me");
