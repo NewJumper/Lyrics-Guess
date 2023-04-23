@@ -59,6 +59,8 @@ public class GuessingMenu {
      *  0 - ZEN
      *  1 - NORMAL
      *  2 - HARDCORE
+     *  3 - OPENING
+     *  4 - CLOSING
      */
     public static void guessing(int mode) throws IOException {
         GuessingMenu.mode = mode;
@@ -121,7 +123,7 @@ public class GuessingMenu {
                     answer3.setText("---");
                 }
 
-                if(!SongGuessing.capped) {
+                if(!SongGuessing.capped && (mode < 3 || !guess.equals(""))) {
                     guesses++;
                     score = updateScore(false);
                 }
@@ -136,7 +138,7 @@ public class GuessingMenu {
             return;
         }
         if(newSong) nextTrack();
-        updateLines();
+        if(mode < 3) updateLines();
     }
 
     public void revealNeighbors() {
@@ -147,6 +149,11 @@ public class GuessingMenu {
         answer2.setText(currentSong.get(row));
         if(row < currentSong.size() - 1) answer3.setText(currentSong.get(row + 1));
         else answer3.setText("---");
+
+        if(mode == 3) answer1.setFill(Color.valueOf("#c0c0c0"));
+        else answer1.setFill(Color.valueOf("#888888"));
+        if(mode == 4) answer3.setFill(Color.valueOf("#c0c0c0"));
+        else answer3.setFill(Color.valueOf("#888888"));
     }
 
     public void skipTrack() {
@@ -180,10 +187,22 @@ public class GuessingMenu {
         SongGuessing.history.clear();
         storeLines.forEach(text -> text.setText(""));
         track.setText("Track " + trackCount + "/" + SongGuessing.order.size());
+
+        if(mode == 3) {
+            storeLines.get(1).setText(SongGuessing.replaceName(currentSong.get(1), SongGuessing.filterSongName(currentSong.get(0))));
+            storeLines.get(0).setText(SongGuessing.replaceName(currentSong.get(2), SongGuessing.filterSongName(currentSong.get(0))));
+            SongGuessing.history.put(1, storeLines.get(1).getText());
+            SongGuessing.history.put(2, storeLines.get(0).getText());
+        } else if(mode == 4) {
+            storeLines.get(1).setText(SongGuessing.replaceName(currentSong.get(currentSong.size() - 2), SongGuessing.filterSongName(currentSong.get(0))));
+            storeLines.get(0).setText(SongGuessing.replaceName(currentSong.get(currentSong.size() - 1), SongGuessing.filterSongName(currentSong.get(0))));
+            SongGuessing.history.put(currentSong.size() - 1, storeLines.get(0).getText());
+            SongGuessing.history.put(currentSong.size() - 2, storeLines.get(1).getText());
+        }
     }
 
     public void updateLines() {
-        SongGuessing.randomLine(currentSong);
+        if(mode < 3) SongGuessing.randomLine(currentSong);
         List<Integer> keys = new ArrayList<>(SongGuessing.history.keySet());
 
         for(int i = storeLines.size() - 1; i >= 0; i--) {
@@ -211,6 +230,8 @@ public class GuessingMenu {
                 switch (mode) {
                     default -> modeName = "NORMAL";
                     case 2 -> modeName = "HARDCORE";
+                    case 3 -> modeName = "OPENING";
+                    case 4 -> modeName = "CLOSING";
                 }
 
                 BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));

@@ -36,6 +36,8 @@ public class QuitMenu {
                 switch (GuessingMenu.mode) {
                     default -> modeName = "NORMAL";
                     case 2 -> modeName = "HARDCORE";
+                    case 3 -> modeName = "OPENING";
+                    case 4 -> modeName = "CLOSING";
                 }
 
                 BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));

@@ -35,12 +35,12 @@
                     <Font name="System Bold" size="30.0" />
                 </font>
             </Button>
-            <Button layoutX="334.0" layoutY="252.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="OPENINGS" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button layoutX="334.0" layoutY="252.0" mnemonicParsing="false" onMouseClicked="#opening" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="OPENING" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                 <font>
                     <Font name="System Bold" size="30.0" />
                 </font>
             </Button>
-            <Button layoutX="334.0" layoutY="236.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="CLOSING" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Button layoutX="334.0" layoutY="236.0" mnemonicParsing="false" onMouseClicked="#closing" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="CLOSING" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                 <font>
                     <Font name="System Bold" size="30.0" />
                 </font>

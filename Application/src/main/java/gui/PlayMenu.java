@@ -56,6 +56,14 @@ public class PlayMenu {
         GuessingMenu.guessing(2);
     }
 
+    public void opening() throws IOException {
+        GuessingMenu.guessing(3);
+    }
+
+    public void closing() throws IOException {
+        GuessingMenu.guessing(4);
+    }
+
     public void returnToMenu() throws IOException {
         MainMenu.showMenu();
     }
