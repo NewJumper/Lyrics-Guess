@@ -113,6 +113,7 @@ public class SongGuessing {
         if(name.equals("Mr. Perfectly Fine")) return result.replace("Mr.", "__").replace("Mr. \"Perfectly fine\"", "__ \"_________ ____\"");
         if(name.equals("Snow On The Beach")) return result.replace("snow at the beach", "____ __ ___ _____");
         if(name.equals("the 1")) return result.replace("the one", "___ _");
+        if(name.equals("The Last Time")) return result.replace("last time", "____ ____");
         return result;
     }
 
