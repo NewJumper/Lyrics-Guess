@@ -50,6 +50,7 @@ public class QuitMenu {
             GuessingMenu.correct = 0;
             GuessingMenu.incorrect = 0;
             GuessingMenu.guesses = 0;
+            GuessingMenu.strikes = 0;
         }
 
         window.close();

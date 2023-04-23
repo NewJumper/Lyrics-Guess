@@ -73,6 +73,11 @@ public class GuessingMenu {
     public void checkGuess(KeyEvent keyEvent) throws IOException {
         if(keyEvent.getCode() != KeyCode.ENTER) return;
 
+        if(incorrect == 3) {
+            endGame();
+            return;
+        }
+
         if(trackCount == 0) {
             if(mode == 0) scoreText.setText("--");
 
@@ -85,7 +90,7 @@ public class GuessingMenu {
         }
 
         if(!newSong) {
-            String guess = textBox.getText();
+            String guess = textBox.getText().trim();
             if(SongGuessing.checkGuess(currentSong.get(0), guess)) {
                 strikes = 0;
                 guessHistory.setFill(Color.valueOf("#3fbf53"));
@@ -100,21 +105,15 @@ public class GuessingMenu {
                 score = updateScore(true);
             } else {
                 if(mode == 2) {
-                    if(incorrect == 3) {
-                        skipTrack();
+                    skipTrack();
+                    if(strikes == 2) {
                         strikes = 0;
-                        endGame();
-                    }
-
-                    if(strikes == 1) {
-                        strikes = 0;
-                        skipTrack();
                         return;
-                    } else strikes++;
+                    }
                 }
 
                 if(!guess.equals("")) {
-                    guessHistory.setFill(Color.valueOf("#bbbbbb"));
+                    guessHistory.setFill(Color.valueOf("#c0c0c0"));
                     guessHistory.setText(guess);
                     albumAnswerB.setText("");
                     albumAnswer.setText("");
@@ -123,7 +122,7 @@ public class GuessingMenu {
                     answer3.setText("---");
                 }
 
-                if(!SongGuessing.capped && (mode < 3 || !guess.equals(""))) {
+                if(!guess.equals("") || !SongGuessing.capped && mode < 3) {
                     guesses++;
                     score = updateScore(false);
                 }
@@ -156,7 +155,21 @@ public class GuessingMenu {
         else answer3.setFill(Color.valueOf("#888888"));
     }
 
-    public void skipTrack() {
+    public void skipTrack() throws IOException {
+        if(mode == 2) {
+            if(incorrect == 3) {
+                endGame();
+                return;
+            }
+
+            if(strikes == 1) strikes = 2;
+            else {
+                strikes++;
+                return;
+            }
+        }
+
+
         if(trackCount == 0 || trackCount == SongGuessing.order.size()) return;
 
         guessHistory.setFill(Color.valueOf("#bf3f3f"));
@@ -244,6 +257,7 @@ public class GuessingMenu {
             correct = 0;
             incorrect = 0;
             guesses = 0;
+            strikes = 0;
         }
 
         timeline.stop();
