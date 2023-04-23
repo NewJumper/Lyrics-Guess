@@ -227,7 +227,11 @@ public class GuessingMenu {
     }
 
     public int updateScore(boolean green) {
-        score = 10 * correct - 2 * incorrect - guesses - (int) ((time - startTime) / 30000000000L);
+        switch (mode) {
+            default -> score = 10 * correct - 2 * incorrect - guesses - (int) ((time - startTime) / 30000000000L);
+            case 2 -> score = (int) (11.11 * correct - 2.11 * incorrect - guesses - (time - startTime) / 10000000000L);
+            case 3, 4 -> score = (int) (9 * correct - 2.5 * incorrect - guesses - (time - startTime) / 20000000000L);
+        }
 
         if(green) scoreText.setFill(Color.valueOf("#3fbf53"));
         else scoreText.setFill(Color.valueOf("#bf3f3f"));
