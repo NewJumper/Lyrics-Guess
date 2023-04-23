@@ -73,9 +73,12 @@ public class ScoresMenu {
             String mode = save.substring(0, save.indexOf(" - "));
             String info = save.substring(save.indexOf(" - "), save.indexOf(") ") + 1);
 
-            if(mode.equals("HARDCORE")) scoreNames.get(i).setFill(Color.valueOf("#ef4e40"));
-            else if(mode.equals("TIME ATTACK")) scoreNames.get(i).setFill(Color.valueOf("#40efc0"));
-            else scoreNames.get(i).setFill(Color.valueOf("#ffffff"));
+            switch (mode) {
+                case "HARDCORE" -> scoreNames.get(i).setFill(Color.valueOf("#ef4e40"));
+                case "TIME ATTACK" -> scoreNames.get(i).setFill(Color.valueOf("#40e0bf"));
+                case "OPENING", "CLOSING" -> scoreNames.get(i).setFill(Color.valueOf("#7e73e6"));
+                default -> scoreNames.get(i).setFill(Color.valueOf("#ffffff"));
+            }
 
             scoreNames.get(i).setText(mode);
             scoreInfo.get(i).setText(info);
