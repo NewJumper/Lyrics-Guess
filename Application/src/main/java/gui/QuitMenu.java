@@ -30,7 +30,7 @@ public class QuitMenu {
     }
 
     public void onAccept() throws IOException {
-        if(GuessingMenu.trackCount != 0) {
+        if(GuessingMenu.trackCount > 1) {
             if(GuessingMenu.mode != 0) {
                 String modeName;
                 switch (GuessingMenu.mode) {

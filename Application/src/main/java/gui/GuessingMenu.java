@@ -27,6 +27,7 @@ import java.util.Objects;
 public class GuessingMenu {
     public static Stage window = MainMenu.window;
     public List<Text> storeLines;
+    public Text gamemode;
     public Text lines0, lines1, lines2, lines3, lines4, lines5, lines6, lines7, lines8, lines9, lines10, lines11;
     public Text track;
     public TextField textBox;
@@ -69,7 +70,6 @@ public class GuessingMenu {
         window.setScene(scene);
     }
 
-
     public void checkGuess(KeyEvent keyEvent) throws IOException {
         if(keyEvent.getCode() != KeyCode.ENTER) return;
 
@@ -79,7 +79,26 @@ public class GuessingMenu {
         }
 
         if(trackCount == 0) {
-            if(mode == 0) scoreText.setText("--");
+            switch (mode) {
+                default -> gamemode.setText("NORMAL");
+                case 0 -> {
+                    gamemode.setText("ZEN");
+                    gamemode.setFill(Color.valueOf("#d8e0e3"));
+                    scoreText.setText("--");
+                }
+                case 2 -> {
+                    gamemode.setText("HARDCORE");
+                    gamemode.setFill(Color.valueOf("#ef4e40"));
+                }
+                case 3 -> {
+                    gamemode.setText("OPENING");
+                    gamemode.setFill(Color.valueOf("#7e73e6"));
+                }
+                case 4 -> {
+                    gamemode.setText("CLOSING");
+                    gamemode.setFill(Color.valueOf("#7e73e6"));
+                }
+            }
 
             startTime = System.nanoTime();
             timeline.setCycleCount(Timeline.INDEFINITE);
@@ -169,7 +188,6 @@ public class GuessingMenu {
             }
         }
 
-
         if(trackCount == 0 || trackCount == SongGuessing.order.size()) return;
 
         guessHistory.setFill(Color.valueOf("#bf3f3f"));
@@ -241,7 +259,7 @@ public class GuessingMenu {
     }
 
     public void endGame() throws IOException {
-        if(trackCount != 0) {
+        if(trackCount > 1) {
             if(mode != 0) {
                 String modeName;
                 switch (mode) {
@@ -257,13 +275,13 @@ public class GuessingMenu {
                 writer.flush();
             }
 
-            trackCount = 0;
             correct = 0;
             incorrect = 0;
             guesses = 0;
             strikes = 0;
         }
 
+        trackCount = 0;
         timeline.stop();
         MainMenu.showMenu();
     }

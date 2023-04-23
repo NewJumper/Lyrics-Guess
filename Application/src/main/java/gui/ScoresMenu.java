@@ -37,7 +37,7 @@ public class ScoresMenu {
         });
     }
 
-    public void testing() throws IOException {
+    public void organizeScores() throws IOException {
         List<String> scores = Files.readAllLines(Paths.get("Application/src/main/resources/scores.txt"));
         List<Text> scoreNames = List.of(score1A, score2A, score3A, score4A, score5A, score6A, score7A, score8A, score9A, score10A, score11A, score12A, score13A, score14A, score15A, score16A);
         List<Text> scoreInfo = List.of(score1B, score2B, score3B, score4B, score5B, score6B, score7B, score8B, score9B, score10B, score11B, score12B, score13B, score14B, score15B, score16B);
