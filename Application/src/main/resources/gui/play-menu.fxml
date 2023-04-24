@@ -28,7 +28,7 @@
                     <Font name="System Bold" size="30.0" />
                 </font>
             </Button>
-            <Button layoutX="334.0" layoutY="66.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="RANDOM SONGS" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button layoutX="334.0" layoutY="66.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="ENDLESS" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                 <font>
                     <Font name="System Bold" size="30.0" />
                 </font>
