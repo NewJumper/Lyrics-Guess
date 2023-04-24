@@ -271,7 +271,7 @@ public class GuessingMenu {
 
                 BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
-                writer.write(modeName + " - " + score + " (" + (correct + incorrect) + ") " + dateFormat.format(new Date()) + "\n");
+                writer.write(modeName + " - " + score + "  (" + (correct + incorrect) + ") " + dateFormat.format(new Date()) + "\n");
                 writer.flush();
             }
 

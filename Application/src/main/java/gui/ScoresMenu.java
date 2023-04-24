@@ -87,7 +87,7 @@ public class ScoresMenu {
     }
 
     public static int getScoringInfo(String text, boolean score) {
-        return Integer.parseInt(score ? text.substring(text.indexOf("- ") + 2, text.indexOf("(") - 1) : text.substring(text.indexOf("(") + 1, text.indexOf(")")));
+        return Integer.parseInt(score ? text.substring(text.indexOf("- ") + 2, text.indexOf("(") - 2) : text.substring(text.indexOf("(") + 1, text.indexOf(")")));
     }
 
     public void returnToMenu() throws IOException {

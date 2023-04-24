@@ -56,7 +56,7 @@
                     <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                     <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                 </rowConstraints>
-                <Text fill="#aaaaaa" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="MODE - score   (tracks)" textAlignment="CENTER" translateY="-20.0" GridPane.columnIndex="1">
+                <Text fill="#aaaaaa" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="MODE - score  (tracks)" textAlignment="CENTER" translateY="-20.0" GridPane.columnIndex="1">
                     <font>
                         <Font name="Consolas Bold" size="19.0" />
                     </font>

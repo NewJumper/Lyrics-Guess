@@ -42,7 +42,7 @@ public class QuitMenu {
 
                 BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
-                writer.write(modeName + " - " + GuessingMenu.score + " (" + (GuessingMenu.correct + GuessingMenu.incorrect) + ") " + dateFormat.format(new Date()) + "\n");
+                writer.write(modeName + " - " + GuessingMenu.score + "  (" + (GuessingMenu.correct + GuessingMenu.incorrect) + ") " + dateFormat.format(new Date()) + "\n");
                 writer.flush();
             }
 
