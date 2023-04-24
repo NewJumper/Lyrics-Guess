@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,6 +31,8 @@ public class MainMenu extends Application {
                 throw new RuntimeException(e);
             }
         });
+
+        Font.loadFont(Objects.requireNonNull(MainMenu.class.getResource("fonts/norwester.otf")).toExternalForm(), 20);
 
         showMenu();
         stage.show();

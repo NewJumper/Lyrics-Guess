@@ -13,37 +13,37 @@
     <center>
         <GridPane alignment="CENTER" hgap="40.0" BorderPane.alignment="CENTER">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <padding>
-                <Insets top="10.0"/>
+                <Insets top="10.0" />
             </padding>
-            <Button mnemonicParsing="false" onMouseClicked="#difficultyMenu" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="ALL SONGS" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+            <Button mnemonicParsing="false" onMouseClicked="#difficultyMenu" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="ALL SONGS" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                 <font>
-                    <Font name="System Bold" size="30.0"/>
+                    <Font name="System Bold" size="30.0" />
                 </font>
             </Button>
-            <Button layoutX="334.0" layoutY="66.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="RANDOM SONGS" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button layoutX="334.0" layoutY="66.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="RANDOM SONGS" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                 <font>
-                    <Font name="System Bold" size="30.0"/>
+                    <Font name="System Bold" size="30.0" />
                 </font>
             </Button>
-            <Button layoutX="334.0" layoutY="252.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="TIME ATTACK" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <Button layoutX="334.0" layoutY="252.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="TIME ATTACK" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
                 <font>
-                    <Font name="System Bold" size="30.0"/>
+                    <Font name="System Bold" size="30.0" />
                 </font>
             </Button>
         </GridPane>
     </center>
     <top>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT A GAMEMODE" textAlignment="CENTER" wrappingWidth="466.00000071525574" BorderPane.alignment="CENTER">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="SELECT A GAMEMODE" textAlignment="CENTER" translateY="23.0" wrappingWidth="466.00000071525574" BorderPane.alignment="CENTER">
             <font>
-                <Font name="System Bold" size="40.0" />
+                <Font name="System Bold" size="50.0" />
             </font>
         </Text>
     </top>

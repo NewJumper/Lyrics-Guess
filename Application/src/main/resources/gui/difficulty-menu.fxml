@@ -25,27 +25,27 @@
             <padding>
                 <Insets top="10.0" />
             </padding>
-            <Button mnemonicParsing="false" onMouseClicked="#normal" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="NORMAL" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button mnemonicParsing="false" onMouseClicked="#normal" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="NORMAL" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                 <font>
                     <Font name="System Bold" size="30.0" />
                 </font>
             </Button>
-            <Button layoutX="334.0" layoutY="66.0" mnemonicParsing="false" onMouseClicked="#hardcore" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="HARDCORE" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button layoutX="334.0" layoutY="66.0" mnemonicParsing="false" onMouseClicked="#hardcore" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="HARDCORE" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                 <font>
                     <Font name="System Bold" size="30.0" />
                 </font>
             </Button>
-            <Button layoutX="334.0" layoutY="252.0" mnemonicParsing="false" onMouseClicked="#opening" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="OPENING" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button layoutX="334.0" layoutY="252.0" mnemonicParsing="false" onMouseClicked="#opening" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="OPENING" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                 <font>
                     <Font name="System Bold" size="30.0" />
                 </font>
             </Button>
-            <Button layoutX="334.0" layoutY="236.0" mnemonicParsing="false" onMouseClicked="#closing" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="CLOSING" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Button layoutX="334.0" layoutY="236.0" mnemonicParsing="false" onMouseClicked="#closing" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="CLOSING" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                 <font>
                     <Font name="System Bold" size="30.0" />
                 </font>
             </Button>
-            <Button layoutX="10.0" layoutY="352.0" mnemonicParsing="false" onMouseClicked="#zen" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16;" text="ZEN" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+            <Button layoutX="10.0" layoutY="352.0" mnemonicParsing="false" onMouseClicked="#zen" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="ZEN" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                 <font>
                     <Font name="System Bold" size="30.0" />
                 </font>
@@ -53,9 +53,9 @@
         </GridPane>
     </center>
     <top>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="DIFFICULTY" textAlignment="CENTER" wrappingWidth="466" BorderPane.alignment="CENTER">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="DIFFICULTY" textAlignment="CENTER" wrappingWidth="466" BorderPane.alignment="CENTER">
             <font>
-                <Font name="System Bold" size="40.0" />
+                <Font name="System Bold" size="50.0" />
             </font>
         </Text>
     </top>
