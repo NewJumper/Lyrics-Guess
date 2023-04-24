@@ -9,6 +9,13 @@
     <padding>
         <Insets bottom="40.0" left="60.0" right="60.0" top="40.0" />
     </padding>
+    <top>
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="TOP SCORES" textAlignment="CENTER" translateY="17.0" wrappingWidth="386.0" BorderPane.alignment="CENTER">
+            <font>
+                <Font name="System Bold" size="50.0" />
+            </font>
+        </Text>
+    </top>
     <center>
         <GridPane alignment="CENTER" hgap="40.0" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -421,13 +428,6 @@
             </GridPane>
         </GridPane>
     </center>
-    <top>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="TOP SCORES" textAlignment="CENTER" translateY="17.0" wrappingWidth="386.0" BorderPane.alignment="CENTER">
-            <font>
-                <Font name="System Bold" size="50.0" />
-            </font>
-        </Text>
-    </top>
     <bottom>
         <ImageView fitHeight="52.0" fitWidth="52.0" onMouseClicked="#returnToMenu" pickOnBounds="true" preserveRatio="true" translateX="-44.0" translateY="21.0" BorderPane.alignment="BOTTOM_LEFT">
             <Image url="@textures/home.png" />

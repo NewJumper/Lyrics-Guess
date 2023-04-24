@@ -29,7 +29,15 @@ public class PlayMenu {
     }
 
     public void difficultyMenu() throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("difficulty-menu.fxml"))));
+        showMenu("difficulty-menu");
+    }
+
+    public void endlessMenu() throws IOException {
+        showMenu("endless-menu");
+    }
+
+    public void showMenu(String path) throws IOException {
+        Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource(path + ".fxml"))));
         Scene scene = new Scene(root, window.getWidth() - 15, window.getHeight() - 39);
         window.setScene(scene);
 

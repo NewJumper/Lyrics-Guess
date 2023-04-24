@@ -10,6 +10,13 @@
     <padding>
         <Insets bottom="40.0" left="60.0" right="60.0" top="40.0" />
     </padding>
+    <top>
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="DIFFICULTY" textAlignment="CENTER" wrappingWidth="466" BorderPane.alignment="CENTER">
+            <font>
+                <Font name="System Bold" size="50.0" />
+            </font>
+        </Text>
+    </top>
     <center>
         <GridPane alignment="CENTER" hgap="40.0" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -52,13 +59,6 @@
             </Button>
         </GridPane>
     </center>
-    <top>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="DIFFICULTY" textAlignment="CENTER" wrappingWidth="466" BorderPane.alignment="CENTER">
-            <font>
-                <Font name="System Bold" size="50.0" />
-            </font>
-        </Text>
-    </top>
    <bottom>
        <GridPane prefHeight="30.0" prefWidth="449.0" BorderPane.alignment="CENTER">
            <columnConstraints>
