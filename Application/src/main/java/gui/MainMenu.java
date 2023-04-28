@@ -61,16 +61,8 @@ public class MainMenu extends Application {
         scene.setOnKeyPressed(event -> {
             if(event.getCode() == KeyCode.F11) window.setFullScreen(!window.isFullScreen());
             if(event.getCode() == KeyCode.ESCAPE) {
-                if(isMain || oldRoot == main) return;
-
                 String rootId = window.getScene().getRoot().getId();
-                if(rootId != null && rootId.equals("guessingGame")) {
-                    try {
-                        saveGame();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
+                if(isMain || oldRoot == main || (rootId != null && rootId.equals("guessingGame"))) return;
 
                 try {
                     updateScene(main, oldRoot, false);
