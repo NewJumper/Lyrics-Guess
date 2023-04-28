@@ -7,11 +7,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Objects;
 
 public class QuitMenu {
@@ -30,29 +26,7 @@ public class QuitMenu {
     }
 
     public void onAccept() throws IOException {
-        if(GuessingMenu.trackCount > 1) {
-            if(GuessingMenu.mode != 0) {
-                String modeName;
-                switch (GuessingMenu.mode) {
-                    default -> modeName = "NORMAL";
-                    case 2 -> modeName = "HARDCORE";
-                    case 3 -> modeName = "OPENING";
-                    case 4 -> modeName = "CLOSING";
-                }
-
-                BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
-                SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
-                writer.write(modeName + " - " + GuessingMenu.score + "  (" + (GuessingMenu.correct + GuessingMenu.incorrect) + ") " + dateFormat.format(new Date()) + "\n");
-                writer.flush();
-            }
-
-            GuessingMenu.trackCount = 0;
-            GuessingMenu.correct = 0;
-            GuessingMenu.incorrect = 0;
-            GuessingMenu.guesses = 0;
-            GuessingMenu.strikes = 0;
-        }
-
+        MainMenu.saveGame();
         window.close();
         MainMenu.window.close();
     }

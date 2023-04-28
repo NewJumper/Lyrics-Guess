@@ -11,7 +11,7 @@ public class PlayMenu {
     public static void playMenu() throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("play-menu.fxml"))));
         Parent oldRoot = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("main.fxml"))));
-        MainMenu.justDoStuff(oldRoot, root, false);
+        MainMenu.updateScene(oldRoot, root, false);
     }
 
     public void difficultyMenu() throws IOException {
@@ -25,7 +25,7 @@ public class PlayMenu {
     public void showMenu(String path) throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource(path + ".fxml"))));
         Parent oldRoot = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("play-menu.fxml"))));
-        MainMenu.justDoStuff(oldRoot, root, false);
+        MainMenu.updateScene(oldRoot, root, false);
     }
 
     public void zen() throws IOException {

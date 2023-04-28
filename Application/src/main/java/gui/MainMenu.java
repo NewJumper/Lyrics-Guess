@@ -10,7 +10,11 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 public class MainMenu extends Application {
@@ -46,10 +50,10 @@ public class MainMenu extends Application {
 
     public static void showMenu() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(MainMenu.class.getResource("main.fxml")));
-        justDoStuff(null, root, true);
+        updateScene(null, root, true);
     }
 
-    public static void justDoStuff(Parent oldRoot, Parent newRoot, boolean isMain) throws IOException {
+    public static void updateScene(Parent oldRoot, Parent newRoot, boolean isMain) throws IOException {
         Parent main = FXMLLoader.load(Objects.requireNonNull(MainMenu.class.getResource("main.fxml")));
         Scene scene = window.getScene();
         scene.setRoot(newRoot);
@@ -58,13 +62,46 @@ public class MainMenu extends Application {
             if(event.getCode() == KeyCode.F11) window.setFullScreen(!window.isFullScreen());
             if(event.getCode() == KeyCode.ESCAPE) {
                 if(isMain || oldRoot == main) return;
+
+                String rootId = window.getScene().getRoot().getId();
+                if(rootId != null && rootId.equals("guessingGame")) {
+                    try {
+                        saveGame();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
                 try {
-                    justDoStuff(main, oldRoot, false);
+                    updateScene(main, oldRoot, false);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
         });
+    }
+
+    public static void saveGame() throws IOException {
+        if(GuessingMenu.trackCount > 1 && GuessingMenu.mode != 0) {
+            String modeName;
+            switch (GuessingMenu.mode) {
+                default -> modeName = "NORMAL";
+                case 2 -> modeName = "HARDCORE";
+                case 3 -> modeName = "OPENING";
+                case 4 -> modeName = "CLOSING";
+            }
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
+            writer.write(modeName + " - " + GuessingMenu.score + "  (" + (GuessingMenu.correct + GuessingMenu.incorrect) + ") " + dateFormat.format(new Date()) + "\n");
+            writer.flush();
+        }
+
+        GuessingMenu.trackCount = 0;
+        GuessingMenu.correct = 0;
+        GuessingMenu.incorrect = 0;
+        GuessingMenu.guesses = 0;
+        GuessingMenu.strikes = 0;
     }
 
     public void play() throws IOException {

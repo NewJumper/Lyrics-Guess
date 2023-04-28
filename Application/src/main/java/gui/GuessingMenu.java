@@ -13,12 +13,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -63,6 +59,7 @@ public class GuessingMenu {
     public static void guessing(int mode) throws IOException {
         GuessingMenu.mode = mode;
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("guessing-menu.fxml"))));
+        root.setId("guessingGame");
         MainMenu.window.getScene().setRoot(root);
     }
 
@@ -255,29 +252,7 @@ public class GuessingMenu {
     }
 
     public void endGame() throws IOException {
-        if(trackCount > 1) {
-            if(mode != 0) {
-                String modeName;
-                switch (mode) {
-                    default -> modeName = "NORMAL";
-                    case 2 -> modeName = "HARDCORE";
-                    case 3 -> modeName = "OPENING";
-                    case 4 -> modeName = "CLOSING";
-                }
-
-                BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
-                SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
-                writer.write(modeName + " - " + score + "  (" + (correct + incorrect) + ") " + dateFormat.format(new Date()) + "\n");
-                writer.flush();
-            }
-
-            correct = 0;
-            incorrect = 0;
-            guesses = 0;
-            strikes = 0;
-        }
-
-        trackCount = 0;
+        MainMenu.saveGame();
         timeline.stop();
         MainMenu.showMenu();
     }

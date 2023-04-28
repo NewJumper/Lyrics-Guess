@@ -20,7 +20,7 @@ public class ScoresMenu {
     public static void scoresMenu() throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("scores-menu.fxml"))));
         Parent oldRoot = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("main.fxml"))));
-        MainMenu.justDoStuff(oldRoot, root, false);
+        MainMenu.updateScene(oldRoot, root, false);
     }
 
     public void organizeScores() throws IOException {
