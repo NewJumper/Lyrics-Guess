@@ -2,11 +2,8 @@ package gui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,25 +13,14 @@ import java.util.List;
 import java.util.Objects;
 
 public class ScoresMenu {
-    public static Stage window = MainMenu.window;
     public Text score1A, score2A, score3A, score4A, score5A, score6A, score7A, score8A, score9A, score10A, score11A, score12A, score13A, score14A, score15A, score16A;
     public Text score1B, score2B, score3B, score4B, score5B, score6B, score7B, score8B, score9B, score10B, score11B, score12B, score13B, score14B, score15B, score16B;
     public Text date1, date2, date3, date4, date5, date6, date7, date8, date9, date10, date11, date12, date13, date14, date15, date16;
 
     public static void scoresMenu() throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("scores-menu.fxml"))));
-        Scene scene = new Scene(root, window.getWidth() - 15, window.getHeight() - 39);
-        window.setScene(scene);
-
-        scene.setOnKeyPressed(event -> {
-            if(event.getCode() == KeyCode.ESCAPE) {
-                try {
-                    MainMenu.showMenu();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
+        Parent oldRoot = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("main.fxml"))));
+        MainMenu.justDoStuff(oldRoot, root, false);
     }
 
     public void organizeScores() throws IOException {

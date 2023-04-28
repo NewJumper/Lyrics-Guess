@@ -5,14 +5,12 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.BufferedWriter;
@@ -25,7 +23,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class GuessingMenu {
-    public static Stage window = MainMenu.window;
     public List<Text> storeLines;
     public Text gamemode;
     public Text lines0, lines1, lines2, lines3, lines4, lines5, lines6, lines7, lines8, lines9, lines10, lines11;
@@ -66,8 +63,7 @@ public class GuessingMenu {
     public static void guessing(int mode) throws IOException {
         GuessingMenu.mode = mode;
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("guessing-menu.fxml"))));
-        Scene scene = new Scene(root, window.getWidth() - 15, window.getHeight() - 39);
-        window.setScene(scene);
+        MainMenu.window.getScene().setRoot(root);
     }
 
     public void checkGuess(KeyEvent keyEvent) throws IOException {
