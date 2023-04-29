@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #181a1f;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainMenu">
     <padding>
         <Insets bottom="40.0" left="60.0" right="60.0" top="40.0" />
     </padding>
     <top>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text=" TAYLOR SWIFT GAMES" textAlignment="CENTER" translateY="20.0" wrappingWidth="514.0" BorderPane.alignment="BOTTOM_CENTER">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text=" TAYLOR SWIFT GAMES" textAlignment="CENTER" translateY="60.0" wrappingWidth="512.0" BorderPane.alignment="BOTTOM_CENTER">
             <font>
                 <Font name="System Bold" size="60.0" />
             </font>
@@ -25,26 +26,18 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
-            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#play" prefHeight="145.0" prefWidth="246.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="PLAY" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
-                <font>
-                    <Font name="System Bold" size="30.0" />
-                </font>
-            </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#scores" prefHeight="145.0" prefWidth="246.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="SCORES" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
-                <font>
-                    <Font name="System Bold" size="30.0" />
-                </font>
-            </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#settings" prefHeight="145.0" prefWidth="246.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="SETTINGS" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                <font>
-                    <Font name="System Bold" size="30.0" />
-                </font>
-            </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#quit" prefHeight="145.0" prefWidth="246.0" style="-fx-background-color: #bf616f; -fx-background-radius: 16; -fx-font-family: norwester;" text="QUIT" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                <font>
-                  <Font name="System Bold" size="30.0" />
-                </font>
-            </Button>
+            <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#play" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                <Image url="@textures/play.png"/>
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#scores" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                <Image url="@textures/scores.png"/>
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#settings" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                <Image url="@textures/settings.png"/>
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#quit" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                <Image url="@textures/quit.png"/>
+            </ImageView>
             <padding>
                 <Insets top="10.0" />
             </padding>

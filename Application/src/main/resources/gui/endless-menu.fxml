@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -12,9 +10,9 @@
         <Insets bottom="40.0" left="60.0" right="60.0" top="40.0" />
     </padding>
     <top>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="SELECT A GAMEMODE" textAlignment="CENTER" translateY="23.0" wrappingWidth="466" BorderPane.alignment="CENTER">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="SELECT A GAMEMODE" textAlignment="CENTER" translateY="80.0" wrappingWidth="512" BorderPane.alignment="CENTER">
             <font>
-                <Font name="System Bold" size="50.0" />
+                <Font name="System Bold" size="60.0" />
             </font>
         </Text>
     </top>
@@ -30,16 +28,12 @@
             <padding>
                 <Insets top="10.0" />
             </padding>
-            <Button mnemonicParsing="false" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="NORMAL" textAlignment="CENTER" textFill="WHITE" GridPane.valignment="BOTTOM">
-                <font>
-                    <Font name="System Bold" size="30.0" />
-                </font>
-            </Button>
-            <Button layoutX="334.0" layoutY="66.0" mnemonicParsing="false" onMouseClicked="#endlessMenu" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="ASSOCIATION" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                <font>
-                    <Font name="System Bold" size="30.0" />
-                </font>
-            </Button>
+            <ImageView fitHeight="108.0" fitWidth="512.0" translateY="50.0" GridPane.valignment="BOTTOM">
+                <Image url="@textures/endless-normal.png"/>
+            </ImageView>
+            <ImageView fitHeight="108.0" fitWidth="512.0" translateY="50.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                <Image url="@textures/endless-association.png"/>
+            </ImageView>
         </GridPane>
     </center>
    <bottom>

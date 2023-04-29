@@ -1,62 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #181a1f;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PlayMenu">
     <padding>
         <Insets bottom="40.0" left="60.0" right="60.0" top="40.0" />
     </padding>
     <top>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="DIFFICULTY" textAlignment="CENTER" wrappingWidth="466" BorderPane.alignment="CENTER">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="SELECT A GAMEMODE" textAlignment="CENTER" translateY="80.0" wrappingWidth="512" BorderPane.alignment="CENTER">
             <font>
-                <Font name="System Bold" size="50.0" />
+                <Font name="System Bold" size="60.0" />
             </font>
         </Text>
     </top>
     <center>
-        <GridPane alignment="CENTER" hgap="40.0" BorderPane.alignment="CENTER">
+        <GridPane alignment="CENTER" hgap="40.0" vgap="40.0" BorderPane.alignment="CENTER">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
             </rowConstraints>
+            <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#normal" translateY="80.0">
+                <Image url="@textures/all-normal.png" />
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#hardcore" translateY="80.0" GridPane.columnIndex="1">
+                <Image url="@textures/all-hardcore.png" />
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#opening" translateY="55.0" GridPane.rowIndex="1">
+                <Image url="@textures/all-opening.png" />
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#closing" translateY="55.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Image url="@textures/all-closing.png" />
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="246.0" translateX="143.0" translateY="30.0" GridPane.rowIndex="2">
+                <Image url="@textures/all-zen.png" />
+            </ImageView>
             <padding>
                 <Insets top="10.0" />
             </padding>
-            <Button mnemonicParsing="false" onMouseClicked="#normal" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="NORMAL" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                <font>
-                    <Font name="System Bold" size="30.0" />
-                </font>
-            </Button>
-            <Button layoutX="334.0" layoutY="66.0" mnemonicParsing="false" onMouseClicked="#hardcore" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="HARDCORE" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                <font>
-                    <Font name="System Bold" size="30.0" />
-                </font>
-            </Button>
-            <Button layoutX="334.0" layoutY="252.0" mnemonicParsing="false" onMouseClicked="#opening" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="OPENING" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                <font>
-                    <Font name="System Bold" size="30.0" />
-                </font>
-            </Button>
-            <Button layoutX="334.0" layoutY="236.0" mnemonicParsing="false" onMouseClicked="#closing" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="CLOSING" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                <font>
-                    <Font name="System Bold" size="30.0" />
-                </font>
-            </Button>
-            <Button layoutX="10.0" layoutY="352.0" mnemonicParsing="false" onMouseClicked="#zen" prefHeight="96.0" prefWidth="512.0" style="-fx-background-color: #6cb577; -fx-background-radius: 16; -fx-font-family: norwester;" text="ZEN" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                <font>
-                    <Font name="System Bold" size="30.0" />
-                </font>
-            </Button>
         </GridPane>
     </center>
    <bottom>
