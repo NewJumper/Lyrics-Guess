@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #181a1f;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GuessingMenu">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #181a1f;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GameMenu">
     <padding>
         <Insets bottom="40.0" left="60.0" right="60.0" top="40.0" />
     </padding>
@@ -217,7 +217,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <ImageView fitHeight="52.0" fitWidth="52.0" onMouseClicked="#endGame" pickOnBounds="true" preserveRatio="true" translateX="-44.0" translateY="10.0" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
-                <Image url="@textures/home.png" />
+                <Image url="@buttons/extra/home.png" />
             </ImageView>
         </GridPane>
     </bottom>

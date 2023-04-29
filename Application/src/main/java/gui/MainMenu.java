@@ -62,7 +62,7 @@ public class MainMenu extends Application {
             if(event.getCode() == KeyCode.F11) window.setFullScreen(!window.isFullScreen());
             if(event.getCode() == KeyCode.ESCAPE) {
                 String rootId = window.getScene().getRoot().getId();
-                if(isMain || oldRoot == main || (rootId != null && rootId.equals("guessingGame"))) return;
+                if(isMain || oldRoot == main || (rootId != null && rootId.equals("GameRoot"))) return;
 
                 try {
                     updateScene(main, oldRoot, false);
@@ -74,9 +74,9 @@ public class MainMenu extends Application {
     }
 
     public static void saveGame() throws IOException {
-        if(GuessingMenu.trackCount > 1 && GuessingMenu.mode != 0) {
+        if(GameMenu.trackCount > 1 && GameMenu.mode != 0) {
             String modeName;
-            switch (GuessingMenu.mode) {
+            switch (GameMenu.mode) {
                 default -> modeName = "NORMAL";
                 case 2 -> modeName = "HARDCORE";
                 case 3 -> modeName = "OPENING";
@@ -85,15 +85,15 @@ public class MainMenu extends Application {
 
             BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));
             SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
-            writer.write(modeName + " - " + GuessingMenu.score + "  (" + (GuessingMenu.correct + GuessingMenu.incorrect) + ") " + dateFormat.format(new Date()) + "\n");
+            writer.write(modeName + " - " + GameMenu.score + "  (" + (GameMenu.correct + GameMenu.incorrect) + ") " + dateFormat.format(new Date()) + "\n");
             writer.flush();
         }
 
-        GuessingMenu.trackCount = 0;
-        GuessingMenu.correct = 0;
-        GuessingMenu.incorrect = 0;
-        GuessingMenu.guesses = 0;
-        GuessingMenu.strikes = 0;
+        GameMenu.trackCount = 0;
+        GameMenu.correct = 0;
+        GameMenu.incorrect = 0;
+        GameMenu.guesses = 0;
+        GameMenu.strikes = 0;
     }
 
     public void play() throws IOException {

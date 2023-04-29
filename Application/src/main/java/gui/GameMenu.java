@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class GuessingMenu {
+public class GameMenu {
     public List<Text> storeLines;
     public Text gamemode;
     public Text lines0, lines1, lines2, lines3, lines4, lines5, lines6, lines7, lines8, lines9, lines10, lines11;
@@ -57,9 +57,9 @@ public class GuessingMenu {
      *  4 - CLOSING
      */
     public static void guessing(int mode) throws IOException {
-        GuessingMenu.mode = mode;
-        Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("guessing-menu.fxml"))));
-        root.setId("guessingGame");
+        GameMenu.mode = mode;
+        Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("game-menu.fxml"))));
+        root.setId("GameRoot");
         MainMenu.window.getScene().setRoot(root);
     }
 

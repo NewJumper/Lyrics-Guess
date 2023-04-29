@@ -15,7 +15,7 @@ public class PlayMenu {
     }
 
     public void difficultyMenu() throws IOException {
-        showMenu("difficulty-menu");
+        showMenu("all-songs-menu");
     }
 
     public void endlessMenu() throws IOException {
@@ -29,23 +29,23 @@ public class PlayMenu {
     }
 
     public void zen() throws IOException {
-        GuessingMenu.guessing(0);
+        GameMenu.guessing(0);
     }
 
     public void normal() throws IOException {
-        GuessingMenu.guessing(1);
+        GameMenu.guessing(1);
     }
 
     public void hardcore() throws IOException {
-        GuessingMenu.guessing(2);
+        GameMenu.guessing(2);
     }
 
     public void opening() throws IOException {
-        GuessingMenu.guessing(3);
+        GameMenu.guessing(3);
     }
 
     public void closing() throws IOException {
-        GuessingMenu.guessing(4);
+        GameMenu.guessing(4);
     }
 
     public void returnToMenu() throws IOException {
