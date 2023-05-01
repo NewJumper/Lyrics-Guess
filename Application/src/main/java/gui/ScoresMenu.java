@@ -18,7 +18,7 @@ public class ScoresMenu {
     public Text date1, date2, date3, date4, date5, date6, date7, date8, date9, date10, date11, date12, date13, date14, date15, date16;
 
     public static void scoresMenu() throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("scores-menu.fxml"))));
+        Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("scores.fxml"))));
         Parent oldRoot = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("main.fxml"))));
         MainMenu.updateScene(oldRoot, root, false);
     }

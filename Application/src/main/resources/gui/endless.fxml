@@ -29,10 +29,10 @@
                 <Insets top="10.0" />
             </padding>
             <ImageView fitHeight="108.0" fitWidth="512.0" translateY="50.0" GridPane.valignment="BOTTOM">
-                <Image url="@buttons/endless/endless-normal.png"/>
+                <Image url="@textures/buttons/endless/endless-normal.png"/>
             </ImageView>
             <ImageView fitHeight="108.0" fitWidth="512.0" translateY="50.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                <Image url="@buttons/endless/endless-association.png"/>
+                <Image url="@textures/buttons/endless/endless-association.png"/>
             </ImageView>
         </GridPane>
     </center>
@@ -46,10 +46,10 @@
                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
            </rowConstraints>
            <ImageView fitHeight="52.0" fitWidth="52.0" onMouseClicked="#returnToMenu" pickOnBounds="true" preserveRatio="true" translateX="-44.0" translateY="10.0" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
-               <Image url="@buttons/extra/home.png" />
+               <Image url="@textures/buttons/extra/home.png" />
            </ImageView>
            <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" translateX="40.0" translateY="14.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
-               <Image url="@buttons/extra/return.png" />
+               <Image url="@textures/buttons/extra/return.png" />
            </ImageView>
        </GridPane>
    </bottom>

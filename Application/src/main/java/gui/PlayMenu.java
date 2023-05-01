@@ -9,22 +9,22 @@ import java.util.Objects;
 public class PlayMenu {
 
     public static void playMenu() throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("play-menu.fxml"))));
+        Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("gamemodes.fxml"))));
         Parent oldRoot = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("main.fxml"))));
         MainMenu.updateScene(oldRoot, root, false);
     }
 
     public void difficultyMenu() throws IOException {
-        showMenu("all-songs-menu");
+        showMenu("all-songs");
     }
 
     public void endlessMenu() throws IOException {
-        showMenu("endless-menu");
+        showMenu("endless");
     }
 
     public void showMenu(String path) throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource(path + ".fxml"))));
-        Parent oldRoot = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("play-menu.fxml"))));
+        Parent oldRoot = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("gamemodes.fxml"))));
         MainMenu.updateScene(oldRoot, root, false);
     }
 

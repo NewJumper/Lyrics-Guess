@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class SettingsMenu {
     public static void settingsMenu() throws IOException {
-        Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("settings-menu.fxml"))));
+        Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("settings.fxml"))));
         Parent oldRoot = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("main.fxml"))));
         MainMenu.updateScene(oldRoot, root, false);
     }

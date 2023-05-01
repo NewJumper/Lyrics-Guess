@@ -14,7 +14,7 @@ public class QuitMenu {
     public static Stage window;
 
     public static void display() throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(QuitMenu.class.getResource("quit-menu.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(QuitMenu.class.getResource("quit.fxml")));
         Stage stage = new Stage();
         window = stage;
         stage.setTitle("Quit?");

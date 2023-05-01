@@ -58,7 +58,7 @@ public class GameMenu {
      */
     public static void guessing(int mode) throws IOException {
         GameMenu.mode = mode;
-        Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("game-menu.fxml"))));
+        Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("game.fxml"))));
         root.setId("GameRoot");
         MainMenu.window.getScene().setRoot(root);
     }

@@ -33,7 +33,7 @@
     </center>
     <bottom>
         <ImageView fitHeight="52.0" fitWidth="52.0" onMouseClicked="#returnToMenu" pickOnBounds="true" preserveRatio="true" translateX="-44.0" translateY="21.0" BorderPane.alignment="BOTTOM_LEFT">
-            <Image url="@buttons/extra/home.png" />
+            <Image url="@textures/buttons/extra/home.png" />
         </ImageView>
     </bottom>
 </BorderPane>

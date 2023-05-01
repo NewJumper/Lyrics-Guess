@@ -17,27 +17,34 @@
         </Text>
     </top>
     <center>
-        <GridPane alignment="CENTER" hgap="40.0" BorderPane.alignment="CENTER">
+        <GridPane alignment="CENTER" hgap="40.0" vgap="40.0" BorderPane.alignment="CENTER">
             <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
             </rowConstraints>
+            <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#normal" translateY="80.0">
+                <Image url="@textures/buttons/all/normal.png" />
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#hardcore" translateY="80.0" GridPane.columnIndex="1">
+                <Image url="@textures/buttons/all/hardcore.png" />
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#opening" translateY="55.0" GridPane.rowIndex="1">
+                <Image url="@textures/buttons/all/opening.png" />
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#closing" translateY="55.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Image url="@textures/buttons/all/closing.png" />
+            </ImageView>
+            <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#zen" translateX="143.0" translateY="30.0" GridPane.rowIndex="2">
+                <Image url="@textures/buttons/all/zen.png" />
+            </ImageView>
             <padding>
                 <Insets top="10.0" />
             </padding>
-            <ImageView fitHeight="108.0" fitWidth="512.0" onMouseClicked="#difficultyMenu" translateY="70.0" GridPane.valignment="BOTTOM">
-                <Image url="@buttons/all/all-songs.png" />
-            </ImageView>
-            <ImageView fitHeight="108.0" fitWidth="512.0" onMouseClicked="#endlessMenu" translateY="50.0" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                <Image url="@buttons/endless/endless.png" />
-            </ImageView>
-            <ImageView fitHeight="108.0" fitWidth="512.0" translateY="30.0" GridPane.rowIndex="2" GridPane.valignment="TOP">
-                <Image url="@buttons/extra/time-attack.png" />
-            </ImageView>
         </GridPane>
     </center>
    <bottom>
@@ -50,10 +57,10 @@
                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
            </rowConstraints>
            <ImageView fitHeight="52.0" fitWidth="52.0" onMouseClicked="#returnToMenu" pickOnBounds="true" preserveRatio="true" translateX="-44.0" translateY="10.0" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
-               <Image url="@buttons/extra/home.png" />
+               <Image url="@textures/buttons/extra/home.png" />
            </ImageView>
            <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" translateX="40.0" translateY="14.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
-               <Image url="@buttons/extra/return.png" />
+               <Image url="@textures/buttons/extra/return.png" />
            </ImageView>
        </GridPane>
    </bottom>

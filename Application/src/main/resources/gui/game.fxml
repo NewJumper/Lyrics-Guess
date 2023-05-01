@@ -219,7 +219,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <ImageView fitHeight="52.0" fitWidth="52.0" onMouseClicked="#endGame" pickOnBounds="true" preserveRatio="true" translateX="-44.0" translateY="10.0" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
-                <Image url="@buttons/extra/home.png" />
+                <Image url="@textures/buttons/extra/home.png" />
             </ImageView>
         </GridPane>
     </bottom>
