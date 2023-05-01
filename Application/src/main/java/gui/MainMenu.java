@@ -104,8 +104,8 @@ public class MainMenu extends Application {
         ScoresMenu.scoresMenu();
     }
 
-    public void settings() {
-        System.out.println("settings");
+    public void settings() throws IOException {
+        SettingsMenu.settingsMenu();
     }
 
     public void quit() {
