@@ -66,7 +66,7 @@ public class GameMenu {
     public void checkGuess(KeyEvent keyEvent) throws IOException {
         if(keyEvent.getCode() != KeyCode.ENTER) return;
 
-        if(incorrect == 3) {
+        if(mode == 2 && incorrect == 3) {
             endGame();
             return;
         }
@@ -117,9 +117,12 @@ public class GameMenu {
                 score = updateScore(true);
             } else {
                 if(mode == 2) {
-                    skipTrack();
-                    if(strikes == 2) {
+                    if(strikes == 0) {
+                        strikes++;
+                    } else if(strikes == 1) {
+                        guesses++;
                         strikes = 0;
+                        skipTrack();
                         return;
                     }
                 }
@@ -149,7 +152,7 @@ public class GameMenu {
             return;
         }
         if(newSong) nextTrack();
-        if(mode < 3) updateLines();
+        updateLines();
     }
 
     public void revealNeighbors() {
@@ -168,20 +171,11 @@ public class GameMenu {
     }
 
     public void skipTrack() throws IOException {
-        if(mode == 2) {
-            if(incorrect == 3) {
-                endGame();
-                return;
-            }
-
-            if(strikes == 1) strikes = 2;
-            else {
-                strikes++;
-                return;
-            }
-        }
-
         if(trackCount == 0 || trackCount == SongGuessing.order.size()) return;
+        if(mode == 2 && incorrect == 3) {
+            endGame();
+            return;
+        }
 
         guessHistory.setFill(Color.valueOf("#bf3f3f"));
         guessHistory.setText(SongGuessing.filterSongName(currentSong.get(0)));
