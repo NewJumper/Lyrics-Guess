@@ -81,6 +81,9 @@ public class MainMenu extends Application {
                 case 2 -> modeName = "HARDCORE";
                 case 3 -> modeName = "OPENING";
                 case 4 -> modeName = "CLOSING";
+                case 5 -> modeName = "ENDLESS";
+                case 6 -> modeName = "ASSOCIATION";
+                case 7 -> modeName = "TIME ATTACK";
             }
 
             BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));

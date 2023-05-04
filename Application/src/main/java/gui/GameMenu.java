@@ -53,8 +53,11 @@ public class GameMenu {
      *  0 - ZEN
      *  1 - NORMAL
      *  2 - HARDCORE
-     *  3 - OPENING
-     *  4 - CLOSING
+     *  3 - ENDLESS
+     *  4 - TIME ATTACK
+     *  5 - OPENING
+     *  6 - CLOSING
+     *  7 - ASSOCIATION
      */
     public static void guessing(int mode) throws IOException {
         GameMenu.mode = mode;
@@ -66,12 +69,12 @@ public class GameMenu {
     public void checkGuess(KeyEvent keyEvent) throws IOException {
         if(keyEvent.getCode() != KeyCode.ENTER) return;
 
-        if(mode == 2 && incorrect == 3) {
+        if((mode == 2 && incorrect == 3) || (mode == 3 && incorrect == 1)) {
             endGame();
             return;
         }
 
-        if(trackCount == 0) {
+        if(trackCount % 188 == 0) {
             switch (mode) {
                 default -> gamemode.setText("NORMAL");
                 case 0 -> {
@@ -83,22 +86,29 @@ public class GameMenu {
                     gamemode.setText("HARDCORE");
                     gamemode.setFill(Color.valueOf("#ef4e40"));
                 }
-                case 3 -> {
+                case 3 -> gamemode.setText("ENDLESS");
+                case 4 -> {
+                    gamemode.setText("TIME ATTACK");
+                    gamemode.setFill(Color.valueOf("#40e0bf"));
+                }
+                case 5 -> {
                     gamemode.setText("OPENING");
                     gamemode.setFill(Color.valueOf("#7e73e6"));
                 }
-                case 4 -> {
+                case 6 -> {
                     gamemode.setText("CLOSING");
                     gamemode.setFill(Color.valueOf("#7e73e6"));
                 }
             }
 
-            startTime = System.nanoTime();
-            timeline.setCycleCount(Timeline.INDEFINITE);
-            timeline.play();
+            if(trackCount == 0) {
+                storeLines = List.of(lines0, lines1, lines2, lines3, lines4, lines5, lines6, lines7, lines8, lines9, lines10, lines11);
+                startTime = System.nanoTime();
+                timeline.setCycleCount(Timeline.INDEFINITE);
+                timeline.play();
+            }
 
             SongGuessing.randomSong();
-            storeLines = List.of(lines0, lines1, lines2, lines3, lines4, lines5, lines6, lines7, lines8, lines9, lines10, lines11);
         }
 
         if(!newSong) {
@@ -108,7 +118,7 @@ public class GameMenu {
                 guessHistory.setFill(Color.valueOf("#3fbf53"));
                 guessHistory.setText(currentSong.get(0).replaceAll("=", ""));
                 albumAnswerB.setText(", ");
-                albumAnswer.setText(SongGuessing.albums.get(SongGuessing.order.get(trackCount - 1)[0]).get(0));
+                albumAnswer.setText(SongGuessing.albums.get(SongGuessing.order.get((trackCount - 1) % 188)[0]).get(0));
                 newSong = true;
 
                 revealNeighbors();
@@ -137,7 +147,7 @@ public class GameMenu {
                     answer3.setText("---");
                 }
 
-                if(!guess.equals("") || !SongGuessing.capped && mode < 3) {
+                if(!guess.equals("") || !SongGuessing.capped && mode < 5) {
                     guesses++;
                     score = updateScore(false);
                 }
@@ -145,8 +155,8 @@ public class GameMenu {
         }
 
         textBox.clear();
-        if(trackCount == SongGuessing.order.size() && !skipButton.isDisabled()) skipButton.setDisable(true);
-        if(trackCount - 1 == SongGuessing.order.size()) {
+        if(trackCount == SongGuessing.order.size() && mode != 3 && !skipButton.isDisabled()) skipButton.setDisable(true);
+        if(trackCount - 1 == SongGuessing.order.size() && mode != 3) {
             trackCount--;
             endGame();
             return;
@@ -164,15 +174,15 @@ public class GameMenu {
         if(row < currentSong.size() - 1) answer3.setText(currentSong.get(row + 1));
         else answer3.setText("---");
 
-        if(mode == 3) answer1.setFill(Color.valueOf("#c0c0c0"));
+        if(mode == 5) answer1.setFill(Color.valueOf("#c0c0c0"));
         else answer1.setFill(Color.valueOf("#888888"));
-        if(mode == 4) answer3.setFill(Color.valueOf("#c0c0c0"));
+        if(mode == 6) answer3.setFill(Color.valueOf("#c0c0c0"));
         else answer3.setFill(Color.valueOf("#888888"));
     }
 
     public void skipTrack() throws IOException {
-        if(trackCount == 0 || trackCount == SongGuessing.order.size()) return;
-        if(mode == 2 && incorrect == 3) {
+        if(trackCount == 0 || (trackCount == SongGuessing.order.size() && mode != 3)) return;
+        if((mode == 2 && incorrect == 3) || (mode == 3 && incorrect == 1)) {
             endGame();
             return;
         }
@@ -180,7 +190,7 @@ public class GameMenu {
         guessHistory.setFill(Color.valueOf("#bf3f3f"));
         guessHistory.setText(SongGuessing.filterSongName(currentSong.get(0)));
         albumAnswerB.setText(", ");
-        albumAnswer.setText(SongGuessing.albums.get(SongGuessing.order.get(trackCount - 1)[0]).get(0));
+        albumAnswer.setText(SongGuessing.albums.get(SongGuessing.order.get((trackCount - 1) % 188)[0]).get(0));
         newSong = true;
 
         revealNeighbors();
@@ -194,24 +204,25 @@ public class GameMenu {
     }
 
     public void nextTrack() {
-        if(trackCount == 188) {
+        if(trackCount == 188 && mode != 3) {
             trackCount++;
             return;
         }
-        currentSong = SongGuessing.getSong(SongGuessing.albums.get(SongGuessing.order.get(trackCount)[0]), SongGuessing.order.get(trackCount)[1]);
+        currentSong = SongGuessing.getSong(SongGuessing.albums.get(SongGuessing.order.get(trackCount % 188)[0]), SongGuessing.order.get(trackCount % 188)[1]);
         trackCount++;
         newSong = false;
 
         SongGuessing.history.clear();
         storeLines.forEach(text -> text.setText(""));
-        track.setText("Track " + trackCount + "/" + SongGuessing.order.size());
+        if(mode == 3) track.setText("Track " + trackCount);
+        else track.setText("Track " + trackCount + "/" + SongGuessing.order.size());
 
-        if(mode == 3) {
+        if(mode == 5) {
             storeLines.get(1).setText(SongGuessing.replaceName(currentSong.get(1), SongGuessing.filterSongName(currentSong.get(0))));
             storeLines.get(0).setText(SongGuessing.replaceName(currentSong.get(2), SongGuessing.filterSongName(currentSong.get(0))));
             SongGuessing.history.put(1, storeLines.get(1).getText());
             SongGuessing.history.put(2, storeLines.get(0).getText());
-        } else if(mode == 4) {
+        } else if(mode == 6) {
             storeLines.get(1).setText(SongGuessing.replaceName(currentSong.get(currentSong.size() - 2), SongGuessing.filterSongName(currentSong.get(0))));
             storeLines.get(0).setText(SongGuessing.replaceName(currentSong.get(currentSong.size() - 1), SongGuessing.filterSongName(currentSong.get(0))));
             SongGuessing.history.put(currentSong.size() - 1, storeLines.get(0).getText());
@@ -220,7 +231,7 @@ public class GameMenu {
     }
 
     public void updateLines() {
-        if(mode < 3) SongGuessing.randomLine(currentSong);
+        if(mode < 5) SongGuessing.randomLine(currentSong);
         List<Integer> keys = new ArrayList<>(SongGuessing.history.keySet());
 
         for(int i = storeLines.size() - 1; i >= 0; i--) {
@@ -233,9 +244,10 @@ public class GameMenu {
 
     public int updateScore(boolean green) {
         switch (mode) {
-            default -> score = 10 * correct - 2 * incorrect - guesses - (int) ((time - startTime) / 30000000000L);
-            case 2 -> score = (int) (11.11 * correct - 2.11 * incorrect - guesses - (time - startTime) / 10000000000L);
-            case 3, 4 -> score = (int) (9 * correct - 2.5 * incorrect - guesses - (time - startTime) / 20000000000L);
+            default -> score = (int) (10 * correct - 2 * incorrect - guesses - (time - startTime) / 20000000000L);
+            case 2 -> score = (int) (11.11 * correct - 2.11 * incorrect - guesses - (time - startTime) / 15000000000L);
+            case 3 -> score = (int) (9.5 * correct - 7/3.0 * incorrect - guesses / 4.0 - (time - startTime) / 20000000000L) + trackCount / 47;
+            case 5, 6 -> score = (int) (10 * correct - 2.5 * incorrect - guesses - (time - startTime) / 60000000000L);
         }
 
         if(green) scoreText.setFill(Color.valueOf("#3fbf53"));

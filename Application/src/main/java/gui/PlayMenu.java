@@ -40,12 +40,24 @@ public class PlayMenu {
         GameMenu.guessing(2);
     }
 
-    public void opening() throws IOException {
+    public void endless() throws IOException {
         GameMenu.guessing(3);
     }
 
-    public void closing() throws IOException {
+    public void timeAttack() throws IOException {
         GameMenu.guessing(4);
+    }
+
+    public void opening() throws IOException {
+        GameMenu.guessing(5);
+    }
+
+    public void closing() throws IOException {
+        GameMenu.guessing(6);
+    }
+
+    public void association() throws IOException {
+        GameMenu.guessing(7);
     }
 
     public void returnToMenu() throws IOException {

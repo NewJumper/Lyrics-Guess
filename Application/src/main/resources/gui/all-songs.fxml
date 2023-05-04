@@ -10,7 +10,7 @@
         <Insets bottom="40.0" left="60.0" right="60.0" top="40.0" />
     </padding>
     <top>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="SELECT A GAMEMODE" textAlignment="CENTER" translateY="80.0" wrappingWidth="512" BorderPane.alignment="CENTER">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="ALL SONGS" textAlignment="CENTER" translateY="80.0" wrappingWidth="512" BorderPane.alignment="CENTER">
             <font>
                 <Font name="System Bold" size="60.0" />
             </font>
