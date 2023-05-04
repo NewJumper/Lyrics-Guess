@@ -61,7 +61,7 @@ public class ScoresMenu {
 
             switch (mode) {
                 case "HARDCORE" -> scoreNames.get(i).setFill(Color.valueOf("#ef4e40"));
-                case "TIME ATTACK" -> scoreNames.get(i).setFill(Color.valueOf("#40e0bf"));
+                case "TIME ATTACK" -> scoreNames.get(i).setFill(Color.valueOf("#49e3c3"));
                 case "OPENING", "CLOSING" -> scoreNames.get(i).setFill(Color.valueOf("#7e73e6"));
                 default -> scoreNames.get(i).setFill(Color.valueOf("#ffffff"));
             }

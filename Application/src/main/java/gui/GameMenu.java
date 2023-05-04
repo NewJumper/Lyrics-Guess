@@ -89,7 +89,7 @@ public class GameMenu {
                 case 3 -> gamemode.setText("ENDLESS");
                 case 4 -> {
                     gamemode.setText("TIME ATTACK");
-                    gamemode.setFill(Color.valueOf("#40e0bf"));
+                    gamemode.setFill(Color.valueOf("#49e3c3"));
                 }
                 case 5 -> {
                     gamemode.setText("OPENING");
