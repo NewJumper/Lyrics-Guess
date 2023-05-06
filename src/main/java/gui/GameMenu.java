@@ -91,7 +91,7 @@ public class GameMenu {
                 }
                 case 2 -> {
                     gamemode.setText("HARDCORE");
-                    gamemode.setFill(Color.valueOf("#ef4e40"));
+                    gamemode.setFill(Color.valueOf("#e65353"));
                 }
                 case 3 -> gamemode.setText("ENDLESS");
                 case 4 -> {
