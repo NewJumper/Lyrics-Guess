@@ -69,7 +69,7 @@ public class SongGuessing {
     }
 
     public static String filterSongName(String songName) {
-        if(!songName.contains(" (")) return songName.replace("=", "");
+        if(!songName.contains(" (") || songName.contains("Finale")) return songName.replace("=", "");
         return songName.substring(0, songName.indexOf(" ("));
     }
 
