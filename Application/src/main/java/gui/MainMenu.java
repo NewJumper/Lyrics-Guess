@@ -79,11 +79,11 @@ public class MainMenu extends Application {
             switch (GameMenu.mode) {
                 default -> modeName = "NORMAL";
                 case 2 -> modeName = "HARDCORE";
-                case 3 -> modeName = "OPENING";
-                case 4 -> modeName = "CLOSING";
-                case 5 -> modeName = "ENDLESS";
-                case 6 -> modeName = "ASSOCIATION";
-                case 7 -> modeName = "TIME ATTACK";
+                case 3 -> modeName = "ENDLESS";
+                case 4 -> modeName = "TIME ATTACK";
+                case 5 -> modeName = "OPENING";
+                case 6 -> modeName = "CLOSING";
+                case 7 -> modeName = "ASSOCIATION";
             }
 
             BufferedWriter writer = new BufferedWriter(new FileWriter("Application/src/main/resources/scores.txt", true));

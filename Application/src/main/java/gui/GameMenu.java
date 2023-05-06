@@ -45,8 +45,15 @@ public class GameMenu {
     public Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, event -> {
         if(startTime == 0) return;
         time = System.nanoTime();
-        long secondsText = (time - startTime) / 1000000000L % 60;
-        timeText.setText((time - startTime) / 60000000000L + ":" + (secondsText < 10 ? "0" + secondsText : secondsText));
+        long secondsText = Math.abs((time - startTime) / 1000000000L % 60);
+        timeText.setText(Math.abs((time - startTime) / 60000000000L) + ":" + (secondsText < 10 ? "0" + secondsText : secondsText));
+        if(mode == 4 && time / 1000000000L - startTime / 1000000000L == 0) {
+            try {
+                endGame();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }), new KeyFrame(Duration.seconds(1)));
 
     /**
@@ -104,6 +111,7 @@ public class GameMenu {
             if(trackCount == 0) {
                 storeLines = List.of(lines0, lines1, lines2, lines3, lines4, lines5, lines6, lines7, lines8, lines9, lines10, lines11);
                 startTime = System.nanoTime();
+                if(mode == 4) startTime += 180000000000L;
                 timeline.setCycleCount(Timeline.INDEFINITE);
                 timeline.play();
             }
@@ -246,6 +254,7 @@ public class GameMenu {
         switch (mode) {
             default -> score = (int) (10 * correct - 2 * incorrect - guesses - (time - startTime) / 20000000000L);
             case 2 -> score = (int) (11.11 * correct - 2.11 * incorrect - guesses - (time - startTime) / 15000000000L);
+            case 4 -> score = 15 * correct - 5 * incorrect - 3 * guesses;
             case 3 -> score = (int) (9.5 * correct - 7/3.0 * incorrect - guesses / 4.0 - (time - startTime) / 20000000000L) + trackCount / 47;
             case 5, 6 -> score = (int) (10 * correct - 2.5 * incorrect - guesses - (time - startTime) / 60000000000L);
         }

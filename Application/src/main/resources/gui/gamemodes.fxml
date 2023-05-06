@@ -35,7 +35,7 @@
             <ImageView fitHeight="108.0" fitWidth="512.0" onMouseClicked="#endlessMenu" translateY="50.0" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                 <Image url="@textures/buttons/endless/endless.png" />
             </ImageView>
-            <ImageView fitHeight="108.0" fitWidth="512.0" translateY="30.0" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <ImageView fitHeight="108.0" fitWidth="512.0" onMouseClicked="#timeAttack" translateY="30.0" GridPane.rowIndex="2" GridPane.valignment="TOP">
                 <Image url="@textures/buttons/extra/time-attack.png" />
             </ImageView>
         </GridPane>
