@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #181a1f;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PlayMenu">
+    <padding>
+        <Insets bottom="40.0" left="60.0" right="60.0" top="40.0" />
+    </padding>
+    <top>
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="SELECT A GAMEMODE" textAlignment="CENTER" translateY="80.0" wrappingWidth="512" BorderPane.alignment="CENTER">
+            <font>
+                <Font name="System Bold" size="60.0" />
+            </font>
+        </Text>
+    </top>
+    <center>
+        <GridPane alignment="CENTER" hgap="40.0" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <padding>
+                <Insets top="10.0" />
+            </padding>
+            <ImageView fitHeight="108.0" fitWidth="512.0" onMouseClicked="#difficultyMenu" translateY="70.0" GridPane.valignment="BOTTOM">
+                <Image url="@textures/buttons/all/all-songs.png" />
+            </ImageView>
+            <ImageView fitHeight="108.0" fitWidth="512.0" onMouseClicked="#endlessMenu" translateY="50.0" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                <Image url="@textures/buttons/endless/endless.png" />
+            </ImageView>
+            <ImageView fitHeight="108.0" fitWidth="512.0" onMouseClicked="#timeAttack" translateY="30.0" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                <Image url="@textures/buttons/extra/time-attack.png" />
+            </ImageView>
+        </GridPane>
+    </center>
+   <bottom>
+       <GridPane prefHeight="30.0" prefWidth="449.0" BorderPane.alignment="CENTER">
+           <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+           </columnConstraints>
+           <rowConstraints>
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+           <ImageView fitHeight="52.0" fitWidth="52.0" onMouseClicked="#returnToMenu" pickOnBounds="true" preserveRatio="true" translateX="-44.0" translateY="10.0" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+               <Image url="@textures/buttons/extra/home.png" />
+           </ImageView>
+           <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true" translateX="40.0" translateY="14.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+               <Image url="@textures/buttons/extra/return.png" />
+           </ImageView>
+       </GridPane>
+   </bottom>
+</BorderPane>
