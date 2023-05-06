@@ -3,3 +3,7 @@
 /Application/build
 /out
 TS Games.iml
+
+.gradle/
+.idea/
+build/
