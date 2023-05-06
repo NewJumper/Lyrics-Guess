@@ -10,7 +10,7 @@
         <Insets bottom="40.0" left="60.0" right="60.0" top="40.0" />
     </padding>
     <top>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text=" TAYLOR SWIFT GAMES" textAlignment="CENTER" translateY="60.0" wrappingWidth="512.0" BorderPane.alignment="BOTTOM_CENTER">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text=" LYRICS GUESS" textAlignment="CENTER" translateY="60.0" wrappingWidth="324.0" BorderPane.alignment="BOTTOM_CENTER">
             <font>
                 <Font name="System Bold" size="60.0" />
             </font>

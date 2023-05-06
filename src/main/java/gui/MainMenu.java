@@ -27,7 +27,7 @@ public class MainMenu extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         window = stage;
-        stage.setTitle("TS Games");
+        stage.setTitle("Lyrics Guess");
         stage.getIcons().add(new Image("gui/textures/icon.png"));
         stage.setOnCloseRequest(event -> {
             event.consume();
