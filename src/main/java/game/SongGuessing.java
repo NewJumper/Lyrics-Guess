@@ -1,5 +1,8 @@
 package game;
 
+import gui.SettingsMenu;
+
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -18,16 +21,15 @@ public class SongGuessing {
         albums.clear();
         order.clear();
 
-        albums.add(Files.readAllLines(Paths.get("src/main/resources/lyrics/taylor_swift/taylor swift.txt")));
-        albums.add(Files.readAllLines(Paths.get("src/main/resources/lyrics/taylor_swift/fearless.txt")));
-        albums.add(Files.readAllLines(Paths.get("src/main/resources/lyrics/taylor_swift/speak now.txt")));
-        albums.add(Files.readAllLines(Paths.get("src/main/resources/lyrics/taylor_swift/red.txt")));
-        albums.add(Files.readAllLines(Paths.get("src/main/resources/lyrics/taylor_swift/1989.txt")));
-        albums.add(Files.readAllLines(Paths.get("src/main/resources/lyrics/taylor_swift/reputation.txt")));
-        albums.add(Files.readAllLines(Paths.get("src/main/resources/lyrics/taylor_swift/lover.txt")));
-        albums.add(Files.readAllLines(Paths.get("src/main/resources/lyrics/taylor_swift/folklore.txt")));
-        albums.add(Files.readAllLines(Paths.get("src/main/resources/lyrics/taylor_swift/evermore.txt")));
-        albums.add(Files.readAllLines(Paths.get("src/main/resources/lyrics/taylor_swift/midnights.txt")));
+        String artistPath = switch (SettingsMenu.artist) {
+            case "AJ" -> "ajr";
+            case "SB" -> "sabrina_carpenter";
+            case "TP" -> "twenty_one_pilots";
+            default -> "taylor_swift";
+        };
+        File[] albumPaths = new File("src/main/resources/lyrics/" + artistPath).listFiles();
+        assert albumPaths != null;
+        for(File album : albumPaths) albums.add(Files.readAllLines(Paths.get(album.toURI())));
 
         for(int i = 0; i < albums.size(); i++) {
             for(int j = 1; j <= Integer.parseInt(albums.get(i).get(1)); j++) {

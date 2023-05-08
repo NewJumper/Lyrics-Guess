@@ -2,12 +2,14 @@ package gui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class SettingsMenu {
     public static String artist = "TS";
+    public Text artistSel;
 
     /*
      * WHAT TO STORE:
@@ -19,6 +21,17 @@ public class SettingsMenu {
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("settings.fxml"))));
         Parent oldRoot = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("main.fxml"))));
         MainMenu.updateScene(oldRoot, root, false);
+    }
+
+    public void changeArtist() {
+        if(artist.equals("TS")) {
+            artistSel.setText("AJ");
+            artist = "AJ";
+        }
+        else if(artist.equals("AJ")) {
+            artistSel.setText("TS");
+            artist = "TS";
+        }
     }
 
     public void returnToMenu() throws IOException {

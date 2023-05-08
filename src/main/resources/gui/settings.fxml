@@ -17,23 +17,27 @@
             </font>
         </Text>
     </top>
-    <center>
-        <GridPane alignment="CENTER" hgap="40.0" BorderPane.alignment="CENTER">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints maxHeight="263.5999816894531" minHeight="10.0" prefHeight="79.59998168945307" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="457.2000183105468" minHeight="10.0" prefHeight="457.2000183105468" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <padding>
-                <Insets top="10.0" />
-            </padding>
-        </GridPane>
-    </center>
     <bottom>
         <ImageView fitHeight="52.0" fitWidth="52.0" onMouseClicked="#returnToMenu" pickOnBounds="true" preserveRatio="true" translateX="-44.0" translateY="21.0" BorderPane.alignment="BOTTOM_LEFT">
             <Image url="@textures/buttons/extra/home.png" />
         </ImageView>
     </bottom>
+   <center>
+       <GridPane BorderPane.alignment="CENTER">
+           <columnConstraints>
+               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+           </columnConstraints>
+           <rowConstraints>
+               <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+           </rowConstraints>
+           <Text fx:id="artistSel" fill="#ececec" onMouseClicked="#changeArtist" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="TS" GridPane.columnIndex="0" GridPane.rowIndex="0">
+               <font>
+                   <Font name="Consolas Bold" size="19.0" />
+               </font>
+           </Text>
+       </GridPane>
+   </center>
 </BorderPane>
