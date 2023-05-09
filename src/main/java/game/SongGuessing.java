@@ -125,15 +125,13 @@ public class SongGuessing {
         if(guess.length() == 0) return false;
         if(name.equalsIgnoreCase(guess)) return true;
 
-        name = name.replace("&", "and");
-        if(name.equals("Come Back...Be Here")) name = "Come Back... Be Here";
-        if(name.equals("Anti-Hero")) name = "Anti Hero";
+        name = guessingEdgeCases(name.replace("&", "and"), guess);
         if(guess.length() > name.length()) return false;
 
         int buffer = 0;
         for(int i = 0; i < name.length(); i++) {
             if(i >= guess.length() + buffer || !guess.substring(i - buffer, i - buffer + 1).equalsIgnoreCase(name.substring(i, i + 1))) {
-                if(name.charAt(i) == '\'' || name.charAt(i) == '.' || name.charAt(i) == ',' || name.charAt(i) == '!' || name.charAt(i) == '?') buffer++;
+                if(name.charAt(i) == '\'' || name.charAt(i) == '.' || name.charAt(i) == ',' || name.charAt(i) == '!' || name.charAt(i) == '?' || name.charAt(i) == '-') buffer++;
                 else return false;
             }
 
@@ -141,5 +139,15 @@ public class SongGuessing {
         }
 
         return true;
+    }
+
+    private static String guessingEdgeCases(String name, String guess) {
+        if(name.equals("Finale (Can't Wait To See What You Do Next)") && guess.length() == 6) return "Finale";
+        if(name.equals("Finale (Can't Wait To See What You Do Next)") && guess.length() > 6) return "Can't Wait To See What You Do Next";
+        if(name.equals("Turning Out Pt. ii")) return "Turning Out 2";
+
+        if(name.equals("Anti-Hero") && guess.length() == 8) return "AntiHero";
+        if(name.equals("Come Back...Be Here")) return "Come Back... Be Here";
+        return name;
     }
 }
