@@ -1,15 +1,20 @@
 package gui;
 
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class SettingsMenu {
-    public static String artist = "TS";
+public class SettingsMenu implements Initializable {
     public Text artistSel;
+
+    private static Text artistSelStatic;
+    public static String artist = "TS";
 
     /*
      * WHAT TO STORE:
@@ -21,20 +26,21 @@ public class SettingsMenu {
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("settings.fxml"))));
         Parent oldRoot = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("main.fxml"))));
         MainMenu.updateScene(oldRoot, root, false);
+
+        artistSelStatic.setText(artist);
     }
 
     public void changeArtist() {
-        if(artist.equals("TS")) {
-            artistSel.setText("AJ");
-            artist = "AJ";
-        }
-        else if(artist.equals("AJ")) {
-            artistSel.setText("TS");
-            artist = "TS";
-        }
+        if(artist.equals("TS")) artistSelStatic.setText(artist = "AJ");
+        else if(artist.equals("AJ")) artistSelStatic.setText(artist = "TS");
     }
 
     public void returnToMenu() throws IOException {
         MainMenu.showMenu();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        artistSelStatic = artistSel;
     }
 }
