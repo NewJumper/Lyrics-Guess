@@ -111,7 +111,7 @@ public class GameMenu {
             if(trackCount == 0) {
                 storeLines = List.of(lines0, lines1, lines2, lines3, lines4, lines5, lines6, lines7, lines8, lines9, lines10, lines11);
                 startTime = System.nanoTime();
-                if(mode == 4) startTime += 180000000000L;
+                if(mode == 4) startTime += SettingsMenu.timeControl * 60000000000L;
                 timeline.setCycleCount(Timeline.INDEFINITE);
                 timeline.play();
             }
