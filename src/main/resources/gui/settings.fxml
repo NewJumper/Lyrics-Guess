@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #181a1f;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SettingsMenu">
@@ -21,27 +20,51 @@
             <Image url="@textures/buttons/extra/home.png" />
         </ImageView>
     </bottom>
-   <center>
-       <GridPane BorderPane.alignment="CENTER">
-           <columnConstraints>
-               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-           </columnConstraints>
-           <rowConstraints>
-               <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-               <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-               <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-           </rowConstraints>
-           <Text fx:id="artistSel" fill="#ececec" onMouseClicked="#changeArtist" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="TS" GridPane.columnIndex="0" GridPane.rowIndex="0">
-               <font>
-                   <Font name="Consolas Bold" size="19.0" />
-               </font>
-           </Text>
-           <Text fx:id="timeSel" fill="#ececec" onMouseClicked="#changeTime" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="3:00" GridPane.columnIndex="0" GridPane.rowIndex="1">
-               <font>
-                   <Font name="Consolas Bold" size="19.0" />
-               </font>
-           </Text>
-       </GridPane>
-   </center>
+    <center>
+        <GridPane BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="NEVER" minWidth="10.0" prefWidth="650.0" />
+                <ColumnConstraints halignment="RIGHT" hgrow="NEVER" minWidth="10.0" prefWidth="40.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="10.0" prefWidth="150.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <Text fill="#ececec" onMouseClicked="#cycleArtistRight" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="ARTIST" translateY="100.0">
+                <font>
+                    <Font name="Consolas Bold" size="25.0" />
+                </font>
+            </Text>
+            <Text fill="#ececec" onMouseClicked="#cycleArtistRight" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="TIME CONTROL" GridPane.rowIndex="1">
+                <font>
+                    <Font name="Consolas Bold" size="25.0" />
+                </font>
+            </Text>
+            <ImageView fitHeight="32.0" fitWidth="32.0" onMouseClicked="#cycleArtistLeft" translateY="100.0" GridPane.columnIndex="1">
+                <Image url="@textures/buttons/extra/arrow_left.png" />
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="32.0" onMouseClicked="#decrementTime" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Image url="@textures/buttons/extra/arrow_left.png" />
+            </ImageView>
+            <Text fx:id="artistSel" fill="#ececec" onMouseClicked="#cycleArtistRight" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="Taylor Swift" translateY="100.0" GridPane.columnIndex="2">
+                <font>
+                    <Font name="Consolas Bold" size="19.0" />
+                </font>
+            </Text>
+            <Text fx:id="timeSel" fill="#ececec" onMouseClicked="#cycleArtistRight" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="3:00" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                <font>
+                    <Font name="Consolas Bold" size="19.0" />
+                </font>
+            </Text>
+            <ImageView fitHeight="32.0" fitWidth="32.0" onMouseClicked="#cycleArtistRight" translateY="100.0" GridPane.columnIndex="3">
+                <Image url="@textures/buttons/extra/arrow_right.png" />
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="32.0" onMouseClicked="#incrementTime" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                <Image url="@textures/buttons/extra/arrow_right.png" />
+            </ImageView>
+        </GridPane>
+    </center>
 </BorderPane>

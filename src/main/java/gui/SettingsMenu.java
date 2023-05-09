@@ -7,6 +7,8 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -16,37 +18,53 @@ public class SettingsMenu implements Initializable {
 
     private static Text artistSelStatic;
     private static Text timeSelStatic;
-    public static String artist = "TS";
-    public static int timeControl = 3;
+    public static String artist;
+    public static int timeControl;
+    private static final LinkedHashMap<Integer, String> ARTISTS = new LinkedHashMap<>();
+    private static final LinkedHashMap<Integer, Integer> TIME_CONTROLS = new LinkedHashMap<>();
+    private static int artistsIndex;
+    private static int timeIndex = 2;
 
     /*
      * WHAT TO STORE:
      * WHAT ARTIST: AJR, SABRINA CARPENTER, TAYLOR SWIFT, TWENTY ONE PILOTS
      *      ARTIST CODES: AJ, SC, TS, TP
-     * TIME FOR TIME ATTACK: 1 MIN, 2 MIN, 3 MIN, 5 MIN
+     * TIME FOR TIME ATTACK: 1 MIN, 2 MIN, 3 MIN, 5 MIN, 10 MIN
      */
     public static void settingsMenu() throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("settings.fxml"))));
         Parent oldRoot = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("main.fxml"))));
         MainMenu.updateScene(oldRoot, root, false);
 
-        artistSelStatic.setText(artist);
-        timeSelStatic.setText(timeControl + ":00");
+        ARTISTS.putAll(Map.of(0, "AJR,AJ", 1, "Taylor Swift,TS"));
+        TIME_CONTROLS.putAll(Map.of(0, 1, 1, 2, 2, 3, 3, 5, 4, 10));
+
+        artistSelStatic.setText(ARTISTS.get(artistsIndex).substring(0, ARTISTS.get(artistsIndex).indexOf(",")));
+        timeSelStatic.setText(TIME_CONTROLS.get(timeIndex) + ":00");
     }
 
-    public void changeArtist() {
-        if(artist.equals("TS")) artistSelStatic.setText(artist = "AJ");
-        else if(artist.equals("AJ")) artistSelStatic.setText(artist = "TS");
+    public void cycleArtistLeft() {
+        if(--artistsIndex < 0) artistsIndex = ARTISTS.size() - 1;
+        String selection = ARTISTS.get(artistsIndex);
+        artist = selection.substring(selection.indexOf(",") + 1);
+        artistSelStatic.setText(selection.substring(0, selection.indexOf(",")));
     }
 
-    public void changeTime() {
-        switch(timeControl) {
-            default -> timeSelStatic.setText((timeControl = 1) + ":00");
-            case 1 -> timeSelStatic.setText((timeControl = 2) + ":00");
-            case 2 -> timeSelStatic.setText((timeControl = 3) + ":00");
-            case 3 -> timeSelStatic.setText((timeControl = 5) + ":00");
-            case 5 -> timeSelStatic.setText((timeControl = 10) + ":00");
-        }
+    public void cycleArtistRight() {
+        if(++artistsIndex >= ARTISTS.size()) artistsIndex = 0;
+        String selection = ARTISTS.get(artistsIndex);
+        artist = selection.substring(selection.indexOf(",") + 1);
+        artistSelStatic.setText(selection.substring(0, selection.indexOf(",")));
+    }
+
+    public void decrementTime() {
+        if(--timeIndex < 0) timeIndex = TIME_CONTROLS.size() - 1;
+        timeSelStatic.setText((timeControl = TIME_CONTROLS.get(timeIndex)) + ":00");
+    }
+
+    public void incrementTime() {
+        if(++timeIndex >= TIME_CONTROLS.size()) timeIndex = 0;
+        timeSelStatic.setText((timeControl = TIME_CONTROLS.get(timeIndex)) + ":00");
     }
 
     public void returnToMenu() throws IOException {
