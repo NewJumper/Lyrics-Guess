@@ -88,7 +88,8 @@ public class MainMenu extends Application {
 
             BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/scores.txt", true));
             SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
-            writer.write(SettingsMenu.artist + " " + modeName + " " + GameMenu.score + " (" + (GameMenu.correct + GameMenu.incorrect) + ") " + dateFormat.format(new Date()) + "\n");
+            String scoringParams = ": " + GameMenu.correct + "-" + GameMenu.incorrect + "-" + GameMenu.guesses + "-" + (GameMenu.mode == 4 ? (GameMenu.time - GameMenu.startTime) / 1000000000L + SettingsMenu.timeControl * 60L : (GameMenu.time - GameMenu.startTime) / 1000000000L);
+            writer.write(SettingsMenu.artist + " " + modeName + " " + GameMenu.score + " (" + (GameMenu.correct + GameMenu.incorrect) + ") " + dateFormat.format(new Date()) + scoringParams + "\n");
             writer.flush();
         }
 
