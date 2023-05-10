@@ -30,7 +30,7 @@ public class SettingsMenu implements Initializable {
         Parent oldRoot = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("main.fxml"))));
         MainMenu.updateScene(oldRoot, root, false);
 
-        ARTISTS.putAll(Map.of(0, "AJR,AJ", 1, "Taylor Swift,TS", 2, "Twenty One Pilots,TP"));
+        ARTISTS.putAll(Map.of(0, "AJR,AJ", 1, "Sabrina Carpenter,SC", 2, "Taylor Swift,TS", 3, "Twenty One Pilots,TP"));
         TIME_CONTROLS.putAll(Map.of(0, 1, 1, 2, 2, 3, 3, 5, 4, 10));
 
         artistSelStatic.setText(ARTISTS.get(artistsIndex).substring(0, ARTISTS.get(artistsIndex).indexOf(",")));

@@ -23,7 +23,7 @@ public class SongGuessing {
 
         String artistPath = switch (SettingsMenu.artist) {
             case "AJ" -> "ajr";
-            case "SB" -> "sabrina_carpenter";
+            case "SC" -> "sabrina_carpenter";
             case "TP" -> "twenty_one_pilots";
             default -> "taylor_swift";
         };
@@ -109,6 +109,9 @@ public class SongGuessing {
             }
         }
 
+        if(name.equals("prfct")) return result.replace("perfect", "_______");
+        if(name.equals("Diamonds Are Forever")) return result.replace("diamonds", "________");
+
         if(name.equals("Bye Bye Baby")) return result.replace("Bye, bye", "___, ___");
         if(name.equals("Dancing With Our Hands Tied")) return result.replace("_, hands tied", "_, _____ ____");
         if(name.equals("Mary's Song")) return result.replace("Oh my, my, my", "__ __, __, __");
@@ -145,6 +148,8 @@ public class SongGuessing {
         if(name.equals("Finale (Can't Wait To See What You Do Next)") && guess.length() == 6) return "Finale";
         if(name.equals("Finale (Can't Wait To See What You Do Next)") && guess.length() > 6) return "Can't Wait To See What You Do Next";
         if(name.equals("Turning Out Pt. ii")) return "Turning Out 2";
+
+        if(name.equals("prfct")) return "Perfect";
 
         if(name.equals("Anti-Hero") && guess.length() == 8) return "AntiHero";
         if(name.equals("Come Back...Be Here")) return "Come Back... Be Here";
