@@ -23,6 +23,7 @@ public class SongGuessing {
 
         String artistPath = switch (SettingsMenu.artist) {
             case "AJ" -> "ajr";
+            case "FC" -> "friday_pilots_club";
             case "SC" -> "sabrina_carpenter";
             case "TP" -> "twenty_one_pilots";
             default -> "taylor_swift";
