@@ -25,18 +25,12 @@ public class SettingsMenu implements Initializable {
     private static int artistsIndex;
     private static int timeIndex = 2;
 
-    /*
-     * WHAT TO STORE:
-     * WHAT ARTIST: AJR, SABRINA CARPENTER, TAYLOR SWIFT, TWENTY ONE PILOTS
-     *      ARTIST CODES: AJ, SC, TS, TP
-     * TIME FOR TIME ATTACK: 1 MIN, 2 MIN, 3 MIN, 5 MIN, 10 MIN
-     */
     public static void settingsMenu() throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("settings.fxml"))));
         Parent oldRoot = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("main.fxml"))));
         MainMenu.updateScene(oldRoot, root, false);
 
-        ARTISTS.putAll(Map.of(0, "AJR,AJ", 1, "Taylor Swift,TS"));
+        ARTISTS.putAll(Map.of(0, "AJR,AJ", 1, "Taylor Swift,TS", 2, "Twenty One Pilots,TP"));
         TIME_CONTROLS.putAll(Map.of(0, 1, 1, 2, 2, 3, 3, 5, 4, 10));
 
         artistSelStatic.setText(ARTISTS.get(artistsIndex).substring(0, ARTISTS.get(artistsIndex).indexOf(",")));
