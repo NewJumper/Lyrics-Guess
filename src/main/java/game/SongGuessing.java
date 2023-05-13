@@ -6,10 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.*;
 
 public class SongGuessing {
     public static List<List<String>> albums = new ArrayList<>();
@@ -28,9 +25,17 @@ public class SongGuessing {
             case "TP" -> "twenty_one_pilots";
             default -> "taylor_swift";
         };
-        File[] albumPaths = new File("src/main/resources/lyrics/" + artistPath).listFiles();
-        assert albumPaths != null;
-        for(File album : albumPaths) albums.add(Files.readAllLines(Paths.get(album.toURI())));
+
+        File[] artistPaths = new File("src/main/resources/lyrics").listFiles();
+        assert artistPaths != null;
+
+        for(int i = 0; i < (SettingsMenu.artist.equals("AA") ? artistPaths.length : 1); i++) {
+            File[] albumPaths;
+            if(SettingsMenu.artist.equals("AA")) albumPaths = new File(artistPaths[i].toURI()).listFiles();
+            else albumPaths = new File("src/main/resources/lyrics/" + artistPath).listFiles();
+            assert albumPaths != null;
+            for(File album : albumPaths) albums.add(Files.readAllLines(Paths.get(album.toURI())));
+        }
 
         for(int i = 0; i < albums.size(); i++) {
             for(int j = 1; j <= Integer.parseInt(albums.get(i).get(1)); j++) {
