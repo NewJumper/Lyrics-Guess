@@ -18,8 +18,8 @@ public class SettingsMenu implements Initializable {
 
     private static Text artistSelStatic;
     private static Text timeSelStatic;
-    public static String artist;
-    public static int timeControl;
+    public static String artist = "AA";
+    public static int timeControl = 3;
     private static final LinkedHashMap<Integer, String> ARTISTS = new LinkedHashMap<>();
     private static final LinkedHashMap<Integer, Integer> TIME_CONTROLS = new LinkedHashMap<>();
     private static int artistsIndex;
