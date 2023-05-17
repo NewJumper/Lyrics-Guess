@@ -27,16 +27,16 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#play" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
-                <Image url="@textures/buttons/main/play.png"/>
+                <Image url="@textures/buttons/main/play.png" />
             </ImageView>
             <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#scores" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
-                <Image url="@textures/buttons/main/scores.png"/>
+                <Image url="@textures/buttons/main/scores.png" />
             </ImageView>
             <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#settings" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                <Image url="@textures/buttons/main/settings.png"/>
+                <Image url="@textures/buttons/main/settings.png" />
             </ImageView>
             <ImageView fitHeight="152.0" fitWidth="246.0" onMouseClicked="#quit" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                <Image url="@textures/buttons/main/quit.png"/>
+                <Image url="@textures/buttons/main/quit.png" />
             </ImageView>
             <padding>
                 <Insets top="10.0" />

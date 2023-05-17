@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class PlayMenu {
-
     public static void playMenu() throws IOException {
         Parent root = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("gamemodes.fxml"))));
         Parent oldRoot = FXMLLoader.load((Objects.requireNonNull(PlayMenu.class.getResource("main.fxml"))));

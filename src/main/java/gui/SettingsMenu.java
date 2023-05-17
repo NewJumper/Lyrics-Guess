@@ -15,9 +15,11 @@ import java.util.ResourceBundle;
 public class SettingsMenu implements Initializable {
     public Text artistSel;
     public Text timeSel;
+    public Text resolutionSel;
 
     private static Text artistSelStatic;
     private static Text timeSelStatic;
+    private static Text resolutionSelStatic;
     public static String artist = "AA";
     public static int timeControl = 3;
     private static final LinkedHashMap<Integer, String> ARTISTS = new LinkedHashMap<>();
@@ -35,6 +37,7 @@ public class SettingsMenu implements Initializable {
 
         artistSelStatic.setText(ARTISTS.get(artistsIndex).substring(0, ARTISTS.get(artistsIndex).indexOf(",")));
         timeSelStatic.setText(TIME_CONTROLS.get(timeIndex) + ":00");
+        resolutionSelStatic.setText(MainMenu.window.isFullScreen() ? "Fullscreen" : "Windowed");
     }
 
     public void cycleArtistLeft() {
@@ -61,6 +64,11 @@ public class SettingsMenu implements Initializable {
         timeSelStatic.setText((timeControl = TIME_CONTROLS.get(timeIndex)) + ":00");
     }
 
+    public void changeResolution() {
+        MainMenu.window.setFullScreen(!MainMenu.window.isFullScreen());
+        resolutionSelStatic.setText(MainMenu.window.isFullScreen() ? "Fullscreen" : "Windowed");
+    }
+
     public void returnToMenu() throws IOException {
         MainMenu.showMenu();
     }
@@ -69,5 +77,6 @@ public class SettingsMenu implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         artistSelStatic = artistSel;
         timeSelStatic = timeSel;
+        resolutionSelStatic = resolutionSel;
     }
 }

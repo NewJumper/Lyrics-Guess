@@ -28,7 +28,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
             </rowConstraints>
-            <Text fill="#ececec" onMouseClicked="#cycleArtistRight" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="ARTIST" textAlignment="CENTER" translateY="100.0">
+            <Text fill="#ececec" onMouseClicked="#cycleArtistRight" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="ARTIST" textAlignment="CENTER" translateY="150.0">
                 <font>
                     <Font name="Consolas Bold" size="25.0" />
                 </font>
@@ -38,26 +38,42 @@
                     <Font name="Consolas Bold" size="25.0" />
                 </font>
             </Text>
-            <ImageView fitHeight="32.0" fitWidth="16.0" onMouseClicked="#cycleArtistLeft" pickOnBounds="true" translateY="100.0" GridPane.columnIndex="1">
+         <Text fill="#ececec" onMouseClicked="#cycleArtistRight" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="RESOLUTION" textAlignment="CENTER" translateY="-150.0" GridPane.rowIndex="2">
+            <font>
+               <Font name="Consolas Bold" size="25.0" />
+            </font>
+         </Text>
+            <ImageView fitHeight="32.0" fitWidth="16.0" onMouseClicked="#cycleArtistLeft" pickOnBounds="true" translateY="150.0" GridPane.columnIndex="1">
                 <Image url="@textures/buttons/extra/arrow_left.png" />
             </ImageView>
             <ImageView fitHeight="32.0" fitWidth="16.0" onMouseClicked="#decrementTime" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                 <Image url="@textures/buttons/extra/arrow_left.png" />
             </ImageView>
-            <Text fx:id="artistSel" fill="#ececec" onMouseClicked="#cycleArtistRight" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="Taylor Swift" textAlignment="CENTER" translateY="100.0" GridPane.columnIndex="2">
+            <ImageView fitHeight="32.0" fitWidth="16.0" onMouseClicked="#changeResolution" pickOnBounds="true" translateY="-150.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <Image url="@textures/buttons/extra/arrow_left.png" />
+            </ImageView>
+            <Text fx:id="artistSel" fill="#ececec" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="Taylor Swift" textAlignment="CENTER" translateY="150.0" GridPane.columnIndex="2">
                 <font>
                     <Font name="Consolas Bold" size="19.0" />
                 </font>
             </Text>
-            <Text fx:id="timeSel" fill="#ececec" onMouseClicked="#cycleArtistRight" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="3:00" textAlignment="CENTER" translateX="-30.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Text fx:id="timeSel" fill="#ececec" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="3:00" textAlignment="CENTER" translateX="-30.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                 <font>
                     <Font name="Consolas Bold" size="19.0" />
                 </font>
             </Text>
-            <ImageView fitHeight="32.0" fitWidth="16.0" onMouseClicked="#cycleArtistRight" pickOnBounds="true" translateY="100.0" GridPane.columnIndex="3">
+         <Text fx:id="resolutionSel" fill="#ececec" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: norwester;" text="Windowed" textAlignment="CENTER" translateY="-150.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <font>
+               <Font name="Consolas Bold" size="19.0" />
+            </font>
+         </Text>
+            <ImageView fitHeight="32.0" fitWidth="16.0" onMouseClicked="#cycleArtistRight" pickOnBounds="true" translateY="150.0" GridPane.columnIndex="3">
                 <Image url="@textures/buttons/extra/arrow_right.png" />
             </ImageView>
             <ImageView fitHeight="32.0" fitWidth="16.0" onMouseClicked="#incrementTime" pickOnBounds="true" translateX="-60.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                <Image url="@textures/buttons/extra/arrow_right.png" />
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="16.0" onMouseClicked="#changeResolution" pickOnBounds="true" translateY="-150.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
                 <Image url="@textures/buttons/extra/arrow_right.png" />
             </ImageView>
         </GridPane>
