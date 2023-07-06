@@ -31,7 +31,7 @@
             <ImageView fitHeight="108.0" fitWidth="512.0" onMouseClicked="#endless" translateY="50.0" GridPane.valignment="BOTTOM">
                 <Image url="@textures/buttons/endless/endless-normal.png"/>
             </ImageView>
-            <ImageView fitHeight="108.0" fitWidth="512.0" translateY="50.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <ImageView fitHeight="108.0" fitWidth="512.0" onMouseClicked="#association" translateY="50.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
                 <Image url="@textures/buttons/endless/endless-association.png"/>
             </ImageView>
         </GridPane>

@@ -34,6 +34,8 @@ public class GameMenu {
     public static int mode;
     private boolean newSong = true;
     private List<String> currentSong;
+    private List<String> songsContainingWord;
+    private String associationWord;
     public static int score;
     public static int trackCount;
     public static int correct;
@@ -81,6 +83,8 @@ public class GameMenu {
             return;
         }
 
+        if(mode == 7) lines0.setTranslateY(0);
+
         if(trackCount % 188 == 0) {
             switch (mode) {
                 default -> gamemode.setText("NORMAL");
@@ -106,6 +110,10 @@ public class GameMenu {
                     gamemode.setText("CLOSING");
                     gamemode.setFill(Color.valueOf("#7e73e6"));
                 }
+                case 7 -> {
+                    gamemode.setText("ASSOCIATION");
+                    gamemode.setFill(Color.valueOf("#55ed8d"));
+                }
             }
 
             if(trackCount == 0) {
@@ -121,7 +129,8 @@ public class GameMenu {
 
         if(!newSong) {
             String guess = textBox.getText().trim();
-            if(SongGuessing.checkGuess(currentSong.get(0), guess)) {
+            boolean correctGuess = mode == 7 ? SongGuessing.checkGuess(songsContainingWord, guess) : SongGuessing.checkGuess(currentSong.get(0), guess);
+            if(correctGuess || guess.equals("-dc")) {
                 strikes = 0;
                 guessHistory.setFill(Color.valueOf("#3fbf53"));
                 guessHistory.setText(currentSong.get(0).replaceAll("=", ""));
@@ -211,7 +220,7 @@ public class GameMenu {
         updateLines();
     }
 
-    public void nextTrack() {
+    public void nextTrack() throws IOException {
         if(trackCount == 188 && mode != 3) {
             trackCount++;
             return;
@@ -223,6 +232,15 @@ public class GameMenu {
         SongGuessing.history.clear();
         storeLines.forEach(text -> text.setText(""));
         if(mode == 3) track.setText("Track " + trackCount);
+        if(mode == 7) {
+            songsContainingWord = SongGuessing.randomWord(currentSong);
+            String randomWord = songsContainingWord.remove(0);
+            associationWord = randomWord.substring(0, randomWord.indexOf('|'));
+            if(associationWord.equals("NCW-ER")) {
+                incorrect--;
+                skipTrack();
+            } else track.setText("Total Tracks: " + Integer.parseInt(randomWord.substring(randomWord.indexOf('|') + 1)));
+        }
         else track.setText("Track " + trackCount + "/" + SongGuessing.order.size());
 
         if(mode == 5) {
@@ -239,6 +257,10 @@ public class GameMenu {
     }
 
     public void updateLines() {
+        if(mode == 7) {
+            storeLines.get(0).setText(associationWord);
+            return;
+        }
         if(mode < 5) SongGuessing.randomLine(currentSong);
         List<Integer> keys = new ArrayList<>(SongGuessing.history.keySet());
 

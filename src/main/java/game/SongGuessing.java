@@ -16,6 +16,7 @@ public class SongGuessing {
     public static List<int[]> order = new ArrayList<>();
     public static LinkedHashMap<Integer, String> history = new LinkedHashMap<>();
     public static boolean capped;
+    private static int counter;
 
     public static void randomSong() throws IOException {
         albums.clear();
@@ -79,6 +80,60 @@ public class SongGuessing {
         history.put(row, song.get(row));
     }
 
+    public static List<String> randomWord(List<String> song) {
+        int row = (int) (Math.random() * (song.size() - 2) + 1);
+        String line = song.get(row);
+        history.put(row, line);
+        int wordCount = (int) (Math.random() * (line.chars().filter(c -> c == ' ').count() + 1));
+
+        int loc = 0;
+        while(wordCount != 0) {
+            if(line.charAt(loc) == ' ') wordCount--;
+            loc++;
+        }
+
+        String word;
+        if(line.indexOf(' ') == -1) word = line;
+        else {
+            int lastIndex = line.indexOf(' ', loc) == -1 ? line.length() : line.indexOf(' ', loc);
+            word = line.substring(loc, lastIndex).replaceAll("\"", "").replaceAll(",", "").replaceAll("[.]", "").replaceAll("[?]", "").replaceAll("[(]", "").replaceAll("[)]", "");
+        }
+        if(word.charAt(word.length() - 1) == '\'') word = word.substring(0, word.length() - 1);
+
+        List<String> songsContainingWord = checkRecurrence(word);
+        if(songsContainingWord.size() <= 5) {
+            songsContainingWord.add(0, word + "|" + songsContainingWord.size());
+            System.out.println(songsContainingWord);
+            return songsContainingWord;
+        }
+
+        history.remove(row);
+        counter++;
+        if(counter == 1000) return List.of("NCW-ER|");
+        return randomWord(song);
+    }
+
+    public static List<String> checkRecurrence(String word) {
+        List<String> songsWithWord = new ArrayList<>();
+
+        for(List<String> album : albums) {
+            for(int i = 3; i < album.size(); i++) {
+                if(album.get(i).toLowerCase().contains(word.toLowerCase()) && !album.get(i).contains("=")) {
+                    String song = getSongNameFromRow(album, i);
+                    if(songsWithWord.contains(song)) continue;
+                    songsWithWord.add(song);
+                }
+            }
+        }
+
+        return songsWithWord;
+    }
+
+    public static String getSongNameFromRow(List<String> album, int row) {
+        for(int i = row; i > 1; i--) if(album.get(i).contains("=")) return album.get(i);
+        throw new IndexOutOfBoundsException("\"" + album.get(row) + "\" is not from a song. Row: " + row);
+    }
+
     public static String filterSongName(String songName) {
         if(!songName.contains(" (") || songName.contains("Finale")) return songName.replace("=", "");
         return songName.substring(0, songName.indexOf(" ("));
@@ -130,6 +185,11 @@ public class SongGuessing {
         if(name.equals("the 1")) return result.replace("the one", "___ _");
         if(name.equals("The Last Time")) return result.replace("last time", "____ ____");
         return result;
+    }
+
+    public static boolean checkGuess(List<String> names, String guess) {
+        for(String name : names) if(checkGuess(name, guess)) return true;
+        return false;
     }
 
     public static boolean checkGuess(String name, String guess) {
